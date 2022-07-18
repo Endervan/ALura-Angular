@@ -1,4 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {TransferenciaService} from './service/transferencia.service';
+import {FiltroService} from './service/filtro.service';
+
 
 @Component({
   selector: 'app-root',
@@ -7,8 +10,30 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
   title = 'byteBank';
+  // transferiencia: any[] = [];
+  @Input() filtro: any[] = [];
+  //
+  //
+  // transferirBadge = $event => {
+  // ...$event estamos descontruindo o bojeto para pega somentes seus valores
 
-  transferir($event) {
-    console.log($event);
+  // }
+
+  constructor(private service: TransferenciaService,
+              private filtroService: FiltroService) {
   }
+
+  // usando service
+  transferir = $event => {
+    this.service.adicionar($event);
+    // this.filtroService.adicionarFiltro($event);
+
+    // const filtro = {...$event, data: new Date()};
+    // this.filtro.push(filtro);
+  };
+  // usando service filtroService
+  // transferir = $event => {
+  //
+  // }
+
 }
