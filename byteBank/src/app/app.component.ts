@@ -1,5 +1,4 @@
 import {Component, Input} from '@angular/core';
-import {TransferenciaService} from './service/transferencia.service';
 import {FiltroService} from './service/filtro.service';
 
 
@@ -19,18 +18,17 @@ export class AppComponent {
 
   // }
 
-  constructor(private service: TransferenciaService,
-              private filtroService: FiltroService) {
+  constructor(private filtroService: FiltroService) {
   }
 
   // usando service
-  transferir = $event => {
-    this.service.adicionar($event);
-    // this.filtroService.adicionarFiltro($event);
-
-    // const filtro = {...$event, data: new Date()};
-    // this.filtro.push(filtro);
-  };
+  // transferir = $event => {
+  //   this.service.adicionar($event);
+  //   // this.filtroService.adicionarFiltro($event);
+  //
+  //   // const filtro = {...$event, data: new Date()};
+  //   // this.filtro.push(filtro);
+  // };
   // usando service filtroService
   // transferir = $event => {
   //
