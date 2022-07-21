@@ -1,22 +1,22 @@
-<h6> destino e valor vindo emiter component app nova transferencia</h6>
-
-<table class="tabela">
-  <thead class="tabela__cabecalho">
-  <th class="tabela__conteudo">Data</th>
-  <th class="tabela__conteudo">Conta Destino</th>
-  <th class="tabela__conteudo">Valor</th>
-  </thead>
-  <tbody *ngIf="transferiencias.length > 0 ; else listavazia">
-  <tr *ngFor="let transferiencia of transferiencias" class="tabela__linha">
-    <td class="tabela__conteudo">{{transferiencia?.data | date:"short" }}</td>
-    <td class="tabela__conteudo">{{transferiencia.destino }}</td>
-    <td class="tabela__conteudo">{{transferiencia.valor | currency}}</td>
-  </tr>
-  </tbody>
-</table>
-<ng-template #listavazia>
-  <p class="text-center">Nenhuma Operação Cadastrada</p>
-</ng-template>
-
+<section class="container">
+  <h6> transferências</h6>
+  <table class="tabela">
+    <thead class="tabela__cabecalho">
+    <th class="tabela__conteudo">Data</th>
+    <th class="tabela__conteudo">Conta Destino</th>
+    <th class="tabela__conteudo">Valor</th>
+    </thead>
+    <tbody *ngIf="transferiencias.length > 0 ; else listavazia">
+    <tr *ngFor="let transferiencia of transferiencias" class="tabela__linha">
+      <td class="tabela__conteudo">{{transferiencia?.data | date:"short" }}</td>
+      <td class="tabela__conteudo">{{transferiencia.destino }}</td>
+      <td class="tabela__conteudo">{{transferiencia.valor | currency}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <ng-template #listavazia>
+    <p class="text-center">Nenhuma Operação Cadastrada</p>
+  </ng-template>
+</section>
 
 

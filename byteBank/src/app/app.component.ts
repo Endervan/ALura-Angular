@@ -14,7 +14,7 @@ export class AppComponent {
   //
   //
   // transferirBadge = $event => {
-  // ...$event estamos descontruindo o bojeto para pega somentes seus valores
+  // ...$event estamos descontruindo o bojeto para pega somentes seus valores ou add novo valores
 
   // }
 
