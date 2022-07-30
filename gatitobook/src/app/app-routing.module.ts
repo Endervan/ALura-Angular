@@ -15,10 +15,10 @@ const routes: Routes = [
     loadChildren: () => import('./animais/animais.module').then((m) => m.AnimaisModule),// construindo pagina lazy loading
   },
 
-  //
-  // { // obs:sempre passe rota coringa por ultimo *****************************************
-  //   path: '*', redirectTo: 'home' // digitar rota erra sempre vai pra home
-  // },
+
+  { // obs:sempre passe rota coringa por ultimo *****************************************
+    path: '*', redirectTo: 'home' // digitar rota erra sempre vai pra home
+  },
 ];
 
 @NgModule({
