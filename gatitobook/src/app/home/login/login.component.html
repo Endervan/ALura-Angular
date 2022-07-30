@@ -1,0 +1,17 @@
+<h4 class="text-center">Login</h4>
+<!--loginForm => nessa referencia temos estados do nosso formulario inteiro-->
+<form #loginForm="ngForm" (ngSubmit)="login()" class="form mt-4">
+  <div class="form-group">
+    <input #campoUsuario="ngModel" [(ngModel)]="usuario" class="form-control" name="usuario"
+           placeholder="nome do Usuario" required type="text">
+    <app-mensagem *ngIf="campoUsuario.invalid && campoSenha.touched" mensagem="Usúario Obrígátorio"></app-mensagem>
+  </div>
+  <div class="form-group">
+    <input #campoSenha="ngModel" [(ngModel)]="senha" class="form-control mt-2" name="senha" placeholder="Senha" required
+           type="password">
+    <app-mensagem *ngIf="campoSenha.invalid && campoSenha.touched" mensagem="Senha Obrígátoria"></app-mensagem>
+  </div>
+  <button [disabled]="loginForm.invalid" class="btn btn-primary btn-block mt-2" type="submit">Login</button>
+</form>
+
+<p>Não e um usuário ? <a [routerLink]="['novousuario']"> Se cadastre</a></p>
