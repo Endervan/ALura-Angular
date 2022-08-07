@@ -3,6 +3,9 @@ import {HttpClient, HttpResponse} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {UsuarioService} from "./usuario/usuario.service";
 import {tap} from "rxjs/operators";
+import {environment} from "../../environments/environment";
+
+const API = environment.apiURL;
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +18,8 @@ export class AutenticacaoService {
   // Observable => pega somente body da requisição
   // HttpResponse<any => pega body e headers (requisao inteira)
   autentica(usuario: string, senha: string): Observable<HttpResponse<any>> {
-    return this.httpClient.post('http://localhost:3000/user/login',
+    return this.httpClient.post(
+      `${API}/user/login`,
       {
         userName: usuario,
         password: senha
