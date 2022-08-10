@@ -3,13 +3,9 @@ import {Injectable} from '@angular/core';
 const KEY = 'token';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TokenService {
-
-  constructor() {
-  }
-
   retornaToken() {
     return localStorage.getItem(KEY) ?? '';
   }
@@ -22,8 +18,8 @@ export class TokenService {
     localStorage.removeItem(KEY);
   }
 
-// !! isso retorna funcao bolleana
   possuiToken() {
     return !!this.retornaToken();
   }
+
 }
