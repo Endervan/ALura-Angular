@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {environment} from "../../../environments/environment";
+import {environment} from '../../../environments/environment';
 
 const API = environment.apiURL;
 
@@ -24,6 +24,9 @@ export class AnimalComponent implements OnInit {
     } else {
       this.urlOriginal = `${API}/imgs/${url}`;
     }
+  }
+
+  ngOnInit(): void {
   }
 
 }
