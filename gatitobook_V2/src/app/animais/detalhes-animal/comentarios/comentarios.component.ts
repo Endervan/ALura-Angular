@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {Observable} from 'rxjs';
+import {Comentarios} from './comentarios';
 
 @Component({
   selector: 'app-comentarios',
@@ -7,7 +9,10 @@ import {Component, OnInit} from '@angular/core';
 })
 export class ComentariosComponent implements OnInit {
 
-  constructor() { }
+  comentarios$!: Observable<Comentarios>;
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

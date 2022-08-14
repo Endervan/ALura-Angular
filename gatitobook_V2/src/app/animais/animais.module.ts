@@ -8,9 +8,11 @@ import {CartaoModule} from '../componentes/cartao/cartao.module';
 import {GradeFotosAnimaisComponent} from './grade-fotos-animais/grade-fotos-animais.component';
 import {DetalhesAnimalComponent} from './detalhes-animal/detalhes-animal.component';
 import {ComentariosComponent} from './detalhes-animal/comentarios/comentarios.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {MensagemModule} from "../componentes/mensagem/mensagem.module";
 
 @NgModule({
   declarations: [ListaAnimaisComponent, AnimalComponent, GradeFotosAnimaisComponent, DetalhesAnimalComponent, ComentariosComponent],
-  imports: [CommonModule, AnimaisRoutingModule, CartaoModule],
+  imports: [CommonModule, AnimaisRoutingModule, CartaoModule, ReactiveFormsModule, MensagemModule],
 })
 export class AnimaisModule {}
