@@ -1,6 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Comentarios} from './comentarios';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ComentariosService} from './comentarios.service';
+import {switchMap, tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-comentarios',
@@ -8,13 +11,31 @@ import {Comentarios} from './comentarios';
   styleUrls: ['./comentarios.component.css']
 })
 export class ComentariosComponent implements OnInit {
-
+  @Input() id!: number;
   comentarios$!: Observable<Comentarios>;
+  comentarioForm!: FormGroup;
 
-  constructor() {
+
+  constructor(private comentariosService: ComentariosService, private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
+    this.comentarios$ = this.comentariosService.buscaComentario(this.id);
+    this.comentarioForm = this.fb.group({
+      comentario: ['', Validators.maxLength(300)]
+    });
   }
 
+  gravar(): void {
+    const comentario = this.comentarioForm.get('comentario')?.value ?? '';
+    // usando switchMap pra buscar novos comentarios dps q incluir
+    this.comentarios$ = this.comentariosService.buscaComentario(this.id)
+      .pipe(
+        switchMap(() => this.comentariosService.buscaComentario(this.id)),
+        tap(() => { // tap funcao independence do fluxo observable
+          this.comentarioForm.reset(); // resetando comentario depois q incluir
+          alert('Comentario Salvo');
+        })
+      );
+  }
 }
