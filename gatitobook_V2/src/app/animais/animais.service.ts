@@ -1,4 +1,4 @@
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {environment} from 'src/environments/environment';
@@ -15,18 +15,10 @@ export class AnimaisService {
   }
 
   listaDoUsuario(nomeDoUsuario: string): Observable<Animais> {
-    const token = this.tokenService.retornaToken();
-    const headers = new HttpHeaders().append('x-access-token', token);
-    return this.http.get<Animais>(`${API}/${nomeDoUsuario}/photos`, {
-      headers,
-    });
+    return this.http.get<Animais>(`${API}/${nomeDoUsuario}/photos`);
   }
 
   buscaPorId(id: number): Observable<Animal> {
-    const token = this.tokenService.retornaToken();
-    const headers = new HttpHeaders().append('x-access-token', token);
-    return this.http.get<Animal>(`${API}/photos/${id}`, {
-      headers
-    });
+    return this.http.get<Animal>(`${API}/photos/${id}`);
   }
 }
