@@ -39,5 +39,18 @@ export class AnimaisService {
       );
   }
 
+  upload(descricao: string, permiteComentario: boolean, arquivo: File) {
+    const formData = new FormData(); // new FormData podemos manda arquivos na requisicao
+    formData.append('description', descricao);
+    formData.append('allowComments', permiteComentario ? 'true' : 'false');
+    formData.append('imageFile', arquivo);
+
+    return this.http.post(`${API}/photos/upload`, formData, {
+      observe: 'events',
+      reportProgress: true// parte mostra como ta envio atraves da requisição
+    });
+
+  }
+
 
 }
