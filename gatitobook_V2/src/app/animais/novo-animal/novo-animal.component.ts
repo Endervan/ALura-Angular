@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-novo-animal',
@@ -13,10 +13,13 @@ export class NovoAnimalComponent implements OnInit {
   preview!: string;
   percentualConcluido = 0;
 
-  constructor() {
+  constructor(private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
+    this.formularioAnimal = this.fb.group({
+      file: [null, Validators.required]
+    });
   }
 
   upload() {
