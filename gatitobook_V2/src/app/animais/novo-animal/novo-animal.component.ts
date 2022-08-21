@@ -30,17 +30,18 @@ export class NovoAnimalComponent implements OnInit {
     });
   }
 
-  upload() {
+  upload = () => {
     const allowComments = this.formularioAnimal.get('allowComments')?.value ?? false;
     const description = this.formularioAnimal.get('description')?.value ?? '';
+    console.log(allowComments, description, this.file);
     this.animaisService.upload(description, allowComments, this.file)
       .pipe(
-        finalize(() => this.router.navigate(['animais'])) // monitora o q acontece no final da requisicao
+        finalize(() => this.router.navigate(['animais'])) // monitora e faz acao dps q a  requisicao termina
       ).subscribe(
       (event: HttpEvent<any>) => {
         if (event.type === HttpEventType.UploadProgress) {
           const total = event.total ?? 1;
-          this.percentualConcluido = Math.round(100 * (event.loaded / total));
+          this.percentualConcluido = Math.round(100 * (event.loaded / total)); // calcula progess pro usuario
         }
       }, error => console.log(error));
 
