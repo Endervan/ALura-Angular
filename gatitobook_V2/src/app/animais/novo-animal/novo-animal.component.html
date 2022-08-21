@@ -25,6 +25,7 @@
         <app-mensagem mensagem="Tamanhoi maximo e 300 caracteres"
                       *ngIf="!!formularioAnimal.get('description')?.errors?.maxlength">
         </app-mensagem>
+
         <div class="form-group">
           <label class="text-muted">
             <input type="checkbox" formControlName="allowComments">
@@ -34,14 +35,14 @@
         <button [disabled]="formularioAnimal.invalid"
                 type="submit"
                 class="btn btn-primary btn-block">
-
+          Salvar
         </button>
         <a [routerLink]="['animais']" class="btn btn-secondary btn-block">Cancelar </a>
       </div>
 
       <ng-template #uploadDiv>
         <div class="text-center display-4">
-          percentual de upload {{percentualConcluido}}
+          percentual de upload {{percentualConcluido}} %
         </div>
       </ng-template>
     </div>
