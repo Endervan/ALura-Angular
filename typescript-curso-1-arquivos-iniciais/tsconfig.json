@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "outDir": "dist/js",
+    "target": "ES6",
+    "noEmitOnError": true // evita gerer arquivo js com problema
+  },
+  "include": [
+    "app/**/*"
+  ]
+  //    **=> subpasta filhas e *=> qlq arquivo
+}
