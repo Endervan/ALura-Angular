@@ -2,7 +2,8 @@
   "compilerOptions": {
     "outDir": "dist/js",
     "target": "ES6",
-    "noEmitOnError": true // evita gerer arquivo js com problema
+    "noEmitOnError": true, // evita gerer arquivo js com problema
+    "noImplicitAny": true //
   },
   "include": [
     "app/**/*"
