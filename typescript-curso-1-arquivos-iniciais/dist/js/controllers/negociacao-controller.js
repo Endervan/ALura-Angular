@@ -1,14 +1,17 @@
 import { Negociacao } from "../models/negociacao.js";
+import { Negociacoes } from "../models/negociacoes.js";
 export class NegociacaoController {
     constructor() {
+        this.negociacoes = new Negociacoes();
         this.inputData = document.querySelector('#data');
         this.inputQuantidade = document.querySelector('#quantidade');
         this.inputValor = document.querySelector('#valor');
     }
     adiciona() {
         const negociacao = this.criarNegociacao();
-        console.log(negociacao);
         this.limparFromulario();
+        this.negociacoes.adiciona(negociacao);
+        console.log(this.negociacoes.lista());
     }
     criarNegociacao() {
         const exp = /-/g; // expressao regular pega todas ocorrencia q tenha -

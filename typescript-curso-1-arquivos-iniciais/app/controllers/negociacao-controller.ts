@@ -1,9 +1,11 @@
 import {Negociacao} from "../models/negociacao.js";
+import {Negociacoes} from "../models/negociacoes.js";
 
 export class NegociacaoController {
     private readonly inputData: HTMLInputElement;
     private readonly inputQuantidade: HTMLInputElement;
     private readonly inputValor: HTMLInputElement;
+    private readonly negociacoes =  new Negociacoes();
 
     constructor() {
         this.inputData = document.querySelector('#data');
@@ -11,10 +13,11 @@ export class NegociacaoController {
         this.inputValor = document.querySelector('#valor');
     }
 
-    adiciona():void {
+    adiciona(): void {
         const negociacao = this.criarNegociacao();
-        console.log(negociacao)
         this.limparFromulario();
+        this.negociacoes.adiciona(negociacao);
+        console.log(this.negociacoes.lista())
     }
 
     criarNegociacao(): Negociacao {
@@ -26,12 +29,12 @@ export class NegociacaoController {
         return new Negociacao(date, quantidade, valor);
     }
 
-    limparFromulario():void{
+    limparFromulario(): void {
 
-        this.inputData.value='';
-        this.inputQuantidade.value='';
-        this.inputValor.value='';
+        this.inputData.value = '';
+        this.inputQuantidade.value = '';
+        this.inputValor.value = '';
         this.inputData.focus();
 
-}
+    }
 }
