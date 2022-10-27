@@ -8,13 +8,13 @@ export class NegociacaoController {
         this.inputData = document.querySelector('#data');
         this.inputQuantidade = document.querySelector('#quantidade');
         this.inputValor = document.querySelector('#valor');
-        this.negociacoesView.update();
+        this.negociacoesView.update(this.negociacoes);
     }
     adiciona() {
         const negociacao = this.criarNegociacao();
         this.limparFromulario();
         this.negociacoes.adiciona(negociacao);
-        console.log(this.negociacoes.lista());
+        this.negociacoesView.update(this.negociacoes);
     }
     criarNegociacao() {
         const exp = /-/g; // expressao regular pega todas ocorrencia q tenha -

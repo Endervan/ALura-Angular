@@ -13,14 +13,14 @@ export class NegociacaoController {
         this.inputData = document.querySelector('#data');
         this.inputQuantidade = document.querySelector('#quantidade');
         this.inputValor = document.querySelector('#valor');
-        this.negociacoesView.update();
+        this.negociacoesView.update(this.negociacoes);
     }
 
     adiciona(): void {
         const negociacao = this.criarNegociacao();
         this.limparFromulario();
         this.negociacoes.adiciona(negociacao);
-        console.log(this.negociacoes.lista())
+        this.negociacoesView.update(this.negociacoes);
     }
 
     criarNegociacao(): Negociacao {
@@ -33,7 +33,6 @@ export class NegociacaoController {
     }
 
     limparFromulario(): void {
-
         this.inputData.value = '';
         this.inputQuantidade.value = '';
         this.inputValor.value = '';
