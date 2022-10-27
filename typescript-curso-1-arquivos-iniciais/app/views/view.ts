@@ -11,7 +11,7 @@ export abstract class View<T> {
         this.elemento.innerHTML = this.template(model);
     }
 
-    // metodo abstract forca filho a sobrescreve o metodo
-    abstract template(model: T): string;
+    // metodo ‘abstract’ forca filho a sobrescreve o metodo
+   protected abstract template(model: T): string;
 }
 
