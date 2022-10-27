@@ -6,7 +6,4 @@ export class View {
         // converte string em element DOM
         this.elemento.innerHTML = this.template(model);
     }
-    template(model) {
-        throw Error('Classe filha precisa sobrescrever(implementa) este metodo');
-    }
 }

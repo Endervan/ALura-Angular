@@ -1,4 +1,4 @@
-export class View<T> {
+export abstract class View<T> {
     protected elemento: HTMLElement;
 
     constructor(seletor: string) {
@@ -11,8 +11,7 @@ export class View<T> {
         this.elemento.innerHTML = this.template(model);
     }
 
-    template(model: T): string {
-        throw Error('Classe filha precisa sobrescrever(implementa) este metodo')
-    }
-
+    // metodo abstract forca filho a sobrescreve o metodo
+    abstract template(model: T): string;
 }
+
