@@ -24,8 +24,4 @@ export class NegociacoesViews extends View {
         </table>
         `;
     }
-    update(model) {
-        // converte string em element DOM
-        this.elemento.innerHTML = this.template(model);
-    }
 }

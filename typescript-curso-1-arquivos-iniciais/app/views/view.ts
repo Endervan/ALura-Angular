@@ -1,4 +1,4 @@
-export class View {
+export class View<T> {
     protected elemento: HTMLElement;
 
     constructor(seletor: string) {
@@ -6,12 +6,12 @@ export class View {
     }
 
 
-    update(model: string): void {
+    update(model: T): void {
         // converte string em element DOM
         this.elemento.innerHTML = this.template(model);
     }
 
-    template(model: string): string {
+    template(model: T): string {
         throw Error('Classe filha precisa sobrescrever(implementa) este metodo')
     }
 

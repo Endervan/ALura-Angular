@@ -1,7 +1,7 @@
 import {Negociacoes} from "../models/negociacoes.js";
 import {View} from "./view.js";
 
-export class NegociacoesViews extends View{
+export class NegociacoesViews extends View<Negociacoes>{
 
 
     template(model:Negociacoes):string{
