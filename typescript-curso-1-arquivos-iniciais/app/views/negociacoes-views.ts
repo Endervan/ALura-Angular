@@ -30,8 +30,5 @@ export class NegociacoesViews extends View{
         `;
     }
 
-    update(model:Negociacoes):void{
-        // converte string em element DOM
-        this.elemento.innerHTML = this.template(model);
-    }
+
 }

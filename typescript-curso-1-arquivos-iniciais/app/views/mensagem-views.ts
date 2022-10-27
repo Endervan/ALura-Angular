@@ -9,7 +9,5 @@ export class MensagemViews extends View{
         `;
     }
 
-    update(model: string): void {
-        this.elemento.innerHTML = this.template(model);
-    }
+
 }
