@@ -7,7 +7,7 @@ export class NegociacaoController {
     private readonly inputData: HTMLInputElement;
     private readonly inputQuantidade: HTMLInputElement;
     private readonly inputValor: HTMLInputElement;
-    private readonly negociacoes =  new Negociacoes();
+    private readonly negociacoes = new Negociacoes();
     private readonly negociacoesView = new NegociacoesViews('#negociacoesView');
     private readonly mensagemView = new MensagemViews('#mensagemView');
 
@@ -20,10 +20,15 @@ export class NegociacaoController {
 
     adiciona(): void {
         const negociacao = this.criarNegociacao();
-        this.negociacoes.adiciona(negociacao);
-        this.negociacoesView.update(this.negociacoes);
-        this.mensagemView.update('Negociação Adicionada com sucesso.')
-        this.limparFromulario();
+        // negociacao somente dias uteis semana ..exceto domingo e sabado
+        if (negociacao.data.getDay() > 0 && negociacao.data.getDay() < 6) {
+            this.negociacoes.adiciona(negociacao);
+            this.atualizarView();
+            this.limparFromulario();
+        } else {
+            this.mensagemView.update('Apenas negociações em dias Uteis sao aceitos')
+        }
+
     }
 
     criarNegociacao(): Negociacao {
@@ -41,5 +46,10 @@ export class NegociacaoController {
         this.inputValor.value = '';
         this.inputData.focus();
 
+    }
+
+    private atualizarView(): void {
+        this.negociacoesView.update(this.negociacoes);
+        this.mensagemView.update('Negociação Adicionada com sucesso.')
     }
 }
