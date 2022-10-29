@@ -10,24 +10,28 @@ export class NegociacaoController {
     private readonly negociacoes = new Negociacoes();
     private readonly negociacoesView = new NegociacoesViews('#negociacoesView');
     private readonly mensagemView = new MensagemViews('#mensagemView');
+    private readonly SABADO = 6;
+    private readonly DOMINGO = 0;
 
     constructor() {
         this.inputData = document.querySelector('#data');
         this.inputQuantidade = document.querySelector('#quantidade');
         this.inputValor = document.querySelector('#valor');
         this.negociacoesView.update(this.negociacoes);
+
     }
 
     adiciona(): void {
         const negociacao = this.criarNegociacao();
         // negociacao somente dias uteis semana ..exceto domingo e sabado
-        if (negociacao.data.getDay() > 0 && negociacao.data.getDay() < 6) {
-            this.negociacoes.adiciona(negociacao);
-            this.atualizarView();
-            this.limparFromulario();
-        } else {
+        if (!this.ehDiaUtil(negociacao.data)) {
             this.mensagemView.update('Apenas negociações em dias Uteis sao aceitos')
+            return
         }
+        this.negociacoes.adiciona(negociacao);
+        this.atualizarView();
+        this.limparFromulario();
+
 
     }
 
@@ -46,6 +50,10 @@ export class NegociacaoController {
         this.inputValor.value = '';
         this.inputData.focus();
 
+    }
+
+    private ehDiaUtil(date: Date) {
+        return date.getDay() > this.SABADO && date.getDay() < this.DOMINGO
     }
 
     private atualizarView(): void {
