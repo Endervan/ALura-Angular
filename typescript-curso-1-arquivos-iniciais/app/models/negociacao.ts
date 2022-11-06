@@ -26,4 +26,13 @@ export class Negociacao {
     get volume(): number {
         return this.quantidade * this.valor;
     }
+
+    public static criaDe(dateString:string,quantidadeString:string,valorString:string):Negociacao{
+        const exp = /-/g; // expressao regular pega todas ocorrencia q tenha -
+        // procura date tudo q tive - e substituir por virgular(,)
+        const date = new Date(dateString.replace(exp, ','))
+        const quantidade = parseInt(quantidadeString); // ‘string’ em número
+        const valor = parseFloat(valorString); // string em float
+        return new Negociacao(date, quantidade, valor);
+    }
 }

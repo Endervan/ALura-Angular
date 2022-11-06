@@ -21,8 +21,12 @@ export class NegociacaoController {
 
     }
 
-    adiciona(): void {
-        const negociacao = this.criarNegociacao();
+   public adiciona(): void {
+        const negociacao = Negociacao.criaDe(
+            this.inputData.value,
+            this.inputQuantidade.value,
+            this.inputValor.value
+            );
         // negociacao somente dias uteis semana ..exceto domingo e sabado
         if (!this.ehDiaUtil(negociacao.data)) {
             this.mensagemView.update('Apenas negociações em dias Uteis sao aceitos')
@@ -33,14 +37,6 @@ export class NegociacaoController {
         this.limparFromulario();
     }
 
-    criarNegociacao(): Negociacao {
-        const exp = /-/g; // expressao regular pega todas ocorrencia q tenha -
-        // procura date tudo q tive - e substituir por virgular(,)
-        const date = new Date(this.inputData.value.replace(exp, ','))
-        const quantidade = parseInt(this.inputQuantidade.value); // ‘string’ em número
-        const valor = parseFloat(this.inputValor.value); // string em float
-        return new Negociacao(date, quantidade, valor);
-    }
 
     limparFromulario(): void {
         this.inputData.value = '';
