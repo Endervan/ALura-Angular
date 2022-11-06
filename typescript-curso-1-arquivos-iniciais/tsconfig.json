@@ -5,6 +5,7 @@
     "noEmitOnError": true, // evita gerer arquivo js com problema
     "noImplicitAny": true, // retirando implicito any
     "removeComments": true, // removendo todos comentario build
+    "strictNullChecks": true,
   },
   "include": [
     "app/**/*"
