@@ -9,7 +9,7 @@ export class NegociacaoController {
     private readonly inputQuantidade: HTMLInputElement;
     private readonly inputValor: HTMLInputElement;
     private readonly negociacoes = new Negociacoes();
-    private readonly negociacoesView = new NegociacoesViews('#negociacoesView');
+    private readonly negociacoesView = new NegociacoesViews('#negociacoesView',true);
     private readonly mensagemView = new MensagemViews('#mensagemView');
 
 

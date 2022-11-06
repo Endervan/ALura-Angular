@@ -3,7 +3,8 @@
     "outDir": "dist/js",
     "target": "ES6",
     "noEmitOnError": true, // evita gerer arquivo js com problema
-    "noImplicitAny": true //
+    "noImplicitAny": true, // retirando implicito any
+    "removeComments": true, // removendo todos comentario build
   },
   "include": [
     "app/**/*"
