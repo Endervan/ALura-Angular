@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {map, pluck, tap} from 'rxjs/operators';
-import {Acao} from './modelo/acoes';
+import {Acao, AcoesApi} from './modelo/acoes';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class AcoesService {
   getAcoes() {
     // map altera fluxo informaçes apresentadas
     // sort ordenacao array
-    return this.httpClient.get<any>('http://localhost:3000/acoes').pipe(
+    return this.httpClient.get<AcoesApi>('http://localhost:3000/acoes').pipe(
       tap((valor) => console.log(valor)), // tap verificando como ta fluxo
       pluck('payload') , // faz msm coisa map  ===  map((api) => api.payload),
       map((acoes) => acoes.sort((acaoA, acaoB) => this.ordenaPorCodigo(acaoA, acaoB)))
