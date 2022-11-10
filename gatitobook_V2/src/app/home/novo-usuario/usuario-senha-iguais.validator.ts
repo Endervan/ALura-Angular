@@ -1,6 +1,6 @@
 import {FormGroup} from '@angular/forms';
 
-export function usuarioSenhaIguaisValidator(formGroup: FormGroup) {
+export const usuarioSenhaIguaisValidator = (formGroup: FormGroup) => {
   const username = formGroup.get('userName')?.value ?? '';
   const password = formGroup.get('password')?.value ?? '';
 
@@ -9,4 +9,4 @@ export function usuarioSenhaIguaisValidator(formGroup: FormGroup) {
   } else {
     return null;
   }
-}
+};

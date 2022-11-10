@@ -30,7 +30,7 @@ export class ComentariosComponent implements OnInit {
   gravar(): void {
     const comentario = this.comentarioForm.get('comentario')?.value ?? '';
     // usando switchMap pra buscar novos comentarios dps q incluir
-    this.comentarios$ = this.comentariosService.incluirComentario(this.id,comentario)
+    this.comentarios$ = this.comentariosService.incluirComentario(this.id, comentario)
       .pipe(
         switchMap(() => this.comentariosService.buscaComentario(this.id)),
         tap(() => { // tap funcao independence do fluxo observable

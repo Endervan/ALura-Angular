@@ -10,6 +10,6 @@ export class AcoesService {
   }
 
   getAcoes(){
-    return this.httpClient.get<any>('https://localhost:3000/acoes');
+    return this.httpClient.get<any>('http://localhost:3000/acoes');
   }
 }
