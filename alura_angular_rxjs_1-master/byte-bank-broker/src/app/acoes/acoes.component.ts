@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {AcoesService} from './acoes.service';
 import {merge, Subscription} from 'rxjs';
-import {switchMap, tap} from 'rxjs/operators';
+import {filter, switchMap, tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-acoes',
@@ -17,6 +17,8 @@ export class AcoesComponent {
   // usando input como observable
   filterPeloInput$ = this.acoesInput.valueChanges.pipe(
     tap(() => console.log('fluxo filtro')),
+    tap(() => console.log),
+    filter((valorDigitado) => valorDigitado.length >= 3 || !valorDigitado.length),
     switchMap((valorDigitado) => this.acoesService.getAcoes(valorDigitado))
   );
 
