@@ -27,7 +27,7 @@ export class AcoesService {
     // sort ordenacao array
     return this.httpClient.get<AcoesApi>('http://localhost:3000/acoes').pipe(
       tap((valor) => console.log(valor)), // tap verificando como ta fluxo
-      pluck('payload'), // faz msm coisa map  ===  map((api) => api.payload),
+      pluck('payload'), // faz msm coisa map  ===  map((api) => api.payload),extair somente o q ta dentro payload
       map((acoes: Acoes) => acoes.sort((acaoA, acaoB) => this.ordenaPorCodigo(acaoA, acaoB)))
     );
   }
