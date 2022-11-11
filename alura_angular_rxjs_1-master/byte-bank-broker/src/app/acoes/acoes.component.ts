@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {AcoesService} from './acoes.service';
-import {Subscription} from 'rxjs';
+import {merge, Subscription} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
 
 @Component({
@@ -9,13 +9,19 @@ import {switchMap, tap} from 'rxjs/operators';
   templateUrl: './acoes.component.html',
   styleUrls: ['./acoes.component.css'],
 })
-export class AcoesComponent  {
+export class AcoesComponent {
   acoesInput = new FormControl();
-  // acoes$ =  this.acoesService.getAcoes();
-  acoes$ = this.acoesInput.valueChanges.pipe(tap(console.log),
-    switchMap((valorDigitado) => this.acoesService.getAcoes(valorDigitado)),
-    tap(console.log)
-    );
+  todaAcoes$ = this.acoesService.getAcoes().pipe(tap(() => console.log('fluxo original'))); // pega todos os arrays original
+  // acoes$ =  this.acoesService.getAcoes().pipe();
+
+  // usando input como observable
+  filterPeloInput$ = this.acoesInput.valueChanges.pipe(
+    tap(() => console.log('fluxo filtro')),
+    switchMap((valorDigitado) => this.acoesService.getAcoes(valorDigitado))
+  );
+
+  // merge rxJX recebe n observables
+  acoes$ = merge(this.todaAcoes$, this.filterPeloInput$);
   private subscription: Subscription;
 
   constructor(private acoesService: AcoesService) {

@@ -27,7 +27,7 @@ export class AcoesService {
     // map altera fluxo informaçes apresentadas
     // sort ordenacao array
     return this.httpClient.get<AcoesApi>('http://localhost:3000/acoes', {params}).pipe(
-      tap((valor) => console.log(valor)), // tap verificando como ta fluxo
+      tap((valor1) => console.log(valor1)), // tap verificando como ta fluxo
       pluck('payload'), // faz msm coisa map  ===  map((api) => api.payload),extair somente o q ta dentro payload
       map((acoes: Acoes) => acoes.sort((acaoA, acaoB) => this.ordenaPorCodigo(acaoA, acaoB)))
     );
