@@ -1,6 +1,5 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {Acoes} from './modelo/acoes';
 import {AcoesService} from './acoes.service';
 import {Subscription} from 'rxjs';
 
@@ -9,22 +8,22 @@ import {Subscription} from 'rxjs';
   templateUrl: './acoes.component.html',
   styleUrls: ['./acoes.component.css'],
 })
-export class AcoesComponent implements OnInit, OnDestroy {
+export class AcoesComponent  {
   acoesInput = new FormControl();
-  acoes: Acoes;
+  acoes$ =  this.acoesService.getAcoes();
   private subscription: Subscription;
 
   constructor(private acoesService: AcoesService) {
   }
 
-  ngOnInit() {
-    this.subscription = this.acoesService.getAcoes().subscribe((acoes) => {
-      this.acoes = acoes;
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
+  // ngOnInit() {
+  //   this.subscription = this.acoesService.getAcoes().subscribe((acoes) => {
+  //     this.acoes$ = acoes;
+  //   });
+  // }
+  //
+  // ngOnDestroy(): void {
+  //   this.subscription.unsubscribe();
+  // }
 
 }

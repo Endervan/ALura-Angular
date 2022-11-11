@@ -5,9 +5,9 @@
     </div>
   </div>
 
-  <div *ngIf="acoes ; else elseBlock" class="td-page-wrapper">
+  <div *ngIf="acoes$ | async as acoes ; else elseBlock" class="td-page-wrapper">
     <div class="po-row">
-      <div *ngFor="let acao of acoes " class="po-md-4">
+      <div *ngFor="let acao of  acoes" class="po-md-4">
         <app-card-acoes [acao]="acao"></app-card-acoes>
       </div>
     </div>
