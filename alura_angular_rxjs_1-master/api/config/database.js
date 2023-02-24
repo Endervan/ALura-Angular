@@ -67,7 +67,7 @@ INSERT INTO acoes (
     acoes_codigo, 
     acoes_descricao,
     acoes_preco
-) SELECT 'ALUR3', 'Alura ON', 25.10 WHERE NOT EXISTS (SELECT * FROM acoes WHERE acoes_codigo = 'ALUR3')
+) SELECT 'ANGULAR', 'Angular ON', 25.10 WHERE NOT EXISTS (SELECT * FROM acoes WHERE acoes_codigo = 'ANGULAR')
 `;
 
 const INSERT_acoes_2 = `
@@ -75,7 +75,7 @@ INSERT INTO acoes (
     acoes_codigo, 
     acoes_descricao,
     acoes_preco
-) SELECT 'ALUR4', 'Alura PN', 25.10 WHERE NOT EXISTS (SELECT * FROM acoes WHERE acoes_codigo = 'ALUR4')
+) SELECT 'IONIC', 'Ionic PN', 25.10 WHERE NOT EXISTS (SELECT * FROM acoes WHERE acoes_codigo = 'IONIC')
 `;
 
 const INSERT_acoes_3 = `
@@ -83,7 +83,7 @@ INSERT INTO acoes (
     acoes_codigo, 
     acoes_descricao,
     acoes_preco
-) SELECT 'CAEL3', 'Caellum ON', 25.10 WHERE NOT EXISTS (SELECT * FROM acoes WHERE acoes_codigo = 'CAEL3')
+) SELECT 'NODE', 'Caellum ON', 25.10 WHERE NOT EXISTS (SELECT * FROM acoes WHERE acoes_codigo = 'NODE')
 `;
 
 const INSERT_acoes_4 = `
