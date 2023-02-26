@@ -18,3 +18,13 @@ console.log(`A média das notas é ${media}.`);
 //   O for é constituído de três expressões: criação da variável de controle; condição de execução; modificação da variável de controle. Essas três expressões juntas definem quantas vezes o bloco do for será executado.
 //   Utilizar a estrutura for of e entender a diferença em relação ao for:
 // O for of sempre é utilizado para percorrer todos os elementos de um array, do início ao fim. Para esses casos, o for of é mais conciso que o for.
+
+
+const alunos = ["Ana", "Marcos", "Maria", "Mauro"];
+const medias = [7, 4.5, 8, 7.5];
+
+const reprovados = alunos.filter((_, indice) => {
+  return medias[indice] < 7;
+});
+
+console.log(reprovados);
