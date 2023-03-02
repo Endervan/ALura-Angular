@@ -19,4 +19,14 @@ function ligaParaCliente(telefoneComercial,telefoneResidencial) {
     console.log(`Ligando para ${telefoneResidencial}`)
 }
 
+ligaParaCliente(cliente.telefone[0],cliente.telefone[1],) // linha abaixo usando generico espalhamento
 ligaParaCliente(...cliente.telefone)
+
+
+// sintaxe espalhamento usando objetos
+const encomenda = {
+    destinatario: cliente.nome,
+   ...cliente.enderecos[0]
+}
+
+console.log(encomenda)
