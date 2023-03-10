@@ -3,6 +3,7 @@ import { Negociacao } from '../models/negociacao.js';
 import { Negociacoes } from '../models/negociacoes.js';
 import { MensagemView } from '../views/mensagem-view.js';
 import { NegociacoesView } from '../views/negociacoes-view.js';
+import {logarTempoExecucao} from "../decorators/logar-tempo-execucao.js";
 
 export class NegociacaoController {
     private inputData: HTMLInputElement;
@@ -19,8 +20,8 @@ export class NegociacaoController {
         this.negociacoesView.update(this.negociacoes);
     }
 
+    @logarTempoExecucao()
     public adiciona(): void {
-        const t1 = performance.now();
         /*
             Zé, você já viu isso?
         */
@@ -40,7 +41,6 @@ export class NegociacaoController {
         this.limparFormulario();
         this.atualizaView();
         const t2 = performance.now();
-        console.log(`tempo de execução metodo insert  ${(t2 - t1)/1000}`)
     }
 
     private ehDiaUtil(data: Date) {
