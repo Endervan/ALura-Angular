@@ -10,6 +10,7 @@ import { Negociacoes } from '../models/negociacoes.js';
 import { MensagemView } from '../views/mensagem-view.js';
 import { NegociacoesView } from '../views/negociacoes-view.js';
 import { logarTempoExecucao } from "../decorators/logar-tempo-execucao.js";
+import { domInjector } from "../decorators/dom-Injector.js";
 export class NegociacaoController {
     constructor() {
         this.negociacoes = new Negociacoes();
@@ -44,6 +45,15 @@ export class NegociacaoController {
         this.mensagemView.update('Negociação adicionada com sucesso');
     }
 }
+__decorate([
+    domInjector('#data')
+], NegociacaoController.prototype, "inputData", void 0);
+__decorate([
+    domInjector('#quantidade')
+], NegociacaoController.prototype, "inputQuantidade", void 0);
+__decorate([
+    domInjector('#valor')
+], NegociacaoController.prototype, "inputValor", void 0);
 __decorate([
     logarTempoExecucao()
 ], NegociacaoController.prototype, "adiciona", null);
