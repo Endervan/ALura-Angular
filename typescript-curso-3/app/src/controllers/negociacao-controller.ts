@@ -1,8 +1,8 @@
-import { DiasDaSemana } from '../enums/dias-da-semana.js';
-import { Negociacao } from '../models/negociacao.js';
-import { Negociacoes } from '../models/negociacoes.js';
-import { MensagemView } from '../views/mensagem-view.js';
-import { NegociacoesView } from '../views/negociacoes-view.js';
+import {DiasDaSemana} from '../enums/dias-da-semana.js';
+import {Negociacao} from '../models/negociacao.js';
+import {Negociacoes} from '../models/negociacoes.js';
+import {MensagemView} from '../views/mensagem-view.js';
+import {NegociacoesView} from '../views/negociacoes-view.js';
 import {logarTempoExecucao} from "../decorators/logar-tempo-execucao.js";
 import {domInjector} from "../decorators/dom-Injector.js";
 
@@ -24,15 +24,15 @@ export class NegociacaoController {
     @logarTempoExecucao()
     public adiciona(): void {
         const negociacao = Negociacao.criaDe(
-            this.inputData.value, 
+            this.inputData.value,
             this.inputQuantidade.value,
             this.inputValor.value
         );
-     
+
         if (!this.ehDiaUtil(negociacao.data)) {
             this.mensagemView
                 .update('Apenas negociações em dias úteis são aceitas');
-            return ;
+            return;
         }
 
         this.negociacoes.adiciona(negociacao);
@@ -41,8 +41,26 @@ export class NegociacaoController {
         const t2 = performance.now();
     }
 
+   public importaDados(): void {
+        fetch('http://localhost:8080/dados')
+            .then(res => res.json())
+            .then((dados: any[]) => {
+                return dados.map(dadoDehj => {
+                    return new Negociacao(
+                        new Date(),
+                        dadoDehj.vezes,
+                        dadoDehj.montante)
+                })
+            }).then(negociacoesDeHj => {
+                for (let negocoacao of negociacoesDeHj) {
+                    this.negociacoes.adiciona(negocoacao)
+                }
+                this.negociacoesView.update(this.negociacoes)
+            })
+    }
+
     private ehDiaUtil(data: Date) {
-        return data.getDay() > DiasDaSemana.DOMINGO 
+        return data.getDay() > DiasDaSemana.DOMINGO
             && data.getDay() < DiasDaSemana.SABADO;
     }
 
