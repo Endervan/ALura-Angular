@@ -1,9 +1,14 @@
-export class Negociacao {
+import {Imprimivel} from "../Utils/imprimivel";
+
+export class Negociacao extends Imprimivel {
+
+
     constructor(
         private _data: Date,
         public readonly quantidade: number,
         public readonly valor: number
     ) {
+        super();
     }
 
     get volume(): number {
@@ -30,3 +35,6 @@ export class Negociacao {
         `
     }
 }
+
+const o: Imprimivel = new Negociacao(new Date(), 1, 100);
+// Imptimivel usando polimofismo pra garanti q o objetos seja msm no final
