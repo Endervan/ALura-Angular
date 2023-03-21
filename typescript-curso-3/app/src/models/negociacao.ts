@@ -1,6 +1,8 @@
-import {Imprimivel} from "../Utils/imprimivel";
+import {Imprimivel} from "../Utils/imprimivel.js";
+import {Comparavel} from "../Utils/comparavel.js";
 
-export class Negociacao implements Imprimivel {
+export class Negociacao implements Imprimivel, Comparavel<Negociacao> {
+    private negociacoes: Negociacao[] = [];
 
 
     constructor(
@@ -27,17 +29,15 @@ export class Negociacao implements Imprimivel {
     }
 
     public paraTexto(): string {
-        return `
-        Data : ${this.data},
-        Quantidade : ${this.quantidade},
-        Valor: ${this.valor}
-        `
+        return JSON.stringify(this.negociacoes, null, 2)
+    }
+
+    public lista(): readonly Negociacao[] {
+        return this.negociacoes;
     }
 
     public ehIgual(negociacao: Negociacao): boolean {
-        return this.data.getDate() === negociacao.data.getDate() &&
-            this.data.getMonth() === negociacao.data.getMonth() &&
-            this.data.getFullYear() === negociacao.data.getFullYear();
+        return JSON.stringify(this.lista) === JSON.stringify(negociacao.lista())
     }
 }
 
