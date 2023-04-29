@@ -11,11 +11,13 @@ import { MensagemView } from '../views/mensagem-view.js';
 import { NegociacoesView } from '../views/negociacoes-view.js';
 import { logarTempoExecucao } from "../decorators/logar-tempo-execucao.js";
 import { domInjector } from "../decorators/dom-Injector.js";
+import { NegociacoesService } from "../services/negociacoes-service.js";
 export class NegociacaoController {
     constructor() {
         this.negociacoes = new Negociacoes();
         this.negociacoesView = new NegociacoesView('#negociacoesView');
         this.mensagemView = new MensagemView('#mensagemView');
+        this.negociacaoService = new NegociacoesService();
         this.negociacoesView.update(this.negociacoes);
     }
     adiciona() {
@@ -31,13 +33,15 @@ export class NegociacaoController {
         const t2 = performance.now();
     }
     importaDados() {
-        fetch('http://localhost:8080/dados')
-            .then(res => res.json())
-            .then((dados) => {
-            return dados.map(dadoDehj => {
-                return new Negociacao(new Date(), dadoDehj.vezes, dadoDehj.montante);
+        this.negociacaoService.obterNegociacoesDoDia()
+            .then(negociacoesDeHj => {
+            return negociacoesDeHj.filter(negociacoesDeHj => {
+                return !this.negociacoes
+                    .lista()
+                    .some(negociacao => negociacao.ehIgual(negociacoesDeHj));
             });
-        }).then(negociacoesDeHj => {
+        })
+            .then(negociacoesDeHj => {
             for (let negocoacao of negociacoesDeHj) {
                 this.negociacoes.adiciona(negocoacao);
             }
@@ -71,3 +75,4 @@ __decorate([
 __decorate([
     logarTempoExecucao()
 ], NegociacaoController.prototype, "adiciona", null);
+//# sourceMappingURL=negociacao-controller.js.map

@@ -1,7 +1,6 @@
-import {Imprimivel} from "../Utils/imprimivel.js";
-import {Comparavel} from "../Utils/comparavel.js";
+import {Modelo} from "../interfaces/modelo.js";
 
-export class Negociacao implements Imprimivel, Comparavel<Negociacao> {
+export class Negociacao implements Modelo<Negociacao> {
     private negociacoes: Negociacao[] = [];
 
 
@@ -29,7 +28,11 @@ export class Negociacao implements Imprimivel, Comparavel<Negociacao> {
     }
 
     public paraTexto(): string {
-        return JSON.stringify(this.negociacoes, null, 2)
+        return `
+        Data : ${this.data},
+        Quantidade : ${this.quantidade},
+        Valor: ${this.valor}
+        `
     }
 
     public lista(): readonly Negociacao[] {
@@ -37,9 +40,11 @@ export class Negociacao implements Imprimivel, Comparavel<Negociacao> {
     }
 
     public ehIgual(negociacao: Negociacao): boolean {
-        return JSON.stringify(this.lista) === JSON.stringify(negociacao.lista())
+        return this.data.getDate() === negociacao.data.getDate() &&
+            this.data.getMonth() === negociacao.data.getMonth() &&
+            this.data.getFullYear() === negociacao.data.getFullYear();
     }
 }
 
-const o: Imprimivel = new Negociacao(new Date(), 1, 100);
+// const o: Imprimivel = new Negociacao(new Date(), 1, 100);
 // Imptimivel usando polimofismo pra garanti q o objetos seja msm no final
