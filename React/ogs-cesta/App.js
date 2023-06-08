@@ -1,9 +1,10 @@
 import React from 'react';
-import {SafeAreaView, StatusBar, View} from 'react-native';
+import {SafeAreaView, StatusBar} from 'react-native';
 import {Montserrat_400Regular, Montserrat_700Bold, useFonts,} from '@expo-google-fonts/montserrat';
 
 import Cesta from './src/telas/Cesta';
 import mock from './src/mocks/Cesta';
+import AppLoading from "expo-app-loading";
 
 export default function App() {
     const [fonteCarregada] = useFonts({
@@ -12,7 +13,7 @@ export default function App() {
     });
 
     if (!fonteCarregada) {
-        return <View/>
+        return <AppLoading/>
     }
 
     return (
