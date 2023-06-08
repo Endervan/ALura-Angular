@@ -17,7 +17,7 @@ export default function App() {
     }
 
     return (
-        <SafeAreaView>
+        <SafeAreaView style={{flex: 1}}>
             <StatusBar/>
             <Cesta {...mock} />{/*/!* msm efeito linha abaixo*!/*/}
             {/*<Cesta topo={mock.topo} detalhes={mock.detalhes}/>*/}
