@@ -4,17 +4,16 @@ import Topo from "./componentes/Topo";
 import Detalhes from "./componentes/Detalhes";
 
 
-export default function Index() {
+export default function Cesta({topo,detalhes}) {
     return <>
-        <Topo/>
-
-        <View style={estilos.cesta}>
-            <Detalhes/>
+        <Topo {...topo}/>
+        <View style={style.cesta}>
+            <Detalhes {...detalhes}/>
         </View>
     </>
 }
 
-const estilos = StyleSheet.create({
+const style = StyleSheet.create({
 
     cesta: {
         paddingVertical: 8,
