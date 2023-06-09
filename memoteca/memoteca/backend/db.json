@@ -1,0 +1,22 @@
+{
+  "pensamentos": [
+    {
+      "id": 1,
+      "conteudo": "Quwm bom qu voce veio",
+      "autoria": "Ender",
+      "modelo": "modelo1"
+    },
+    {
+      "id": 2,
+      "conteudo": "jogo sobrevivencia",
+      "autoria": "alves",
+      "modelo": "modelo2"
+    },
+    {
+      "id": 3,
+      "conteudo": "manu excuse me",
+      "autoria": "manu",
+      "modelo": "modelo3"
+    }
+  ]
+}
