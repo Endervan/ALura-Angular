@@ -10,7 +10,7 @@ const routes: Routes = [
     pathMatch:'full'
 
   },{
-    path: 'criarPensamentos',
+    path: 'criarPensamento',
     component: CriarPensamentoComponent
   }, {
     path: 'listarPensamentos',
