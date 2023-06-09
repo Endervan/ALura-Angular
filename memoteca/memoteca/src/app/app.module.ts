@@ -11,6 +11,7 @@ import {ListarPensamentoComponent} from './componentes/pensamentos/listar-pensam
 import {RouterOutlet} from "@angular/router";
 import {AppRoutingModule} from './app-routing.module';
 import {PensamentosComponent} from './componentes/pensamentos/pensamentos/pensamentos.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -26,9 +27,11 @@ import {PensamentosComponent} from './componentes/pensamentos/pensamentos/pensam
     BrowserModule,
     FormsModule,
     RouterOutlet,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
