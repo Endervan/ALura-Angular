@@ -12,6 +12,8 @@ import {RouterOutlet} from "@angular/router";
 import {AppRoutingModule} from './app-routing.module';
 import {PensamentosComponent} from './componentes/pensamentos/pensamentos/pensamentos.component';
 import {HttpClientModule} from "@angular/common/http";
+import {ExcluiPensamentoComponent} from './componentes/pensamentos/exclui-pensamento/exclui-pensamento.component';
+import {EditarPensamentoComponent} from './componentes/pensamentos/editar-pensamento/editar-pensamento.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import {HttpClientModule} from "@angular/common/http";
     RodapeComponent,
     CriarPensamentoComponent,
     ListarPensamentoComponent,
-    PensamentosComponent
+    PensamentosComponent,
+    ExcluiPensamentoComponent,
+    EditarPensamentoComponent
   ],
   imports: [
     BrowserModule,
