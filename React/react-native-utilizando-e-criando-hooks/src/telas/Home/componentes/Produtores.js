@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {FlatList, StyleSheet, Text} from "react-native";
 import {carregaProdutores} from "../../../service/carregaDados";
+import Produtor from "./Produtor";
 
 
 export default function Produtores({topo: Topo}) { // topo:Topo possivel renomear uma propriedade
@@ -22,7 +23,7 @@ export default function Produtores({topo: Topo}) { // topo:Topo possivel renomea
 
     return <FlatList
         data={lista}
-        renderItem={({item: {nome}}) => <Text>{nome}</Text>}
+        renderItem={({item}) => <Produtor {...item}/>}
         keyExtractor={({nome}) => nome}
         ListHeaderComponent={topoLista}
     />
