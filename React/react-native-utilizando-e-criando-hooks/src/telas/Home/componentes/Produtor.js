@@ -1,25 +1,30 @@
 import React, {useState} from 'react';
-import {Image, StyleSheet, Text, View} from "react-native";
+import {Image, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import Estrelas from "../../../componentes/Estrelas";
 
 
 export default function Produtor({nome, imagem, distancia, estrelas}) { // topo:Topo possivel renomear uma propriedade
-    const [titulo, setTitulo] = useState('');
-    const [lista, setLista] = useState([]);
+    const [selecionado, setSelecionado] = useState(false);
 
-    return <View style={estilos.cartao}>
+
+    return <TouchableOpacity
+        onPress={() => setSelecionado(!selecionado)}
+        style={estilos.cartao}>
         {/*accessibilityLabel => pessoas q tei deficiencia visual*/}
         <Image style={estilos.imagem} source={imagem} accessibilityLabel={nome}/>
         <View style={estilos.informacoes}>
             <View>
                 <Text style={estilos.nome}>{nome}</Text>
-                <Estrelas quantidade={estrelas}/>
+                <Estrelas
+                    editavel={selecionado}
+                    grande={selecionado}
+                    quantidade={estrelas}/>
             </View>
 
             <Text style={estilos.distancia}>{distancia}</Text>
         </View>
 
-    </View>
+    </TouchableOpacity>
 
 
 }
