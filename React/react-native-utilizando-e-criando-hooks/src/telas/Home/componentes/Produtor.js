@@ -1,13 +1,19 @@
-import React, {useReducer} from 'react';
+import React, {useMemo, useReducer} from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import Estrelas from "../../../componentes/Estrelas";
+
+const distanciaEmMetros = (distancia) => {
+    console.log(distancia)
+    return `${distancia}m`;
+}
 
 
 export default function Produtor({nome, imagem, distancia, estrelas}) { // topo:Topo possivel renomear uma propriedade
     // const [selecionado, setSelecionado] = useState(false);
-
     const [selecionado, inverterSelecionado] = useReducer((selecionado) => !selecionado, false)
 
+// useMemo => salva memoria uma unica vez pra dados n ser chamando toda vez
+    const distanciaTexto = useMemo(()=> distanciaEmMetros(distancia), [distancia]);
 
     return <TouchableOpacity
         onPress={inverterSelecionado}
@@ -23,7 +29,7 @@ export default function Produtor({nome, imagem, distancia, estrelas}) { // topo:
                     quantidade={estrelas}/>
             </View>
 
-            <Text style={estilos.distancia}>{distancia}</Text>
+            <Text style={estilos.distancia}>{distanciaTexto}</Text>
         </View>
 
     </TouchableOpacity>
