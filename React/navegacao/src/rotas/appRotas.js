@@ -20,10 +20,13 @@ export default function AppRotas() {
                     Icon = CoracaoSvg;
                 }
 
-                return <Icon color={color}/>
+                return <Icon color={color} height='20' width='20'/>
             },
             tabBarActiveTintColor: '#2A9F85', // tabs active
             tabBarInactiveTintColor: '#C7C7C7', // outras tabs
+            tabBarLabelStyle: { // stilos nos nome das tabs
+                fontSize: 15,
+            }
         })}>
             <Tab.Screen name='Home' component={ProdutorRotas}/>
             <Tab.Screen name='Melhores Produtores' component={MelhoresProdutoresRotas}/>
