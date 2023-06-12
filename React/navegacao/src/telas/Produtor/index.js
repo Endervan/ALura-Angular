@@ -30,7 +30,7 @@ export default function () {
         data={cestas}
         renderItem={({item}) => <Cesta {...item} produtor={{nome, imagem}}/>}
         style={estilos.lista}
-        keyExtractor={item => item}
+        keyExtractor={(item) => item.nome}
 
     />
 }
