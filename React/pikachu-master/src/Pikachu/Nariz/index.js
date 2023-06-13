@@ -1,8 +1,13 @@
-import React from 'react';
-import {View} from 'react-native';
+import styled from 'styled-components';
 
-import estilos from './estilos';
+const Nariz = styled.View`
+    width: 25px;
+    height: 20px;
+    backgroundColor: #000200;
+    border-top-start-radius: 10px;
+    border-top-end-radius: 10px;
+    border-bottom-start-radius: 30px;
+    border-bottom-end-radius: 30px;
+`;
 
-export default function Nariz() {
-    return <View style={estilos.nariz} />
-}
+export default Nariz;

@@ -1,5 +1,12 @@
 import {StyleSheet} from 'react-native';
 
+import styled from 'styled-components';
+import Olho from './Olho';
+
+export const OlhoDireito = styled(Olho)`
+    transform: scaleX(-1);
+`;
+
 export default StyleSheet.create({
     tela: {
         flex: 1,

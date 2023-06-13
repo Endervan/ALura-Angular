@@ -1,10 +1,8 @@
 import React from 'react';
-import {View} from 'react-native';
+import {Brilho, OlhoExterno} from './estilos'
 
-import estilos from './estilos'
-
-export default function Olho({ estilosExtra }) {
-    return <View style={[estilos.olho, estilosExtra]} >
-        <View style={estilos.brilho} />
-    </View>
+export default function Olho({ style }) {
+    return <OlhoExterno style={style} >
+        <Brilho />
+    </OlhoExterno>
 }

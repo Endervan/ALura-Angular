@@ -1,8 +1,11 @@
-import React from 'react';
-import {View} from 'react-native';
+import styled from 'styled-components';
 
-import estilos from './estilos';
+const Bochecha = styled.View`
+    width: 70px;
+    height: 70px;
+    backgroundColor: #E15B42;
+    border-radius: 35px;
+    transform: scaleX(1.2);
+`;
 
-export default function Bochecha() {
-    return <View style={estilos.bochecha}/>
-}
+export default Bochecha;
