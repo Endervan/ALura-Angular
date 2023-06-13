@@ -1,21 +1,32 @@
 import React, {useState} from 'react';
 import {Image, ScrollView, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import estilos from './estilos';
+import api from "../../service/api";
 
-export default function Principal({ navigation }) {
+export default function Principal({navigation}) {
     const [nomeUsuario, setNomeUsuario] = useState('');
     const [usuario, setUsuario] = useState({});
+
+    function Busca() {
+        api.get('/users').then((response) => {
+            console.log(response.data)
+        }
+        ).catch(error=>{
+            console.log(error)
+        })
+    }
 
     return (
         <ScrollView>
             <View style={estilos.container}>
                 <>
-                    <View style={estilos.fundo} />
+                    <View style={estilos.fundo}/>
                     <View style={estilos.imagemArea}>
-                        <Image source={{ uri: 'https://avatars.githubusercontent.com/u/54721131?v=4' }} style={estilos.imagem} />
+                        <Image source={{uri: 'https://avatars.githubusercontent.com/u/54721131?v=4'}}
+                               style={estilos.imagem}/>
                     </View>
-                    <Text style={estilos.textoNome}>Nome do usuario</Text>
-                    <Text style={estilos.textoEmail}>Email do usuario</Text>
+                    <Text style={estilos.textoNome}>Endervan A.c</Text>
+                    <Text style={estilos.textoEmail}>endvan@gmail.com</Text>
                     <View style={estilos.seguidoresArea}>
                         <View style={estilos.seguidores}>
                             <Text style={estilos.seguidoresNumero}>30</Text>
@@ -39,10 +50,8 @@ export default function Principal({ navigation }) {
                     style={estilos.entrada}
                 />
 
-                <TouchableOpacity style={estilos.botao}>
-                    <Text style={estilos.textoBotao}>
-                        Buscar
-                    </Text>
+                <TouchableOpacity style={estilos.botao} onPress={Busca}>
+                    <Text style={estilos.textoBotao}>Buscar</Text>
                 </TouchableOpacity>
             </View>
         </ScrollView>
