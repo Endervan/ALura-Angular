@@ -1,6 +1,6 @@
-# Alura Pikachu
+#  Pikachu
 
-Este projeto tem como objetivo auxiliar no artigo da Alura sobre styled-components.
+Este projeto tem como objetivo auxiliar no artigo  styled-components.
 
 # Pré-requisitos
 
@@ -28,7 +28,7 @@ expo --version
 Para ter acesso aos arquivos do projeto você pode clonar usando o seguinte comando:
 
 ```
-git clone https://github.com/nataliakt/alura-pikachu.git
+https://github.com/Endervan/ALura-Angular/tree/main/React/pikachu-master
 ```
 
 # Rodando o Projeto
@@ -51,8 +51,6 @@ Se tiver um simulador, clique na opção do sistema operacional do seu simulador
 Pronto, agora o app você deve ver o app rodando.
 
 # Branches
-
-Use as branches dependendo do seu objetivo:
 - `master`: caso queira acompanhar o artigo com o projeto inicial;
 - `styled`: caso queira fazer o desafio do fim do artigo;
 - `completo`: caso queira ver o projeto finalizado;
