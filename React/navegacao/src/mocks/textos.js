@@ -6,8 +6,12 @@ const textos = {
     tituloProdutor: "Detalhe do produtor",
     tituloCestas: "Cestas",
     topoCesta: "Detalhe da cesta",
+    pedido: "Pedido feito com sucesso",
     botaoComprar: "Comprar",
     tituloItens: "Itens da cesta",
+    Parabens: "Parabéns!",
+    VoltaHome: "Volta a Home!",
+    VoltaProdutor: "Volta ao Produtor!",
     mensagemCompra: "Agradecemos pela compra da cesta $NOME, Seu pedido chegaram em breve !",
 };
 

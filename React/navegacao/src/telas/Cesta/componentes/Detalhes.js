@@ -20,7 +20,7 @@ export default function Detalhes({nome, produtor, descricao, preco}) {
 
         <TouchableOpacity
             style={estilos.botao}
-            onPress={() => navigation.navigate('HomeScreen', {
+            onPress={() => navigation.navigate('Parabens', {
                     compra: {nome, timestamp: +new Date()}
                     // mesma coisa  new Date()).valueOf() == + new Date
                 }
