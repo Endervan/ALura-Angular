@@ -38,8 +38,8 @@ No terminal, digite os comandos a seguir:
 ### Baixar e instalar o projeto
 
 ```bash
-# Clonar esse repositório
-$ git clone https://github.com/alura-cursos/react-native-ficando-online.git
+# detalhes esse repositório
+$ https://github.com/Endervan/ALura-Angular/tree/main/React/consumindo-api
 
 # Vá para o ropositório
 $ cd AluraHub
