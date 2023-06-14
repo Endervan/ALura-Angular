@@ -85,7 +85,11 @@ const estilos = StyleSheet.create({
         color: '#8A07DA',
         fontSize: 15,
         fontWeight: '400',
+    },
+    botaoBusca:{
+        opacity:.2
     }
+
 });
 
 export default estilos;
