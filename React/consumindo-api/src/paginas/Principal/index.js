@@ -8,11 +8,11 @@ export default function Principal({navigation}) {
     const [usuario, setUsuario] = useState({});
 
     async function busca() {
-         const resultado = await buscaUsuario(nomeUsuario);
-         setNomeUsuario('')
-        if (resultado){
+        const resultado = await buscaUsuario(nomeUsuario);
+        setNomeUsuario('')
+        if (resultado) {
             setUsuario(resultado)
-        }else {
+        } else {
             Alert.alert("Usuário Não Encontrado !");
             setUsuario({});
         }
@@ -21,7 +21,7 @@ export default function Principal({navigation}) {
     return (
         <ScrollView>
             <View style={estilos.container}>
-                { usuario?.login &&
+                {usuario?.login &&
                     <>
                         <View style={estilos.fundo}/>
                         <View style={estilos.imagemArea}>
@@ -40,7 +40,7 @@ export default function Principal({navigation}) {
                                 <Text style={estilos.seguidoresTexto}>Seguindo</Text>
                             </View>
                         </View>
-                        <TouchableOpacity onPress={() => navigation.navigate('Repositorios')}>
+                        <TouchableOpacity onPress={() => navigation.navigate('Repositorios', {id: usuario.id})}>
                             <Text style={estilos.repositorios}>
                                 Ver os repositórios
                             </Text>
@@ -56,7 +56,7 @@ export default function Principal({navigation}) {
                     onChangeText={setNomeUsuario}
                 />
 
-                <TouchableOpacity style={[estilos.botao,!nomeUsuario ? estilos.botaoBusca:null]}
+                <TouchableOpacity style={[estilos.botao, !nomeUsuario ? estilos.botaoBusca : null]}
                                   disabled={!nomeUsuario}
                                   onPress={busca}>
                     <Text style={estilos.textoBotao}>Buscar</Text>
