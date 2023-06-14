@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {FlatList, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import estilos from './estilos';
-import {pegarRepositorioDadosUsuario} from "../../service/requisicoes/repositorios";
+import {pegarRepositorioDadosUsuario, PegarRepositoriosDoUsuarioPeloNome} from "../../service/requisicoes/repositorios";
 import {useIsFocused} from "@react-navigation/native";
 
 export default function Repositorios({route, navigation}) {
@@ -10,9 +10,7 @@ export default function Repositorios({route, navigation}) {
     const [nomeRepo, setNomeRepo] = useState('');
 
     async function buscarRepositorioPorNome() {
-        // const resultado = await PegarRepositoriosDoUsuarioPeloNome(route.params.id, nomeRepo);
-        console.log(nomeRepo,repo)
-        const resultado = repo.filter(a=> a.name === nomeRepo);
+        const resultado = await PegarRepositoriosDoUsuarioPeloNome(route.params.id, nomeRepo);
         setRepo(resultado);
         setNomeRepo('');
     }
@@ -29,7 +27,7 @@ export default function Repositorios({route, navigation}) {
             <Text style={estilos.repositoriosTexto}>{repo.length} repositórios criados</Text>
             <TouchableOpacity
                 style={estilos.botao}
-                onPress={() => navigation.navigate('CriarRepositorio')}
+                onPress={() => navigation.navigate('CriarRepositorio',{id:route.params.id})}
             >
                 <Text style={estilos.textoBotao}>Adicionar novo repositório</Text>
             </TouchableOpacity>
