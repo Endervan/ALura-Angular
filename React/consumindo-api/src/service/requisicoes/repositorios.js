@@ -26,3 +26,13 @@ export async function salvaRepositorioDadosUsuario(postId,name,data,id) {
         return 'Erro';
     }
 }
+
+export async function PegarRepositoriosDoUsuarioPeloNome(id, nome){
+    return await api.get(`/repos?postId=${id}&name=${nome}`).then(response => {
+        return response.data.filter(a=> a.name === nome);
+        // return response.data;
+    }).catch(error => {
+        console.log(error);
+        return [];
+    });
+}

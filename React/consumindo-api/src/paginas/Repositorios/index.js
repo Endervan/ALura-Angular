@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {FlatList, Text, TouchableOpacity, View} from 'react-native';
+import {FlatList, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import estilos from './estilos';
 import {pegarRepositorioDadosUsuario} from "../../service/requisicoes/repositorios";
 import {useIsFocused} from "@react-navigation/native";
@@ -7,12 +7,21 @@ import {useIsFocused} from "@react-navigation/native";
 export default function Repositorios({route, navigation}) {
     const [repo, setRepo] = useState([]);
     const estaNaTela = useIsFocused();// boleano verifica se tela ta ativa
+    const [nomeRepo, setNomeRepo] = useState('');
+
+    async function buscarRepositorioPorNome() {
+        // const resultado = await PegarRepositoriosDoUsuarioPeloNome(route.params.id, nomeRepo);
+        console.log(nomeRepo,repo)
+        const resultado = repo.filter(a=> a.name === nomeRepo);
+        setRepo(resultado);
+        setNomeRepo('');
+    }
 
 
 
     useEffect(async () => {
         const resultado = await pegarRepositorioDadosUsuario(route.params.id);
-        setRepo(resultado)
+        setRepo(resultado);
     }, [estaNaTela])
 
     return (
@@ -24,6 +33,21 @@ export default function Repositorios({route, navigation}) {
             >
                 <Text style={estilos.textoBotao}>Adicionar novo repositório</Text>
             </TouchableOpacity>
+
+            <View style={estilos.container}>
+                <TextInput
+                    value={nomeRepo}
+                    onChangeText={setNomeRepo}
+                    placeholder="Busque por nome Repositorio"
+                    autoCapitalize="none"
+                    style={estilos.entrada}
+                />
+                <TouchableOpacity
+                    onPress={buscarRepositorioPorNome}
+                >
+                    <Text>Buscar</Text>
+                </TouchableOpacity>
+            </View>
 
             <FlatList
                 data={repo}
