@@ -7,6 +7,14 @@ const estilos = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    containerBusca: {
+        flex: 1,
+        paddingHorizontal:15,
+        flexDirection:'row',
+        alignItems: 'center',
+        marginTop:-15,
+        justifyContent: 'space-evenly',
+    },
     repositoriosTexto: {
         fontSize: 21,
         fontWeight: '600',
@@ -52,6 +60,33 @@ const estilos = StyleSheet.create({
         fontSize: 16,
         color: '#FFF',
     },
+
+    inputBuscar: {
+        borderWidth: 2,
+        borderColor: '#ddd',
+        paddingHorizontal: 10,
+        fontSize: 16,
+        color: '#444',
+        borderRadius: 8,
+        width:'82%'
+    },
+    botaoBuscarActive: {
+        backgroundColor:'#8A07DA',
+        padding:7,
+        borderRadius:6,
+        marginLeft:5,
+    },
+    botaoBuscardisable: {
+        backgroundColor:'#ddd',
+        padding:7,
+        opacity:.2,
+        borderRadius:6,
+        marginLeft:5,
+    },
+    textoBuscar: {
+        fontSize: 16,
+        color: '#FFF',
+    }
 });
 
 

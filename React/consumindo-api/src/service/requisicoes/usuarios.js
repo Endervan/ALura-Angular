@@ -10,3 +10,14 @@ export async function buscaUsuario(nomeUsuario) {
         return {};
     }
 }
+
+export async function buscaUsuarioGit(nomeUsuario) {
+    try {
+        const resultado = await api.get(`/users/${nomeUsuario}`);
+        return resultado.data
+    }
+    catch (error){
+        console.log(error);
+        return {};
+    }
+}

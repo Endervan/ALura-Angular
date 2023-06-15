@@ -31,7 +31,8 @@ const estilos = StyleSheet.create({
         borderRadius: 8,
         height: 44,
         width: '90%',
-    }
+    },
+
 });
 
 export default estilos;
