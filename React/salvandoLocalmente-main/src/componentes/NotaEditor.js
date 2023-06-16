@@ -1,26 +1,60 @@
-import React, {useState} from "react"
+import React, {useEffect, useState} from "react"
 import {Modal, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View} from "react-native";
 import {Picker} from "@react-native-picker/picker";
-import {adicionaNota} from "../service/NotasService";
+import {adicionaNota, atualizarNotas} from "../service/NotasService";
 
-export default function NotaEditor({mostraNotas}) {
+export default function NotaEditor({mostraNotas, notaSelecionda, setNotaSelecionada}) {
+    useEffect(() => {
+        if (notaSelecionda.id) {
+            preencheModal();
+            setNotaParaAtualizar(true);
+            setModalVisivel(true);
+            return
+        }
+
+        setNotaParaAtualizar(false)
+    }, [notaSelecionda])
 
     const [texto, setTexto] = useState("");
     const [categoria, setCategoria] = useState("Pessoal");
     const [titulo, setTitulo] = useState("");
     const [modalVisivel, setModalVisivel] = useState(false);
+    const [notaParaAtualizar, setNotaParaAtualizar] = useState(false);
 
     async function salvaNota() {
-
         const umaNota = {
             titulo,
             categoria,
             texto
         }
         await adicionaNota(umaNota)
-
         mostraNotas();
+    }
 
+
+    async function modificarNota() {
+        const umaNota = {
+            titulo,
+            categoria,
+            texto,
+            id:notaSelecionda.id
+        }
+        await atualizarNotas(umaNota)
+        mostraNotas();
+    }
+
+    function limparModal() {
+        setTitulo("");
+        setCategoria("Pessoal");
+        setTexto("");
+        setNotaSelecionada([]);
+        setModalVisivel(false);
+    }
+
+    function preencheModal() {
+        setTitulo(notaSelecionda.titulo);
+        setCategoria(notaSelecionda.categoria);
+        setTexto(notaSelecionda.texto);
     }
 
 
@@ -52,7 +86,7 @@ export default function NotaEditor({mostraNotas}) {
                                 <Text style={estilos.modalSubTitulo}>Conteúdo da Categoria</Text>
                                 <Picker
                                     selectedValue={categoria}
-                                    onValueChange={setCategoria}>
+                                    onValueChange={(novaCategoria) => setCategoria(novaCategoria)}>
                                     <Picker.Item label="Pessoal" value="Pessoal"/>
                                     <Picker.Item label="Trabalho" value="Trabalho"/>
                                     <Picker.Item label="Outros" value="Outros"/>
@@ -71,13 +105,12 @@ export default function NotaEditor({mostraNotas}) {
                                 value={texto}/>
                             <View style={estilos.modalBotoes}>
                                 <TouchableOpacity style={estilos.modalBotaoSalvar}
-                                                  onPress={salvaNota}
+                                                  onPress={
+                                                      notaParaAtualizar ? modificarNota : salvaNota}
                                 >
                                     <Text style={estilos.modalBotaoTexto}>Salvar</Text>
                                 </TouchableOpacity>
-                                <TouchableOpacity style={estilos.modalBotaoCancelar} onPress={() => {
-                                    setModalVisivel(false)
-                                }}>
+                                <TouchableOpacity style={estilos.modalBotaoCancelar} onPress={() => limparModal}>
                                     <Text style={estilos.modalBotaoTexto}>Cancelar</Text>
                                 </TouchableOpacity>
                             </View>
