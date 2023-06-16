@@ -1,27 +1,26 @@
 import React, {useState} from "react"
 import {Modal, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View} from "react-native";
-import AsyncStorage from '@react-native-async-storage/async-storage'
+import {Picker} from "@react-native-picker/picker";
+import {adicionaNota} from "../service/NotasService";
 
 export default function NotaEditor({mostraNotas}) {
 
     const [texto, setTexto] = useState("");
+    const [categoria, setCategoria] = useState("Pessoal");
+    const [titulo, setTitulo] = useState("");
     const [modalVisivel, setModalVisivel] = useState(false);
 
     async function salvaNota() {
-        const novoId = await geraId();
+
         const umaNota = {
-            id: novoId.toString(),
+            titulo,
+            categoria,
             texto
         }
-        await AsyncStorage.setItem(umaNota.id, umaNota.texto);
+        await adicionaNota(umaNota)
+
         mostraNotas();
 
-    }
-
-    async function geraId() {
-        const todasChaves = await AsyncStorage.getAllKeys();
-        if (todasChaves <= 0) return 1;
-        return todasChaves.length + 1;
     }
 
 
@@ -38,6 +37,29 @@ export default function NotaEditor({mostraNotas}) {
                 <View style={estilos.centralizaModal}>
                     <ScrollView showsVerticalScrollIndicator={false}>
                         <View style={estilos.modal}>
+
+                            <Text style={estilos.modalTitulo}>Criar Titulo</Text>
+                            <Text style={estilos.modalSubTitulo}>Conteúdo da Titulo</Text>
+                            <TextInput
+                                style={estilos.modalInput}
+                                multiline={true}
+                                numberOfLines={3}
+                                onChangeText={novoTitulo => setTitulo(novoTitulo)}
+                                placeholder="Digite um titulo"
+                                value={titulo}/>
+
+                            <View style={estilos.modalPicker}>
+                                <Text style={estilos.modalSubTitulo}>Conteúdo da Categoria</Text>
+                                <Picker
+                                    selectedValue={categoria}
+                                    onValueChange={setCategoria}>
+                                    <Picker.Item label="Pessoal" value="Pessoal"/>
+                                    <Picker.Item label="Trabalho" value="Trabalho"/>
+                                    <Picker.Item label="Outros" value="Outros"/>
+                                </Picker>
+
+                            </View>
+
                             <Text style={estilos.modalTitulo}>Criar nota</Text>
                             <Text style={estilos.modalSubTitulo}>Conteúdo da nota</Text>
                             <TextInput
