@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react"
 import {Modal, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View} from "react-native";
 import {Picker} from "@react-native-picker/picker";
-import {adicionaNota, atualizarNotas} from "../service/NotasService";
+import {adicionaNota, atualizarNotas, removeNota} from "../service/NotasService";
 
 export default function NotaEditor({mostraNotas, notaSelecionda, setNotaSelecionada}) {
     useEffect(() => {
@@ -29,6 +29,7 @@ export default function NotaEditor({mostraNotas, notaSelecionda, setNotaSelecion
         }
         await adicionaNota(umaNota)
         mostraNotas();
+        limparModal();
     }
 
 
@@ -37,9 +38,16 @@ export default function NotaEditor({mostraNotas, notaSelecionda, setNotaSelecion
             titulo,
             categoria,
             texto,
-            id:notaSelecionda.id
+            id: notaSelecionda.id
         }
-        await atualizarNotas(umaNota)
+        await atualizarNotas(umaNota);
+        limparModal();
+        mostraNotas();
+    }
+
+    async function deletaNota() {
+        await removeNota(notaSelecionda)
+        limparModal();
         mostraNotas();
     }
 
@@ -104,13 +112,19 @@ export default function NotaEditor({mostraNotas, notaSelecionda, setNotaSelecion
                                 placeholder="Digite aqui seu lembrete"
                                 value={texto}/>
                             <View style={estilos.modalBotoes}>
-                                <TouchableOpacity style={estilos.modalBotaoSalvar}
-                                                  onPress={
-                                                      notaParaAtualizar ? modificarNota : salvaNota}
-                                >
-                                    <Text style={estilos.modalBotaoTexto}>Salvar</Text>
+                                <TouchableOpacity
+                                    style={estilos.modalBotaoSalvar}
+                                    onPress={notaParaAtualizar ? modificarNota() : salvaNota()}
+                                ><Text style={estilos.modalBotaoTexto}>Salvar</Text>
                                 </TouchableOpacity>
-                                <TouchableOpacity style={estilos.modalBotaoCancelar} onPress={() => limparModal}>
+
+                                {notaParaAtualizar ?
+                                    <TouchableOpacity style={estilos.modalBotaoDeletar} onPress={() => deletaNota()}>
+                                        <Text style={estilos.modalBotaoTexto}>Excluir</Text>
+                                    </TouchableOpacity> : <></>
+                                }
+
+                                <TouchableOpacity style={estilos.modalBotaoCancelar} onPress={() => limparModal()}>
                                     <Text style={estilos.modalBotaoTexto}>Cancelar</Text>
                                 </TouchableOpacity>
                             </View>

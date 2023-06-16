@@ -38,8 +38,20 @@ export async function buscarNotas() {
 export async function atualizarNotas(nota) {
     return new Promise(resolve => {
         db.transaction((transaction) => {
-            transaction.executeSql("UPDATE Notas SET titulo = ?,categoria = ? ,texto = ?  where id = ?;", [nota.titulo, nota.categoria, nota.texto,nota.id], (transaction, resultado) => {
+            transaction.executeSql("UPDATE Notas SET titulo = ?,categoria = ? ,texto = ?  where id = ?;", [nota.titulo, nota.categoria, nota.texto, nota.id], (transaction, resultado) => {
                 resolve("Nota atualizada com sucesso")
+            })
+        })
+
+    })
+
+}
+
+export async function removeNota(nota) {
+    return new Promise(resolve => {
+        db.transaction((transaction) => {
+            transaction.executeSql(" DELETE FROM Notas where id = ?;", [nota.id], () => {
+                resolve("Nota deletada com sucesso")
             })
         })
 
