@@ -5,11 +5,14 @@ import {adicionaNota, atualizarNotas, removeNota} from "../service/NotasService"
 
 export default function NotaEditor({mostraNotas, notaSelecionda, setNotaSelecionada}) {
     useEffect(() => {
-        if (notaSelecionda.id) {
-            preencheModal();
-            setNotaParaAtualizar(true);
-            setModalVisivel(true);
-            return
+        if (notaSelecionda) {
+            if (notaSelecionda.id) {
+                console.log(notaSelecionda.id)
+                preencheModal();
+                setNotaParaAtualizar(true);
+                setModalVisivel(true);
+                return
+            }
         }
 
         setNotaParaAtualizar(false)
@@ -114,7 +117,7 @@ export default function NotaEditor({mostraNotas, notaSelecionda, setNotaSelecion
                             <View style={estilos.modalBotoes}>
                                 <TouchableOpacity
                                     style={estilos.modalBotaoSalvar}
-                                    onPress={notaParaAtualizar ? modificarNota() : salvaNota()}
+                                    onPress={notaParaAtualizar ? modificarNota : salvaNota}
                                 ><Text style={estilos.modalBotaoTexto}>Salvar</Text>
                                 </TouchableOpacity>
 
