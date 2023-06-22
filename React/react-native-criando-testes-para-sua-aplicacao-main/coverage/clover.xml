@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1687465054853" clover="3.2.0">
-  <project timestamp="1687465054853" name="All files">
-    <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2" elements="5" coveredelements="5" complexity="0" loc="3" ncloc="3" packages="1" files="1" classes="1"/>
-    <file name="moeda.js" path="C:\Users\endva\Desktop\Alura\front\ALura-Angular\React\react-native-criando-testes-para-sua-aplicacao-main\src\negocio\formatadores\moeda.js">
-      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-      <line num="2" count="1" type="stmt"/>
-      <line num="9" count="1" type="stmt"/>
-      <line num="10" count="1" type="stmt"/>
-    </file>
+<coverage generated="1687467408206" clover="3.2.0">
+  <project timestamp="1687467408206" name="All files">
+    <metrics statements="9" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1" elements="11" coveredelements="5" complexity="0" loc="9" ncloc="9" packages="2" files="2" classes="2"/>
+    <package name="repositorio">
+      <metrics statements="8" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <file name="leilao.js" path="C:\Users\endva\Desktop\Alura\front\ALura-Angular\React\react-native-criando-testes-para-sua-aplicacao-main\src\repositorio\leilao.js">
+        <metrics statements="8" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="servicos">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="apiLeiloes.js" path="C:\Users\endva\Desktop\Alura\front\ALura-Angular\React\react-native-criando-testes-para-sua-aplicacao-main\src\servicos\apiLeiloes.js">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+    </package>
   </project>
 </coverage>
