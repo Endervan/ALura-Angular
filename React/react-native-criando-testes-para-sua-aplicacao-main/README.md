@@ -27,3 +27,4 @@ Com base nessa aplicação iremos criar testes.
 Para instalar o React Native com Expo na sua máquina, siga os passos do [artigo de configuração de ambiente](https://www.alura.com.br/artigos/como-instalar-configurar-expo-do-react-native).
 
 ## 📚 Mais informações 
+https://github.com/Endervan/ALura-Angular/tree/main/React/react-native-criando-testes-para-sua-aplicacao-main
