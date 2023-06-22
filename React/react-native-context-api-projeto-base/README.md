@@ -36,8 +36,11 @@ No terminal, digite os comandos a seguir:
 ### Baixar e instalar o projeto
 
 ```bash
-# Clonar esse repositório
-$ git clone https://github.com/alura-cursos/react-native-context-api.git
+# Clonar esse repositório full
+$ https://github.com/Endervan/ALura-Angular.git
+
+# ver esse somente 
+$ https://github.com/Endervan/ALura-Angular/tree/main/React/react-native-context-api-projeto-base
 
 # Vá para o ropositório
 $ cd AluraCommerce
