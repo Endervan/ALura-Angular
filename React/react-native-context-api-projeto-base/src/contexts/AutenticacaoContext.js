@@ -12,7 +12,7 @@ export function AutenticacaoProvider({children}) {
                 nome:'Ender',
                 email,
                 endereco:'QR 406',
-                telefone:'(61) 991411476'
+                telefone:'+55 (61) 991411476'
             })
             return 'ok'
         } else {

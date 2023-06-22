@@ -18,10 +18,7 @@ export default function Login({navigation}) {
         }else {
             Alert.alert(resultado)
         }
-
-
     }
-
 
     return (
         <View style={estilo.container}>

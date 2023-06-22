@@ -2,11 +2,12 @@ import {FlatList, StatusBar, Text, TouchableOpacity, View} from 'react-native';
 import {Produto} from '../../componentes/Produto';
 import {Feather} from 'react-native-vector-icons'
 import MaterialCommunityIcons from 'react-native-vector-icons/Feather';
-import {useContext} from "react";
+import {useContext, useEffect} from "react";
 import {TemaContext} from "../../contexts/TemaContext";
 import {estilos} from "./estilos";
 import {AutenticacaoContext} from "../../contexts/AutenticacaoContext";
 import {ProdutosContext} from "../../contexts/ProdutosContext";
+import {pegarProduto} from "../../service/requisicoes/produtos";
 
 
 export default function Resumo({navigation}) {
@@ -15,6 +16,13 @@ export default function Resumo({navigation}) {
     const estilo = estilos(temaEscolhido);
     const {usuario} = useContext(AutenticacaoContext);
     const {quantidade, carrinho} = useContext(ProdutosContext);
+
+    useEffect(async ()=>{
+        const resultado = await pegarProduto();
+        if (resultado.length === 0){
+            navigation.navigate('Principal')
+        }
+    },[])
 
 
     return (
@@ -41,13 +49,14 @@ export default function Resumo({navigation}) {
             <FlatList
                 data={carrinho}
                 keyExtractor={item => Math.random()}
-                renderItem={({item}) => <Produto item={item} adicionar={false}/>}
+                renderItem={({item}) => <Produto item={item} pageCarrinho={true}/>}
                 style={estilo.lista}
                 showsVerticalScrollIndicator={false}
             />
 
-            <TouchableOpacity style={estilo.botao} onPress={()=>navigation.navigate('Finaliza')}>
-                <Text style={estilo.botaoTexto}>Finalizar</Text>
+            <TouchableOpacity style={estilo.botao}
+                              onPress={()=>navigation.navigate('Finaliza')}>
+                <Text style={estilo.botaoTexto}>Resumo Comprar</Text>
             </TouchableOpacity>
         </View>
     );

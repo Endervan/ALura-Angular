@@ -10,6 +10,24 @@ export const estilos = (tema) => {
             alignItems: 'stretch',
             justifyContent: 'center',
         },
+        containerInfoCard: {
+            flexDirection: 'column',
+            margin:10,
+            borderRadius:8,
+            padding:10,
+            marginBottom:20,
+            backgroundColor: tema.fundoInfo,
+            alignItems: 'stretch',
+        },
+        containerInfo: {
+           color:'#fff',
+            marginBottom:5,
+        },
+        infoEntrega: {
+           flexDirection:'row',
+            alignItems:'center',
+            justifyContent:'center',
+        },
         tituloArea: {
             width: '100%',
             alignItems: 'center',

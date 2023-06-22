@@ -12,6 +12,7 @@ const tema = {
 
 const escuro = {
   fundo: '#051933',
+  fundoInfo: '#4B86CDFF',
   titulo: '#FFFFFF',
   texto: '#FFFFFF',
   branco: '#FFFFFF',
@@ -23,6 +24,7 @@ const escuro = {
 }
 const claro = {
   fundo: '#FFFFFF',
+  fundoInfo: '#051933',
   titulo: '#051933',
   texto: '#000',
   branco: '#000',
