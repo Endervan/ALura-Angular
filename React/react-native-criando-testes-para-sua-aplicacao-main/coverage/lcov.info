@@ -1,0 +1,16 @@
+TN:
+SF:src\negocio\formatadores\moeda.js
+FN:1,formataDecimalParaReal
+FN:8,formataBrasileiroParaDecimal
+FNF:2
+FNH:2
+FNDA:1,formataDecimalParaReal
+FNDA:1,formataBrasileiroParaDecimal
+DA:2,1
+DA:9,1
+DA:10,1
+LF:3
+LH:3
+BRF:0
+BRH:0
+end_of_record
