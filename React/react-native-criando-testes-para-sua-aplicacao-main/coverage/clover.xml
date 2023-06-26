@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1687467408206" clover="3.2.0">
-  <project timestamp="1687467408206" name="All files">
-    <metrics statements="9" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1" elements="11" coveredelements="5" complexity="0" loc="9" ncloc="9" packages="2" files="2" classes="2"/>
+<coverage generated="1687778973809" clover="3.2.0">
+  <project timestamp="1687778973810" name="All files">
+    <metrics statements="9" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1" elements="11" coveredelements="6" complexity="0" loc="9" ncloc="9" packages="2" files="2" classes="2"/>
     <package name="repositorio">
-      <metrics statements="8" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <metrics statements="8" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
       <file name="leilao.js" path="C:\Users\endva\Desktop\Alura\front\ALura-Angular\React\react-native-criando-testes-para-sua-aplicacao-main\src\repositorio\leilao.js">
-        <metrics statements="8" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <metrics statements="8" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
         <line num="4" count="2" type="stmt"/>
         <line num="5" count="2" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
         <line num="15" count="0" type="stmt"/>
