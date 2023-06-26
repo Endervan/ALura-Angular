@@ -1,26 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1687806317689" clover="3.2.0">
-  <project timestamp="1687806317689" name="All files">
-    <metrics statements="17" coveredstatements="0" conditionals="12" coveredconditionals="0" methods="3" coveredmethods="0" elements="32" coveredelements="0" complexity="0" loc="17" ncloc="17" packages="1" files="1" classes="1"/>
-    <file name="EnviaLance.js" path="C:\Users\endva\Desktop\Alura\front\ALura-Angular\React\react-native-criando-testes-para-sua-aplicacao-main\src\telas\Leilao\componentes\EnviaLance.js">
-      <metrics statements="17" coveredstatements="0" conditionals="12" coveredconditionals="0" methods="3" coveredmethods="0"/>
-      <line num="8" count="0" type="stmt"/>
-      <line num="9" count="0" type="stmt"/>
-      <line num="10" count="0" type="stmt"/>
-      <line num="11" count="0" type="stmt"/>
-      <line num="13" count="0" type="stmt"/>
-      <line num="15" count="0" type="stmt"/>
-      <line num="16" count="0" type="stmt"/>
-      <line num="17" count="0" type="stmt"/>
-      <line num="18" count="0" type="stmt"/>
-      <line num="20" count="0" type="stmt"/>
-      <line num="22" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="23" count="0" type="stmt"/>
-      <line num="24" count="0" type="stmt"/>
-      <line num="26" count="0" type="stmt"/>
-      <line num="29" count="0" type="stmt"/>
-      <line num="32" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="52" count="0" type="stmt"/>
-    </file>
+<coverage generated="1687811716187" clover="3.2.0">
+  <project timestamp="1687811716187" name="All files">
+    <metrics statements="23" coveredstatements="23" conditionals="12" coveredconditionals="11" methods="3" coveredmethods="3" elements="38" coveredelements="37" complexity="0" loc="23" ncloc="23" packages="2" files="2" classes="2"/>
+    <package name="negocio.constantes">
+      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="estadosLance.js" path="C:\Users\endva\Desktop\Alura\front\ALura-Angular\React\react-native-criando-testes-para-sua-aplicacao-main\src\negocio\constantes\estadosLance.js">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="telas.Leilao.componentes">
+      <metrics statements="17" coveredstatements="17" conditionals="12" coveredconditionals="11" methods="3" coveredmethods="3"/>
+      <file name="EnviaLance.js" path="C:\Users\endva\Desktop\Alura\front\ALura-Angular\React\react-native-criando-testes-para-sua-aplicacao-main\src\telas\Leilao\componentes\EnviaLance.js">
+        <metrics statements="17" coveredstatements="17" conditionals="12" coveredconditionals="11" methods="3" coveredmethods="3"/>
+        <line num="8" count="11" type="stmt"/>
+        <line num="9" count="11" type="stmt"/>
+        <line num="10" count="11" type="stmt"/>
+        <line num="11" count="11" type="stmt"/>
+        <line num="13" count="11" type="stmt"/>
+        <line num="15" count="11" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="22" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="32" count="11" type="cond" truecount="1" falsecount="1"/>
+        <line num="53" count="11" type="stmt"/>
+      </file>
+    </package>
   </project>
 </coverage>
