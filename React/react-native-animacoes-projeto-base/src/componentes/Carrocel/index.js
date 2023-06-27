@@ -3,7 +3,7 @@ import {FlatList, Image, View} from "react-native";
 import styles from "./styles";
 
 
-export function Carrocel({data}) {
+export function Carrocel({data,velocidade}) {
     const carrosselRef = useRef();
     const [indice, setIndice] = useState(0);
 
@@ -11,7 +11,7 @@ export function Carrocel({data}) {
         carrosselRef.current.scrollToIndex({index: indice});
         const intervalo = setInterval(() => {
             alterarPosicaoObjeto();
-        }, 2000)
+        }, velocidade ? velocidade : 1000)
         return () => clearInterval(intervalo);
     }, [indice]);
 

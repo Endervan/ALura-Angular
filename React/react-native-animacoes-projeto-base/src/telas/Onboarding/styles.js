@@ -42,6 +42,21 @@ export default StyleSheet.create({
     color: '#A3A3A3',
     marginTop: 10,
   },
+  botaoV: {
+    height: 20,
+    width: "10%",
+    borderRadius: 8,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: '#4894FF',
+    marginVertical: 5,
+  },
+  botaoTextoV: {
+    fontWeight: "700",
+    fontFamily: "Roboto",
+    fontSize: 16,
+    color: '#FFFFFF',
+  },
   botao: {
     height: 60,
     width: "100%",

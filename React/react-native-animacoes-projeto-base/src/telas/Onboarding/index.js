@@ -10,6 +10,7 @@ import {Carrocel} from "../../componentes/Carrocel";
 export default function Onboarding({navigation}) {
     const [fazerLogin, setFazerLogin] = useState(false);
     const [altura, setAltura] = useState(250);
+    const [velocidade, setVelocidade] = useState(0);
 
     function avancar() {
         if (fazerLogin) {
@@ -18,6 +19,14 @@ export default function Onboarding({navigation}) {
             setAltura(400);
             setFazerLogin(true);
         }
+    }
+
+    function diminuirVelocidade() {
+        setVelocidade(1000)
+    }
+
+ function AumentarVelocidade() {
+        setVelocidade(500)
     }
 
     return (
@@ -29,9 +38,23 @@ export default function Onboarding({navigation}) {
                     style={styles.logo}
                 />
 
+                <TouchableOpacity
+                    onPress={() => diminuirVelocidade()}
+                    style={styles.botaoV}>
+                    <Text style={styles.botaoTextoV}>1x</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    onPress={() => AumentarVelocidade()}
+                    style={styles.botaoV}>
+                    <Text style={styles.botaoTextoV}>2x</Text>
+                </TouchableOpacity>
+
                 <View style={styles.carrosselArea}>
+
+
                     {!fazerLogin &&
-                        <Carrocel data={itens}/>
+                        <Carrocel data={itens} velocidade={velocidade}/>
                     }
                 </View>
                 <Image
