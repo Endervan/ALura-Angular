@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Image, StatusBar, Text, TouchableOpacity, View} from 'react-native';
+import {Image, LayoutAnimation, StatusBar, Text, TouchableOpacity, View} from 'react-native';
 import FundoOndulado from '../../componentes/FundoOndulado';
 import {TelaDeFundo} from '../../componentes/TelaDeFundo';
 import {Formulario} from '../../componentes/Formulario';
@@ -12,11 +12,23 @@ export default function Onboarding({navigation}) {
     const [altura, setAltura] = useState(250);
     const [velocidade, setVelocidade] = useState(0);
 
+    const animacaoCustomizada = {
+        duration: 1500,
+        create: {
+            type: LayoutAnimation.Types.spring,
+            property: LayoutAnimation.Properties.scaleXY,
+            springDamping: 0.7
+        }
+    }
+
+    LayoutAnimation.configureNext(animacaoCustomizada);
+
     function avancar() {
         if (fazerLogin) {
             navigation.navigate('Principal');
         } else {
             setAltura(400);
+            LayoutAnimation.linear();
             setFazerLogin(true);
         }
     }
@@ -25,7 +37,7 @@ export default function Onboarding({navigation}) {
         setVelocidade(1000)
     }
 
- function AumentarVelocidade() {
+    function AumentarVelocidade() {
         setVelocidade(500)
     }
 
