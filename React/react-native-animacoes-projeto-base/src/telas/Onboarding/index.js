@@ -99,3 +99,6 @@ export default function Onboarding({navigation}) {
         </TelaDeFundo>
     );
 }
+
+
+// Shimmer Effect => carregamento esqueleto
