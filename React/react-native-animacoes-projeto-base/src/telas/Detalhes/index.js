@@ -1,38 +1,40 @@
-import React from 'react';
-import {Button, Image, ScrollView, Text, TouchableOpacity, View} from 'react-native';
+import React, {useState} from 'react';
+import {Image, ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import {TelaDeFundo} from '../../componentes/TelaDeFundo';
 import {InformacoesUsuario} from '../../componentes/InformacoesUsuario';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import mapa from '../../assets/mapa.png';
 import styles from './styles';
-import Animated, {useAnimatedStyle, useSharedValue, withSpring} from "react-native-reanimated";
+import Animated, {useAnimatedStyle, useSharedValue, withRepeat, withTiming} from "react-native-reanimated";
 
 
 export default function Detalhes(props) {
     const dados = props.route.params;
 
-    const posicao = useSharedValue(0);
+    const rotacao = useSharedValue(0);
+    const angulo = -30;
+    const [jaAnimou, setJaAnimou] = useState(false)
 
     const estiloAnimado = useAnimatedStyle(() => {
         return {
             transform: [
                 {
-                    translateX: withSpring(posicao.value)
+                    rotate: `${rotacao.value}deg`
                 }
             ]
         }
     })
 
-    function alterarPosicaoBloco() {
-        posicao.value = Math.random()*255;
-
+    function fazerRotacao() {
+        rotacao.value = withRepeat(withTiming(angulo, {duration: 120}), 6, true);
+        setTimeout(() => {
+            setJaAnimou(true);
+        },1000)
     }
 
     return (
         <TelaDeFundo>
             <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
-                <Animated.View style={[{backgroundColor: 'green', width: 50, height: 50}, estiloAnimado]}/>
-                <Button title='Mova' onPress={alterarPosicaoBloco}/>
 
                 <InformacoesUsuario
                     nome={dados.nome}
@@ -63,13 +65,16 @@ export default function Detalhes(props) {
                 <Text>{dados.endereco}</Text>
                 <TouchableOpacity
                     style={styles.botao}
+                    onPress={fazerRotacao}
                 >
                     <Text style={styles.botaoTexto}>Notificar consulta</Text>
-                    <Icon
-                        name={'notifications-none'}
-                        size={20}
-                        color="#FFF"
-                    />
+                    <Animated.View style={[styles.icone, estiloAnimado]}>
+                        <Icon
+                            name={jaAnimou ?'notifications':'notifications-none'}
+                            size={20}
+                            color="#FFF"
+                        />
+                    </Animated.View>
                 </TouchableOpacity>
             </ScrollView>
         </TelaDeFundo>

@@ -74,4 +74,7 @@ export default StyleSheet.create({
     fontWeight: "700",
     color: "#000000",
   },
+  icone: {
+
+  },
 });
