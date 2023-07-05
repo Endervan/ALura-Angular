@@ -46,7 +46,7 @@ export default function Onboarding({navigation}) {
             <View style={styles.container}>
                 <StatusBar barStyle='dark-content' backgroundColor='#FFF'/>
                 <Image
-                    source={require('../../assets/logo.png')}
+                    source={require('../../assets/logo1.png')}
                     style={styles.logo}
                 />
 
