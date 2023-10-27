@@ -1,0 +1,80 @@
+<div class="jumbotron" >
+<!-- ng-model => passa view para controller => usado mais input,text e select-->
+<!--  {{contatoForm.$valid}} <br>-->
+<!--  {{contatoForm.$invalid}} <br>-->
+<form name="contatoForm">
+    <input class="form-control" name="nome" ng-minlength="10" ng-model="contato.nome"
+           ng-required="true" placeholder="nome" type="text">
+
+    <!--  expressa regular ^= começa e $=termina-->
+    <input class="form-control" name="telefone" ng-model="contato.telefone" ng-pattern="/^\d{4,5}-\d{4}$/"
+           ng-required="true" placeholder="telefone" type="text">
+
+    <input class="form-control" name="data" ng-model="contato.data" placeholder="Data" type="text" ui-date>
+
+    <!-- 1 - forma ng-options (operadora.nome renderiza no select )-->
+    <select class="form-select" ng-model="contato.operadora"
+            ng-options="operadora.nome + ' ( ' + (operadora.preco | currency) + ' ) '  for operadora in operadoras">
+        <option value="">Selecione uma operadora</option>
+    </select>
+
+
+    <!-- 2 - forma ng-options (operadora.codigo define que value e somente o codigo )-->
+    <!--        <select class="form-control"-->
+    <!--                ng-model="contato.operadora"-->
+    <!--                ng-options="operadora.codigo as operadora.nome for operadora in operadoras">-->
+    <!--            <option value="">Selecione uma operadora</option>-->
+    <!--        </select>-->
+
+    <!-- 3 - forma ng-options (use grup by para separa categorias no select )-->
+    <!--            <select class="form-select"-->
+    <!--                    ng-model="contato.operadora"-->
+    <!--                    ng-options="operadora.nome  group by operadora.categoria for operadora in operadoras | orderBy:'nome'">-->
+    <!--                <option disabled value="">Selecione uma operadora</option>-->
+    <!--            </select>-->
+
+
+    <!--        1 forma -->
+    <!--        <div class="alert alert-danger" ng-show="contatoForm.nome.$error.required && contatoForm.nome.$dirty">-->
+    <!--            Por Favor , Preencha o nome !-->
+    <!--        </div>-->
+
+    <!--        <div class="alert alert-danger" ng-show="contatoForm.nome.$error.minlength">-->
+    <!--            O campo nome deve ter minímo 10 caracteres !-->
+    <!--        </div>-->
+
+    <!-- 2 forma usando message-->
+    <div class="alert alert-danger" ng-messages="contatoForm.nome.$error || contatoForm.nome.$dirty">
+        <div ng-message="required">
+            Por Favor , Preencha o nome !
+        </div>
+
+        <div ng-message="minlength">
+            O campo nome deve ter minímo 10 caracteres !
+        </div>
+    </div>
+
+
+    <div class="alert alert-danger" ng-show="contatoForm.telefone.$error.required && contatoForm.telefone.$dirty">
+        Por Favor , Preencha o telefone !
+    </div>
+
+    <div class="alert alert-danger" ng-show="contatoForm.telefone.$error.pattern ">
+        o campo telefone deve ter formato DDDD-DDDD
+    </div>
+
+    <div class="d-grid gap-2 mt-3">
+        <!--            <button ng-disabled="!contato.nome || !contato.telefone"-->
+        <button class="btn btn-primary"
+                ng-click="adicionarContato(contato)"
+                ng-disabled="contatoForm.$invalid"
+                type="submit">Adicionar Contato
+        </button>
+
+
+    </div>
+
+    <!-- {{100.26 | number:1}} usa number com quer formatar sem sinbolo da moeda-->
+</form>
+
+</div>

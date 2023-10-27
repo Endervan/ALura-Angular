@@ -1,0 +1,139 @@
+
+
+
+
+{{$id}}
+<bb.table columns="config.columns"
+          details="true"
+          edit="true"
+          list="config.list"
+          paginate="[1,10]"
+          titulo="">
+</bb.table>
+
+<!--    <bb.table titulo="tabela render 2"-->
+<!--              list="config.list1"-->
+<!--              cols="config.cols1"-->
+<!--              paginate="[1,10,100]"-->
+<!--              filter="false">-->
+<!--    </bb.table>-->
+<!--    <bb.table hide="true"-->
+<!--              titulo="tabela oculta"-->
+<!--              list="config.list1"-->
+<!--              cols="config.cols1"-->
+<!--              paginate="[1,10,50,100]"-->
+<!--              filter="false">-->
+<!--    </bb.table>-->
+
+
+<div class="jumbotron">
+
+
+    <!-- <ui-accordions> cria outra diretiva q engloba componetes separados  ex ui-accordion-->
+    <ui-accordions>
+        <ui-accordion title="Accordion 1">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto aspernatur eius exercitationem
+            hic illum laborum, numquam ratione recusandae repudiandae suscipit vel voluptate! Modi, porro vero?
+            Deleniti ex reiciendis velit.
+        </ui-accordion>
+
+        <ui-accordion title="Accordion 2">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto aspernatur eius exercitationem
+            hic illum laborum, numquam ratione recusandae repudiandae suscipit vel voluptate! Modi, porro vero?
+            Deleniti ex reiciendis velit.
+        </ui-accordion>
+    </ui-accordions>
+
+
+    <!--        ng-bind == {{}}-->
+    <!--        <h4 ng-bind="message"></h4>-->
+    <h4>{{message}}</h4>
+
+    <!--  padrao diretivas sempre com traco uiAlert == ui-alert-->
+    {{$id}}
+
+    <!-- testando vinculo = bidimensional com diretiva ex -->
+    <!--        <input type="text" ng-model="error" >-->
+
+    <!--        <div message="error" title="Ops, Aconteceu um problema !" ui-alert></div>-->
+
+
+    <!--        <ui-alert title="Ops, Aconteceu um problema !" message="error"  >-->
+    <!--            {{$id}}-->
+    <!--           {{error}}-->
+    <!--        </ui-alert>-->
+
+    <ui-alert title="treinando criação direitas ">
+        {{error}}<!-- fica dentro diretiva esse nao e scope isolado ele herda qlq scope -->
+    </ui-alert>
+    <h1>busca 111</h1>
+
+
+    <!--     null,undefined,vazio, nao gera erro -->
+    <!--    ng-model-options="{updateOn: 'default'}" sem coloca nda angular usa essa -->
+    <!--    updateOn: 'blur' => aplica filtro dps q usuario para interar com campo-->
+    <input class="form-control"
+           ng-model="criterioDeBuscar"
+           ng-model-options="{updateOn: 'default blur',debounce:{default:500,blur:0}}"
+           placeholder="O que você esta buscando?" type="text"/>
+
+    <table class="table table-striped" ng-show="contatos.length>0">
+        <tr>
+            <th></th>
+            <th>Serial</th>
+            <th><a href="" ng-click="ordenaPor('nome')">nome</a></th>
+            <th><a href="" ng-click="ordenaPor('telefone')">telefone</a></th>
+            <th>Operadora</th>
+            <th>Preço</th>
+            <th>Cor</th>
+            <th>Criado</th>
+        </tr>
+        <!--  1 - forma usa ng-class="classe"-->
+        <!--  2 - forma usa ng-class="[classe1,classe2]"-->
+        <!--  3 - forma usa ng-class="{selecionado:contato.selecionado}"-->
+        <!--            obs: qnd existe atributos igual usa string -->
+
+        <!-- | filter:criterioDeBuscar" => busca por qlq coisa -->
+        <!--  | filter:{nome:criterioDeBuscar}" => busca pelo atributo-->
+        <tr ng-class="{'selecionado negrito':contato.selecionado}"
+            ng-repeat="contato in contatos | filter:criterioDeBuscar | limitTo:10 | orderBy:criterioDeOrdenacao:direcaoDaOrdenacao track by $index">
+            <!-- track by $index ===  contato.id => serve melhora perfomace de uma lista ... pois so vai renderizar itens adicionados recentemente-->
+
+            <!-- ordem ascedente '+nome'|| ordem descendente '-nome' ou 'nome': true ou false troca ordem  -->
+            <!-- criar outro repeat codigo mais limpo msm coisa parte abaixo comentada-->
+            <!-- <td ng-repeat="(key,value) in contato">{{value}}</td>-->
+            <td><input ng-click="verificaContatoSelecionado(contatos)" ng-model="contato.selecionado" type="checkbox">
+            </td>
+            <!--                <td>{{ contato.nome | uppercase | limitTo:2}}</td> limitando proprio nome-->
+            <!--                <td>{{contato.nome | uppercase}}</td>-->
+            <td>{{::contato.serial }}</td>
+            <td><a href="#!/detalhesContato/{{::contato.id }}">{{contato.nome | nameCapitalize | ellipsis:15 }}</a>
+            </td>
+            <td>{{::contato.telefone}}</td>
+            <td>{{::contato.operadora.nome | lowercase}}</td>
+            <td>{{::contato.operadora.precoComImposto | currency }}</td>
+
+
+            <!--     Atenção ===>       usando :: melhora perfomance pq angular tira-->
+            <td>
+                <div ng-style="{'background-color':contato.cor}" style="width: 20px;height: 20px;"></div>
+            </td>
+            <td>{{::contato.data | date:'dd/MM/yyyy HH:mm'}}</td>
+        </tr>
+    </table>
+
+
+    <a class="btn btn-primary btn" href="#!/novoContato">Novo Contato</a>
+
+    <!-- ng-hide e ng-show so trabalha na visibilidade do elemento simples so oculta da view
+        ja ng-if apaga tudo interager com DOM tirando e colocando elemento-->
+    <!--  ex-> imagens ,iframe, video e coisa q consume recursos -->
+    <button class="btn btn-danger" ng-click="apagarContato(contatos)" ng-if="hasContatoSelecionado"
+            type="submit">Apagar Contato
+    </button>
+
+    <hr>
+
+
+</div>
+

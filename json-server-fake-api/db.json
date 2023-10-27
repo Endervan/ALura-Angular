@@ -95,5 +95,134 @@
       "postId": 3,
       "id": 9
     }
+  ],
+  "contatos": [
+    {
+      "data": "2023-08-04T21:54:57.069Z",
+      "nome": "eNDER XIMENES",
+      "telefone": "9999-9999",
+      "operadora": {
+        "nome": "Vivo",
+        "codigo": 15,
+        "categoria": "Celular",
+        "preco": 1,
+        "cor": "yellow"
+      },
+      "serial": "+[I6HMG5",
+      "cor": "yellow",
+      "id": 1
+    },
+    {
+      "nome": "MANU DA CRUZ",
+      "telefone": "5555-5555",
+      "data": "2023-08-04T21:58:32.076Z",
+      "operadora": {
+        "nome": "Gvt",
+        "codigo": 25,
+        "categoria": "Fixo",
+        "preco": 3,
+        "cor": "blue"
+      },
+      "serial": "34H3VD82",
+      "cor": "blue",
+      "id": 2
+    },
+    {
+      "data": "2023-08-04T22:02:33.943Z",
+      "nome": "LOUISE XIME",
+      "telefone": "3333-3333",
+      "operadora": {
+        "nome": "Embratel",
+        "codigo": 21,
+        "categoria": "Fixo",
+        "preco": 5,
+        "cor": "#cecece"
+      },
+      "serial": ";BU$'X$]",
+      "cor": "#cecece",
+      "id": 3
+    },
+    {
+      "data": "2023-08-04T22:04:09.519Z",
+      "nome": "louise dddd",
+      "telefone": "5555-5555",
+      "operadora": {
+        "nome": "Gvt",
+        "codigo": 25,
+        "categoria": "Fixo",
+        "preco": 3,
+        "cor": "blue"
+      },
+      "serial": "&)<T$FQ$",
+      "cor": "blue",
+      "id": 4
+    },
+    {
+      "data": "2023-08-04T22:06:05.458Z",
+      "nome": "louise dddd",
+      "telefone": "2222-2222",
+      "operadora": {
+        "nome": "Vivo",
+        "codigo": 15,
+        "categoria": "Celular",
+        "preco": 1,
+        "cor": "yellow"
+      },
+      "serial": "PR7].37>",
+      "cor": "yellow",
+      "id": 5
+    },
+    {
+      "nome": "teste router",
+      "telefone": "9999-9999",
+      "data": "2023-08-08T14:36:31.892Z",
+      "operadora": {
+        "nome": "Embratel",
+        "codigo": 21,
+        "categoria": "Fixo",
+        "preco": 5,
+        "cor": "#cecece"
+      },
+      "serial": "PAP!%;>8",
+      "cor": "#cecece",
+      "id": 6
+    }
+  ],
+  "operadoras": [
+    {
+      "nome": "OI",
+      "codigo": 14,
+      "categoria": "Celular",
+      "preco": 2,
+      "cor": "blue"
+    },
+    {
+      "nome": "Vivo",
+      "codigo": 15,
+      "categoria": "Celular",
+      "preco": 1,
+      "cor": "yellow"
+    },
+    {
+      "nome": "Tim",
+      "codigo": 41,
+      "categoria": "Celular",
+      "preco": 2,
+      "cor": "red"
+    },
+    {
+      "nome": "Gvt",
+      "codigo": 25,
+      "categoria": "Fixo",
+      "preco": 3,
+      "cor": "blue"
+    },
+    {
+      "nome": "Embratel",
+      "codigo": 21,
+      "categoria": "Fixo",
+      "preco": 5,
+      "cor": "#cecece"
+    }
   ]
 }
