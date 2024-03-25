@@ -1,0 +1,56 @@
+<html ng-app="textLimitExample">
+<head>
+    <title>Text Limit</title>
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/textlimit.js"></script>
+    <script src="lib/xlsx.full.min.js"></script>
+    <script src="lib/FileSaver.min.js"></script>
+    <script>
+        angular.module("textLimitExample", ["textLimit"]);
+        angular.module("textLimitExample").controller("textLimitExampleCtrl", function ($scope) {
+            $scope.app = "Text Limit Example";
+
+
+            // excel xls
+            var ctrl = this;
+            ctrl.rows = [{col1: '9999', col2: '3333', col3: '6666'}];
+
+            ctrl.generateExcel = function () {
+                var wb = XLSX.utils.book_new();
+                var ws = XLSX.utils.json_to_sheet(ctrl.rows);
+                XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+                var wbout = XLSX.write(wb, {bookType: 'xlsx', type: 'binary'});
+                saveAs(new Blob([s2ab(wbout)], {type: 'application/octet-stream'}), 'data.xlsx');
+            };
+
+            function s2ab(s) {
+                var buf = new ArrayBuffer(s.length);
+                var view = new Uint8Array(buf);
+                for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xff;
+                return buf;
+            }
+        });
+    </script>
+</head>
+<body ng-controller="textLimitExampleCtrl as ctrl">
+<h3>{{app}}</h3>
+Limiting to 10 characters
+<input ng-model="name" placeholder="Name" text-limit="10" type="text"/>
+
+<h1>Gerador de Excel</h1>
+<table>
+    <tr>
+        <th>Coluna 1</th>
+        <th>Coluna 2</th>
+        <th>Coluna 3</th>
+    </tr>
+    <tr ng-repeat="row in ctrl.rows">
+        <td>{{row.col1}}</td>
+        <td>{{row.col2}}</td>
+        <td>{{row.col3}}</td>
+    </tr>
+</table>
+<button ng-click="ctrl.generateExcel()">Gerar Excel xls</button>
+
+</body>
+</html>

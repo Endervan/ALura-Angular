@@ -186,6 +186,21 @@
       "serial": "PAP!%;>8",
       "cor": "#cecece",
       "id": 6
+    },
+    {
+      "data": "2023-11-04T23:45:15.992Z",
+      "operadora": {
+        "nome": "OI",
+        "codigo": 14,
+        "categoria": "Celular",
+        "preco": 2,
+        "cor": "blue"
+      },
+      "nome": "fsdfffffff",
+      "telefone": "5454-4444",
+      "serial": "0[7T+7SQ",
+      "cor": "blue",
+      "id": 7
     }
   ],
   "operadoras": [
