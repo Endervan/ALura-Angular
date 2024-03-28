@@ -3,32 +3,29 @@
     <title>Text Limit</title>
     <script src="lib/angular.min.js"></script>
     <script src="lib/textlimit.js"></script>
+    <script src="excelGenerator/excelGenerator-component.js"></script>
+    <link rel="stylesheet" href="excelGenerator/excelGenerator-component.css">
     <script src="lib/xlsx.full.min.js"></script>
     <script src="lib/FileSaver.min.js"></script>
     <script>
-        angular.module("textLimitExample", ["textLimit"]);
-        angular.module("textLimitExample").controller("textLimitExampleCtrl", function ($scope) {
+        angular.module("textLimitExample", ["textLimit", "excelGeneratorComponent"]);
+        angular.module("textLimitExample").controller("textLimitExampleCtrl", function($scope) {
             $scope.app = "Text Limit Example";
-
 
             // excel xls
             var ctrl = this;
-            ctrl.rows = [{col1: '9999', col2: '3333', col3: '6666'}];
 
-            ctrl.generateExcel = function () {
-                var wb = XLSX.utils.book_new();
-                var ws = XLSX.utils.json_to_sheet(ctrl.rows);
-                XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-                var wbout = XLSX.write(wb, {bookType: 'xlsx', type: 'binary'});
-                saveAs(new Blob([s2ab(wbout)], {type: 'application/octet-stream'}), 'data.xlsx');
-            };
-
-            function s2ab(s) {
-                var buf = new ArrayBuffer(s.length);
-                var view = new Uint8Array(buf);
-                for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xff;
-                return buf;
+            $scope.config = {
+                headers: ['Testo planilha adicionada personalizada'],
+                colums: ['Colunaaaa 1', 'Colunasss 2', 'Colunarrrr 3'],
+                rows: [
+                    {col1: '9999', col2: '3333', col3: '6666', object: 'object:4'},
+                    {col1: '111', col2: '222', col3: '3333', object: 'object:5'},
+                    {col1: '4444', col2: '555', col3: '9999', object: 'object:7'},
+                ]
             }
+
+
         });
     </script>
 </head>
@@ -50,7 +47,13 @@ Limiting to 10 characters
         <td>{{row.col3}}</td>
     </tr>
 </table>
-<button ng-click="ctrl.generateExcel()">Gerar Excel xls</button>
+
+<excel-generator
+        name-excel="teste"
+        headers="config.headers"
+        columns="config.colums"
+        rows="config.rows">
+</excel-generator>
 
 </body>
 </html>
