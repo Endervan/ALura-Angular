@@ -1,47 +1,69 @@
 <html ng-app="textLimitExample">
 <head>
     <title>Text Limit</title>
+    <link href="assets/icon_personalizado.png" rel="icon" type="image/png">
     <script src="lib/angular.min.js"></script>
-    <script src="lib/textlimit.js"></script>
-    <script src="excelGenerator/excelGenerator-component.js"></script>
-    <link rel="stylesheet" href="excelGenerator/excelGenerator-component.css">
     <script src="lib/xlsx.full.min.js"></script>
     <script src="lib/FileSaver.min.js"></script>
+    <script src="lib/textlimit.js"></script>
+    <script src="value/configValue.js"></script>
+    <script src="excelGenerator/excelGenerator-component.js"></script>
+    <script src="service/ExcelApiService.js"></script>
+    <link href="excelGenerator/excelGenerator-component.css" rel="stylesheet">
     <script>
         angular.module("textLimitExample", ["textLimit", "excelGeneratorComponent"]);
-        angular.module("textLimitExample").controller("textLimitExampleCtrl", function($scope) {
+        angular.module("textLimitExample").controller("textLimitExampleCtrl", function ($rootScope, $scope, excelAPI, $timeout) {
+            var $ctrl = this;
             $scope.app = "Text Limit Example";
-
-            // excel xls
-            var ctrl = this;
-
             $scope.config = {
                 headers: ['Testo planilha adicionada personalizada'],
                 colums: ['Colunaaaa 1', 'Colunasss 2', 'Colunarrrr 3'],
-                rows: [
-                    {col1: '9999', col2: '3333', col3: '6666', object: 'object:4'},
-                    {col1: '111', col2: '222', col3: '3333', object: 'object:5'},
-                    {col1: '4444', col2: '555', col3: '9999', object: 'object:7'},
-                ]
+                rows: []
             }
 
+            $scope.config1 = {
+                headers: ['Testo planilha adicionada personalizada 2222'],
+                colums: ['Nome', 'endereco', 'cep'],
+                rows: []
+            }
+
+            // excel xls
+            $ctrl.carregarDados = function () {
+                excelAPI.getExcelAPI().then(function (response) {
+                    $timeout(function () {
+                        $scope.config.rows = response.data;
+                        $scope.config1.rows = [{nome:"5656565", endereco:"969696969", cep:"7878787"}];
+                    }, 500);
+                }).catch(function (data, _status) {
+                    $scope.message = "Aconteceu um Problema: " + data;
+                });
+
+
+            }
+
+            $ctrl.$onInit = function () {
+                $ctrl.carregarDados()
+            }
 
         });
+
     </script>
 </head>
-<body ng-controller="textLimitExampleCtrl as ctrl">
+
+<body ng-controller="textLimitExampleCtrl as $ctrl">
 <h3>{{app}}</h3>
 Limiting to 10 characters
 <input ng-model="name" placeholder="Name" text-limit="10" type="text"/>
 
 <h1>Gerador de Excel</h1>
+{{$id}}
 <table>
     <tr>
-        <th>Coluna 1</th>
+        <th>Coluna 5654455445</th>
         <th>Coluna 2</th>
         <th>Coluna 3</th>
     </tr>
-    <tr ng-repeat="row in ctrl.rows">
+    <tr ng-repeat="row in config.rows">
         <td>{{row.col1}}</td>
         <td>{{row.col2}}</td>
         <td>{{row.col3}}</td>
@@ -49,10 +71,17 @@ Limiting to 10 characters
 </table>
 
 <excel-generator
-        name-excel="teste"
-        headers="config.headers"
         columns="config.colums"
+        headers="config.headers"
+        name-excel="teste111"
         rows="config.rows">
+</excel-generator>
+
+<excel-generator
+        columns="config1.colums"
+        headers="config1.headers"
+        name-excel="teste222"
+        rows="config1.rows">
 </excel-generator>
 
 </body>

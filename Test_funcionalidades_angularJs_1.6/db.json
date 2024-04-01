@@ -1,0 +1,41 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "rows": [
+    {
+      "col1": "9999",
+      "col2": "3333",
+      "col3": "6666"
+    },
+    {
+      "col1": "111555",
+      "col2": "222",
+      "col3": "3333"
+    },
+    {
+      "col1": "4444",
+      "col2": "555",
+      "col3": "9999"
+    },
+    {
+      "col1": null,
+      "col2": null,
+      "col3": null
+    }
+  ]
+}

@@ -1,12 +1,11 @@
-(function(angular) {
+(function (angular) {
 
     "use strict";
 
     angular.module("excelGeneratorComponent", [])
         .controller("excelGeneratorController", excelGeneratorController)
         .component("excelGenerator", {
-            // templateUrl: 'C:\\Users\\ealves\\Desktop\\BancoDoBrasil\\front\\ALura-Angular\\Test_funcionalidades_angularJs_1.6\\example\\excelGenerator\\excelGenerator-component.html',
-            templateUrl: '\\Test_funcionalidades_angularJs_1.6\\example\\excelGenerator\\excelGenerator-component.html',
+            templateUrl: '/example/excelGenerator/excelGenerator-component.html',
             bindings: {
                 nameExcel: '@',
                 headers: '<',
@@ -17,32 +16,46 @@
             controller: excelGeneratorController
         });
 
-    excelGeneratorController.$inject = ['$rootScope'];
+    excelGeneratorController.$inject = ['$rootScope', '$scope', "$timeout"];
 
-    function excelGeneratorController($rootScope) {
+    function excelGeneratorController($rootScope, $scope, $timeout) {
         var $ctrl = this;
-        $ctrl.nameExcel = dataFormatada(new Date) + $ctrl.nameExcel
 
-        $rootScope.$on('novoDadosExcel', function(_event, rows) {
-            $ctrl.rows = rows;
-        });
+        $ctrl.$onInit = function () {
+            $ctrl.$onChanges = function (changes) {
+                $scope.rows = [];
+                if (changes.rows) {
+                    $timeout(async function (updatedRows) {
+                        $ctrl.rows = [changes.rows.currentValue || updatedRows];
+                        console.log($ctrl.rows)
+                    }, 100, false, $ctrl.rows);
+                    $scope.rows = $ctrl.rowsPush($ctrl.headers, $ctrl.columns, $ctrl.rows);
+                }
+            };
+        };
 
-
-        $ctrl.generateExcel = function() {
+        $ctrl.rowsPush = function (headers, colums, rows) {
             var data = [];
-            data.push($ctrl.headers, $ctrl.colums);
-
+            data.push(headers, colums);
             // Adicionar dados limpo sem cache angular
-            $ctrl.rows.forEach(function(row) {
+            rows.forEach(function (row) {
                 var values = [];
-                for (var key in row) if ( row[key].indexOf('object:') === -1 && row.hasOwnProperty(key) ){
+                for (var key in row) if (String(row[key]).indexOf('object:') === -1 && row.hasOwnProperty(key)) {
+                    // formatando valores padroes e montando matrix
+                    row[key] === 1 ? row[key] = 'sim' : 'não';
                     values.push(row[key]);
                 }
                 data.push(values);
             });
+            return data
+        }
 
+
+        $scope.generateExcel = function () {
             //Converter para um objeto Excel
-            var ws = XLSX.utils.aoa_to_sheet(data);
+            if ($scope.rows.length === 0) return false
+            console.log("dentro funcao", $scope.rows)
+            var ws = XLSX.utils.aoa_to_sheet($scope.rows);
             delete ws['!cols'];// Remover a propriedade $$hashKey
 
             // Criar um objeto de pasta de trabalho
@@ -51,7 +64,7 @@
             var wbout = XLSX.write(wb, {bookType: 'xlsx', type: 'binary'});
 
             // Salvar o arquivo usando a função saveAs do FileSaver.js
-            saveAs(new Blob([s2ab(wbout)], {type: 'application/octet-stream'}), ($ctrl.nameExcel ? $ctrl.nameExcel : 'data') + '.xlsx');
+            saveAs(new Blob([s2ab(wbout)], {type: 'application/octet-stream'}), dataFormatada(new Date) + "_" + $ctrl.nameExcel + '.xlsx');
         };
 
         function s2ab(s) {
