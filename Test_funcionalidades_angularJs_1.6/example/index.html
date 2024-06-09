@@ -21,18 +21,12 @@
                 rows: []
             }
 
-            $scope.config1 = {
-                headers: ['Testo planilha adicionada personalizada 2222'],
-                colums: ['Nome', 'endereco', 'cep'],
-                rows: []
-            }
 
             // excel xls
             $ctrl.carregarDados = function () {
                 excelAPI.getExcelAPI().then(function (response) {
                     $timeout(function () {
                         $scope.config.rows = response.data;
-                        $scope.config1.rows = [{nome:"5656565", endereco:"969696969", cep:"7878787"}];
                     }, 500);
                 }).catch(function (data, _status) {
                     $scope.message = "Aconteceu um Problema: " + data;
@@ -77,12 +71,6 @@ Limiting to 10 characters
         rows="config.rows">
 </excel-generator>
 
-<excel-generator
-        columns="config1.colums"
-        headers="config1.headers"
-        name-excel="teste222"
-        rows="config1.rows">
-</excel-generator>
 
 </body>
 </html>

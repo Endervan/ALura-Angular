@@ -10,7 +10,7 @@
                 nameExcel: '@',
                 headers: '<',
                 columns: '<',
-                rows: '<',
+                rows: '=',
             },
             controllerAs: '$ctrl',
             controller: excelGeneratorController
@@ -27,7 +27,6 @@
                 if (changes.rows) {
                     $timeout(async function (updatedRows) {
                         $ctrl.rows = [changes.rows.currentValue || updatedRows];
-                        console.log($ctrl.rows)
                     }, 100, false, $ctrl.rows);
                     $scope.rows = $ctrl.rowsPush($ctrl.headers, $ctrl.columns, $ctrl.rows);
                 }
