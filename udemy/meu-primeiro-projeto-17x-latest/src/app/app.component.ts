@@ -11,7 +11,9 @@ import {NewComponent} from "./components/new-component/new-component.component";
     <!--  <router-outlet></router-outlet>-->
     <h1>Curso de ANGULAr</h1>
     <p>Components</p>
+    <div class="theme-red">
     <app-new-component/>
+    </div>
   `,
 })
 export class AppComponent {

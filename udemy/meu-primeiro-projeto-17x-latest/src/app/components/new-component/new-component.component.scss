@@ -1,0 +1,20 @@
+//host nao deixa vazar css so perdi se propriedade estive como !important
+
+:host{
+  h2 {
+    background: pink;
+  }
+
+}
+:host-context(.theme-red){
+  h2 {
+    background: red;
+  }
+ }
+
+::ng-deep{
+  //use com moderacao pq pode quebra css em outra paginas
+  .theme-red {
+    border: 5px solid blue;
+  }
+}
