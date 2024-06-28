@@ -6,3 +6,11 @@
 
 {{ age < 1 ? 'de menor' : 'adulto'}}
 <button [disabled]="isDisabled">Button</button>
+
+<h2>classe an styles binding</h2>
+
+<p [class.background-red]="age >= 32 " [class.background-blue]="age < 32 " >
+  {{name}}
+</p>
+
+<p [style.text-decoration]="isTextDecoration">{{age}}</p>
