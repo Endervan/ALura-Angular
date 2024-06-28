@@ -16,4 +16,6 @@ export class TemplateBindingComponent {
     return val1 + val2;
   }
 
+  public isDisabled = true;
+
 }
