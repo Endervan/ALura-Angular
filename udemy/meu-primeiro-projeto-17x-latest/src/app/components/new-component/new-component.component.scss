@@ -1,18 +1,18 @@
 //host nao deixa vazar css so perdi se propriedade estive como !important
 
-:host{
+:host{ // trabalhar dentro component
   h2 {
     background: pink;
   }
 
 }
-:host-context(.theme-red){
+:host-context(.theme-red){ // verificar a hieraquia do estilo
   h2 {
     background: red;
   }
  }
 
-::ng-deep{
+::ng-deep{ // trabalhar estilo globalou
   //use com moderacao pq pode quebra css em outra paginas
   .theme-red {
     border: 5px solid blue;
