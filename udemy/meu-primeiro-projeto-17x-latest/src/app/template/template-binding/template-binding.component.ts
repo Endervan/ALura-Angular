@@ -1,11 +1,12 @@
 import {Component} from '@angular/core';
 import {CommonModule} from "@angular/common";
 import {log} from "@angular-devkit/build-angular/src/builders/ssr-dev-server";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-template-binding',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './template-binding.component.html',
   styleUrl: './template-binding.component.scss'
 })
