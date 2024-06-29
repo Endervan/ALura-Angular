@@ -26,8 +26,14 @@
 <div (mousemove)="onMouseEvent($event)" style="background: red; width: 300px; height:300px; margin-top: 10px;">
 </div>
 
-<h3>Two-way Data Bindings</h3>
+    <h3>Two-way Data Bindings</h3>
 
 <input [(ngModel)]="name" type="text"/>
 
 {{name}}
+
+
+<h1>  Diretivas de Atributos</h1>
+<h2 [ngClass]="{'background-blue': true}">classes condiionais</h2>
+
+<div>Estilos dinâmicos</div>
