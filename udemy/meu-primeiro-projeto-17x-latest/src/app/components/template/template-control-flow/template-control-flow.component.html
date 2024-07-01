@@ -1,0 +1,42 @@
+<p>template-control-flow </p>
+
+<h2>IF usando froma nova</h2>
+
+<!--@ => versoes nova o angular ta usando control flow-->
+@if (this.isTrue) {
+  <p>Ender</p>
+  <p>bruna</p>
+} @else {
+  Nao
+}
+
+
+<br>
+<h2>IF , FOR</h2>
+
+<h2 class="text-danger">forma antiga usando For</h2>
+<ng-container *ngIf="loadingData$ | async as data; else loading">
+  <p>{{ data }}</p>
+</ng-container>
+<ng-template #loading><p>Carregando....</p></ng-template>
+
+<h2>if e for assicrono</h2>
+@if (loadingData$ | async; as data) {
+  <ul>
+    @for (item of data; track item) {
+      <li>{{ item }}</li>
+    }
+  </ul>
+
+} @else {
+  <p>Carregando....</p>
+}
+
+<h2>for assicrono </h2>
+<ul>
+  @for (item of loadingData$ | async; track item) {
+    <li>{{ item }}</li>
+  }
+</ul>
+
+
