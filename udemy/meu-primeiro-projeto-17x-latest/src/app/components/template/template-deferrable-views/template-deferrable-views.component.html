@@ -1,0 +1,17 @@
+<h1 #trigger>Deferrable Views - adiar carregamento de componentes</h1>
+on - especifica uma condição de acionador (idle,timer,viewport,houver,immediate,prefecth = so funciona se estiver interacion)
+when - especifica uma condição imperativa com uma expressao q retorna um booleano.
+nota: varios triggerssao sempre condicoes OR. da msm forma , on misturação com when tambem sao condiçoes OR.
+
+
+<!--@defer (on timer(5s)) {-->
+@defer (on interaction ; prefetch on interaction(trigger)) {
+
+  <app-new-component/>
+} @placeholder {
+  <p>Mostra antes de carregar algo</p>
+} @loading {
+  <p>Loading .... carregamento do nosso component</p>
+} @error {
+  <p>error no internet</p>
+}
