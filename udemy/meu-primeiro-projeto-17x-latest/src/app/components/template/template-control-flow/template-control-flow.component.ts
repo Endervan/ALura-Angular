@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {AsyncPipe, NgFor, NgIf} from "@angular/common";
 import {delay, Observable, of} from "rxjs";
-import {iterator} from "rxjs/internal/symbol/iterator";
 
 @Component({
   selector: 'app-template-control-flow',
@@ -21,5 +20,9 @@ export class TemplateControlFlowComponent {
   ]).pipe(delay(3000));
 
 
-  protected readonly iterator = iterator;
+  protected itens = [{name: 'Ender Scopel'}]
+
+  addNewName(value: string) {
+    return this.itens.push({name:value})
+  }
 }

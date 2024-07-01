@@ -1,5 +1,28 @@
 <p>template-control-flow </p>
 
+@for (item of itens; track item.name;
+  let i = $index;
+  let c = $count;
+  let f = $first;
+  let l = $last;
+  let e = $even;
+  let o = $odd;
+  ) {
+  <p>{{ item.name }}</p>
+  <p>index - {{ i }}</p>
+  <p>count - {{ c }}</p>
+  <p>first - {{ f }}</p>
+  <p>last - {{ l }}</p>
+  <p>even - {{ e }}</p>
+  <p>odd - {{ o }}</p>
+}
+
+<input type="text" #name>
+<button (click)="addNewName(name.value)">Add Name</button>
+
+
+
+<hr>
 <h2>IF usando froma nova</h2>
 
 <!--@ => versoes nova o angular ta usando control flow-->
@@ -27,7 +50,6 @@
       <li>{{ item }}</li>
     }
   </ul>
-
 } @else {
   <p>Carregando....</p>
 }
