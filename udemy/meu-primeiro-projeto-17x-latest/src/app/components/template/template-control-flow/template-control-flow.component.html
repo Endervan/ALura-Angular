@@ -1,5 +1,15 @@
 <p>template-control-flow </p>
 
+<h5>For sem valores</h5>
+<ul>
+  @for (item of itens; track item.name) {
+    <li>{{ item.name }}</li>
+  } @empty {
+    <li>Não contem Valores</li>
+  }
+</ul>
+
+
 @for (item of itens; track item.name;
   let i = $index;
   let c = $count;
@@ -19,7 +29,6 @@
 
 <input type="text" #name>
 <button (click)="addNewName(name.value)">Add Name</button>
-
 
 
 <hr>

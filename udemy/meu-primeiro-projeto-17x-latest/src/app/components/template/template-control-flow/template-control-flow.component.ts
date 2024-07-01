@@ -20,7 +20,7 @@ export class TemplateControlFlowComponent {
   ]).pipe(delay(3000));
 
 
-  protected itens = [{name: 'Ender Scopel'}]
+  protected itens:Array<{name:string}> = [{name: 'Ender Scopel'}]
 
   addNewName(value: string) {
     return this.itens.push({name:value})
