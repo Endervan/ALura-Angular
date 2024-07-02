@@ -6,11 +6,12 @@ import {TemplateBindingComponent} from "./components/template/template-binding/t
 import {TemplateVariablesComponent} from "./components/template/template-variables/template-variables.component";
 import {TemplateControlFlowComponent} from "./components/template/template-control-flow/template-control-flow.component";
 import {TemplateDeferrableViewsComponent} from "./components/template/template-deferrable-views/template-deferrable-views.component";
+import {SignalsComponent} from "./components/signals/signals.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, NewComponent, TemplateBindingComponent, TemplateVariablesComponent, TemplateControlFlowComponent, TemplateDeferrableViewsComponent],
+  imports: [CommonModule, RouterOutlet, NewComponent, TemplateBindingComponent, TemplateVariablesComponent, TemplateControlFlowComponent, TemplateDeferrableViewsComponent, SignalsComponent],
   template: `
     <!--  <router-outlet></router-outlet>-->
     <!--    <h1>Curso de ANGULAr</h1>-->
@@ -22,7 +23,8 @@ import {TemplateDeferrableViewsComponent} from "./components/template/template-d
     <!--    </div>-->
     <!--    <app-template-control-flow/>-->
 
-    <app-template-deferrable-views/>
+<!--    <app-template-deferrable-views/>-->
+    <app-signals/>
   `,
 })
 export class AppComponent {

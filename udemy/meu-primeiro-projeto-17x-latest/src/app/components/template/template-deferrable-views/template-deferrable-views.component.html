@@ -5,7 +5,7 @@ nota: varios triggerssao sempre condicoes OR. da msm forma , on misturação com
 
 
 <!--@defer (on timer(5s)) {-->
-@defer (on interaction ; prefetch on interaction(trigger)) {
+@defer (on interaction; prefetch on interaction(trigger)) {
   <app-new-component/>
 } @placeholder {
   <p>Mostra antes de carregar algo</p>
@@ -17,16 +17,14 @@ nota: varios triggerssao sempre condicoes OR. da msm forma , on misturação com
 
 <h1 #trigger1>Deferrable Views with when </h1>
 
-<button (click)="isTrue = true"> add isTrue </button>
+<button (click)="isTrue = true"> add isTrue</button>
 <!--@defer (when isTrue) {-->
 @defer (when loadingData$ | async) {
-
-<!--  when carregar uma condição ou service-->
-
+  <!--  when carregar uma condição ou service-->
   <app-new-component/>
-} @placeholder {
+} @placeholder (minimum 5s) {
   <p>Mostra antes de carregar algo</p>
-} @loading {
+} @loading (after 150ms;minimum 2s) {
   <p>Loading .... carregamento do nosso component</p>
 } @error {
   <p>error no internet</p>
