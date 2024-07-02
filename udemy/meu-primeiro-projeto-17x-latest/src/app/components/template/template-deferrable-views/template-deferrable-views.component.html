@@ -6,6 +6,22 @@ nota: varios triggerssao sempre condicoes OR. da msm forma , on misturação com
 
 <!--@defer (on timer(5s)) {-->
 @defer (on interaction ; prefetch on interaction(trigger)) {
+  <app-new-component/>
+} @placeholder {
+  <p>Mostra antes de carregar algo</p>
+} @loading {
+  <p>Loading .... carregamento do nosso component</p>
+} @error {
+  <p>error no internet</p>
+}
+
+<h1 #trigger1>Deferrable Views with when </h1>
+
+<button (click)="isTrue = true"> add isTrue </button>
+<!--@defer (when isTrue) {-->
+@defer (when loadingData$ | async) {
+
+<!--  when carregar uma condição ou service-->
 
   <app-new-component/>
 } @placeholder {
