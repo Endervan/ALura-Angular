@@ -34,6 +34,10 @@ export class KnowledgeComponent {
       src: 'assets/icons/knowledge/nodejs.svg',
       alt: 'Ícone de conhecimento de nodejs',
     },
+    {
+      src: 'assets/icons/knowledge/java.svg',
+      alt: 'Ícone de conhecimento de java',
+    },
   ]);
 
 }
