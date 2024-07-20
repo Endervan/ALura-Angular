@@ -14,6 +14,8 @@ import {OutputComponent} from "../output/output.component";
 })
 export class PaiOuMaeComponent {
 
-  public name = signal("Enderrrrr")
+  public name = signal("Enderrrrr");
+
+  public outputNamePai = signal("Output sem valor");
 
 }

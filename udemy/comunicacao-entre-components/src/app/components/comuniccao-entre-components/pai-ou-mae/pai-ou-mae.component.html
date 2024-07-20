@@ -1,4 +1,6 @@
 <p>pai-ou-mae works!</p>
 
 <app-input [inputName]="name()"/>
-<app-output/>
+<app-output (outputName)="outputNamePai.set($event)"/>
+
+<p>{{outputNamePai()}}</p>
