@@ -3,10 +3,6 @@ import {AsyncPipe, CurrencyPipe, DatePipe, DecimalPipe, JsonPipe, LowerCasePipe,
 import {Observable, of} from "rxjs";
 
 
-//corrigindo numbes , percent e moeda para formato BR
-import localePt from '@angular/common/locales/pt';
-registerLocaleData(localePt);
-//corrigindo numbes , percent e moeda para formato BR
 
 
 @Component({
@@ -14,8 +10,7 @@ registerLocaleData(localePt);
   standalone: true,
   imports: [DatePipe, UpperCasePipe, LowerCasePipe, JsonPipe, AsyncPipe, CurrencyPipe, DecimalPipe, PercentPipe],
   templateUrl: './angular-pipes.component.html',
-  styleUrl: './angular-pipes.component.scss',
-  providers: [{provide: LOCALE_ID, useValue: 'pt-BR'}] //corrigindo numbes , percent e moeda para formato BR
+  styleUrl: './angular-pipes.component.scss'
 
 })
 export class AngularPipesComponent {
