@@ -1,14 +1,13 @@
-import {Component, LOCALE_ID, signal} from '@angular/core';
-import {AsyncPipe, CurrencyPipe, DatePipe, DecimalPipe, JsonPipe, LowerCasePipe, PercentPipe, registerLocaleData, UpperCasePipe} from "@angular/common";
+import {Component, signal} from '@angular/core';
+import {AsyncPipe, CurrencyPipe, DatePipe, DecimalPipe, JsonPipe, LowerCasePipe, PercentPipe, UpperCasePipe} from "@angular/common";
 import {Observable, of} from "rxjs";
-
-
+import {CustomStringPipe} from "../custom-string.pipe";
 
 
 @Component({
   selector: 'app-angular-pipes',
   standalone: true,
-  imports: [DatePipe, UpperCasePipe, LowerCasePipe, JsonPipe, AsyncPipe, CurrencyPipe, DecimalPipe, PercentPipe],
+  imports: [DatePipe, UpperCasePipe, LowerCasePipe, JsonPipe, AsyncPipe, CurrencyPipe, DecimalPipe, PercentPipe, CustomStringPipe],
   templateUrl: './angular-pipes.component.html',
   styleUrl: './angular-pipes.component.scss'
 
