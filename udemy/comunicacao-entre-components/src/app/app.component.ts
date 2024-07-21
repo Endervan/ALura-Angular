@@ -9,7 +9,7 @@ import {AngularPipesComponent} from "./components/comuniccao-entre-components/pi
   template: `
     <!--<router-outlet />-->
 
-    <h1>Cominicação entre components</h1>
+    <h1>comunicação entre components</h1>
 
     <!--<app-pai-ou-mae />-->
 
