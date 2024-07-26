@@ -1,5 +1,8 @@
 import {ChangeDetectorRef, Component, ElementRef, EventEmitter, inject, Output, ViewChild} from '@angular/core';
 
+// Interface
+import {IListItems} from "../../interface/iListItems.iterface";
+
 @Component({
   selector: 'app-input-add-item',
   standalone: true,
@@ -11,7 +14,7 @@ export class InputAddItemComponent {
 
   // pega valores do html
   @ViewChild('inputText') public inputText!: ElementRef;
-  @Output() public outputListItems = new EventEmitter<any>();
+  @Output() public outputAddListItem = new EventEmitter<IListItems>();
   // detectar alguma alteração
   #cdr = inject(ChangeDetectorRef);
 
@@ -19,17 +22,16 @@ export class InputAddItemComponent {
     if (value) {
       this.#cdr.detectChanges();
       this.inputText.nativeElement.value = ''; // limpando input
-      const dataAtual = new Date().getTime();
+      const dataAtual = new Date().getTime(); // gerando ID unico
       const id = `ID ${dataAtual}`;
 
-      this.outputListItems.emit({
+      this.outputAddListItem.emit({
         id,
         checked: false,
         value
-      })
+      });
+      return this.inputText.nativeElement.focus();
 
-
-      console.log(value)
     }
   }
 
