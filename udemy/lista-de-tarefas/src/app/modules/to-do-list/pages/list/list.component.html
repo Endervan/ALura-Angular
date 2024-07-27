@@ -16,8 +16,16 @@
   <app-input-add-item (outputAddListItem)="getInputAndAddItem($event)" [inputListItems]="getListItems()"/>
 
   <main class="container">
-    <h2>Pendências</h2>
-    <app-input-list-item [inputListItems]="getListItems()"/>
+    @if(listItemsStage('pending').length){
+      <h2>Pendências</h2>
+      <app-input-list-item [inputListItems]="listItemsStage('pending')"/>
+    }
+
+
+    @if(listItemsStage('completed').length){
+    <h2>Concluidas</h2>
+      <app-input-list-item [inputListItems]="listItemsStage('completed')"/>
+    }
 
   </main>
 
