@@ -8,7 +8,7 @@
       Crie uma Lista de Tarefas
     </button>
   } @else {
-    <app-input-add-item  (outputAddListItem)="getInputAndAddItem($event)"/>
+    <app-input-add-item (outputAddListItem)="getInputAndAddItem($event)" [inputListItems]="getListItems()"/>
   }
 
 

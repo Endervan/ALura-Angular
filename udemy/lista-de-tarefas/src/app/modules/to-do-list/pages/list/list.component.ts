@@ -15,16 +15,20 @@ export class ListComponent {
   public addItem = signal(true);
 
 
-  #setListItems = signal<IListItems[]>([this.#parseItems()]);  // # => metodo Private
-  getListItems = this.#setListItems.asReadonly(); // asReadonly = somente leitura
-
-  public getInputAndAddItem(value: IListItems) {
-    localStorage.setItem("@my-list)", JSON.stringify(value))
-    console.log(value)
-  }
+  #setListItems = signal<IListItems[]>(this.#parseItems());  // # => metodo Private
+  public getListItems = this.#setListItems.asReadonly(); // asReadonly = somente leitura
 
   #parseItems() {
-    return JSON.parse(localStorage.getItem("@my-list") || '[]')
+    return JSON.parse(localStorage.getItem("@my-list") ?? '[]')
   }
+
+
+  public getInputAndAddItem(value: IListItems) {
+    localStorage.setItem('@my-list',
+      JSON.stringify([...this.#setListItems(), value])
+    );
+    return this.#setListItems.set(this.#parseItems());
+  }
+
 
 }
