@@ -31,4 +31,9 @@ export class ListComponent {
   }
 
 
+  deleteAllItems() {
+    localStorage.removeItem('@my-list');
+    return this.#setListItems.set(this.#parseItems());
+
+  }
 }
