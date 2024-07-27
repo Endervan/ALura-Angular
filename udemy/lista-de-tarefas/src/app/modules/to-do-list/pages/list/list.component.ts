@@ -1,12 +1,14 @@
 import {Component, signal} from '@angular/core';
 import {InputAddItemComponent} from "../../components/input-add-item/input-add-item.component";
 import {IListItems} from "../../interface/iListItems.iterface";
+import {InputListItemComponent} from "../../components/input-list-item/input-list-item.component";
 
 @Component({
   selector: 'app-list',
   standalone: true,
   imports: [
-    InputAddItemComponent
+    InputAddItemComponent,
+    InputListItemComponent
   ],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss'

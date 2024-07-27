@@ -1,10 +1,10 @@
-@if (!getListItems().length){
+@if (!getListItems().length) {
   <div class="container">
     <img src="assets/img/task-list-null.png"
          alt="Sua Lista esta vazia - image ilustrativa"
          loading="lazy">
 
-    @if(addItem()){
+    @if (addItem()) {
       <button class="btn btn-primary" (click)="addItem.set(false)">
         Crie uma Lista de Tarefas
       </button>
@@ -16,12 +16,13 @@
   <app-input-add-item (outputAddListItem)="getInputAndAddItem($event)" [inputListItems]="getListItems()"/>
 
   <main class="container">
-
+    <h2>Pendências</h2>
+    <app-input-list-item [inputListItems]="getListItems()"/>
 
   </main>
 
   <footer>
-    <button class="btn btn-danger" (click)="deleteAllItems()" >Deletar todos os items</button>
+    <button class="btn btn-danger" (click)="deleteAllItems()">Deletar todos os items</button>
   </footer>
 
 }
