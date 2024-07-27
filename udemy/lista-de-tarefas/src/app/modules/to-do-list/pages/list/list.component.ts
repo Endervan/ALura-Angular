@@ -33,21 +33,32 @@ export class ListComponent {
   }
 
 
-  deleteAllItems() {
+  public deleteAllItems() {
     localStorage.removeItem('@my-list');
     return this.#setListItems.set(this.#parseItems());
   }
 
-  listItemsStage(value: 'pending' | 'completed') {
+  public listItemsStage(value: 'pending' | 'completed') {
     return this.getListItems().filter((res: IListItems) => {
-      if (value === 'pending') {
-        return !res.checked
-      }
-      if (value === 'completed') {
-        return res.checked
-      }
+      if (value === 'pending') return !res.checked
+      if (value === 'completed') return res.checked
       return res
     });
+  }
+
+  public uptadeItemCheckBox(newItem: { id: string; checked: boolean }) {
+    this.#setListItems.update((oldValue: IListItems[]) => {
+      return oldValue.filter(res => {
+        if (res.id === newItem.id) {
+          res.checked = newItem.checked;
+          return res;
+        }
+        return res;
+      });
+    });
+
+    return localStorage.setItem('@my-list', JSON.stringify(this.#setListItems()));
+
   }
 
 }
