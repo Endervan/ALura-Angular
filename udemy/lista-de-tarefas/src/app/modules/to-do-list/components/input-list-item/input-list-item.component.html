@@ -6,6 +6,7 @@
            #inputValue
            [id]="item.id"
            [value]="item.value"
+           (input)="updateItemText(item.id,inputValue.value)"
            placeholder="Adicione um valor">
 
     <button class="btn btn-danger-circle" title="Delete este item"></button>
