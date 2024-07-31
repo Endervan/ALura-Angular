@@ -22,15 +22,19 @@
       <app-input-list-item
         [inputListItems]="listItemsStage('pending')"
         (outputUpdateItemCheckbox)="uptadeItemCheckBox($event)"
-        (outputUpdateItemText)="updateItemText($event)"/>
+        (outputUpdateItemText)="updateItemText($event)"
+        (outputDeleteItemText)="deleteItemText($event)"
+      />
     }
 
 
     @if (listItemsStage('completed').length) {
       <h2>Concluidas</h2>
-      <app-input-list-item [inputListItems]="listItemsStage('completed')"
-                           (outputUpdateItemCheckbox)="uptadeItemCheckBox($event)"
-      (outputUpdateItemText)="updateItemText($event)"/>
+      <app-input-list-item
+        [inputListItems]="listItemsStage('completed')"
+        (outputUpdateItemCheckbox)="uptadeItemCheckBox($event)"
+        (outputUpdateItemText)="updateItemText($event)"
+        (outputDeleteItemText)="deleteItemText($event)"/>
     }
 
   </main>
