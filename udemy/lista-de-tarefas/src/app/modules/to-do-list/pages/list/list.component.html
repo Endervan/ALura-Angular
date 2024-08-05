@@ -23,7 +23,7 @@
         [inputListItems]="listItemsStage('pending')"
         (outputUpdateItemCheckbox)="uptadeItemCheckBox($event)"
         (outputUpdateItemText)="updateItemText($event)"
-        (outputDeleteItemText)="deleteItemText($event)"
+        (outputDeleteItem)="deleteItem($event)"
       />
     }
 
@@ -34,7 +34,7 @@
         [inputListItems]="listItemsStage('completed')"
         (outputUpdateItemCheckbox)="uptadeItemCheckBox($event)"
         (outputUpdateItemText)="updateItemText($event)"
-        (outputDeleteItemText)="deleteItemText($event)"/>
+        (outputDeleteItem)="deleteItem($event)"/>
     }
 
   </main>
