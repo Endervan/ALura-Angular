@@ -1,0 +1,52 @@
+<p>template-driven-forms !</p>
+
+<form action="">
+  <label for="">
+    Nome:
+    <input type="text"
+           #name="ngModel"
+           [ngModel]="name.value"
+           required
+           name="inputName">
+  </label>
+  <hr>
+  <p>Name : {{ name.value }}</p>
+  <p>valid : {{ name.valid }}</p>
+  <p>touched : {{ name.touched }}</p>
+  <p>dirty - formulario esta sujo : {{ name.dirty }}</p>
+  <hr>
+
+
+
+
+  <label for="">Feminino:
+    <input type="radio"
+           value="feminino"
+           #sexo="ngModel"
+           [ngModel]="sexo.value"
+           required
+           name="radioSexo">
+  </label>
+  <label for="">Masculino:
+    <input type="radio"
+           value="masculino"
+           #sexo="ngModel"
+           [ngModel]="sexo.value"
+           required
+           name="radioSexo">
+  </label>
+  <label for="">Outros:
+    <input type="radio"
+           value="outros"
+           #sexo="ngModel"
+           [ngModel]="sexo.value"
+           required
+           name="radioSexo">
+  </label>
+  <hr>
+  <p>Name : {{ sexo.value }}</p>
+  <p>valid : {{ sexo.valid }}</p>
+  <p>touched : {{ sexo.touched }}</p>
+  <p>dirty - formulario esta sujo : {{ sexo.dirty }}</p>
+  <hr>
+</form>
