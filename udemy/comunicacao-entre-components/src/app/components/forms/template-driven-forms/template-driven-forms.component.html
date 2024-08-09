@@ -17,8 +17,6 @@
   <hr>
 
 
-
-
   <label for="">Feminino:
     <input type="radio"
            value="feminino"
@@ -49,4 +47,35 @@
   <p>touched : {{ sexo.touched }}</p>
   <p>dirty - formulario esta sujo : {{ sexo.dirty }}</p>
   <hr>
+
+  <label for="">Angular:
+    <input type="checkbox"
+           value="Angular"
+           name="checkBoxAngular"
+           #Angular="ngModel"
+           [ngModel]="Angular.value"
+           required
+    >
+  </label>
+  <hr>
+  <p>Name : {{ Angular.value }}</p>
+  <p>valid : {{ Angular.valid }}</p>
+  <p>touched : {{ Angular.touched }}</p>
+  <p>dirty - formulario esta sujo : {{ Angular.dirty }}</p>
+  <hr>
+
+
+  <h1>Select</h1>
+  <select name="selectComidas" id="selectComidas" #comidas="ngModel" ngModel>
+    <option value="">selecione uma comida</option>
+    @for (item of listComidas(); track item) {
+      <option [ngValue]="item">{{ item.comida }}</option>
+    }
+
+  </select>
+  {{ comidas.value.comida }}
+  {{ comidas.value.preco }}
+  {{ comidas.valid }}
+  {{ comidas.touched }}
+  {{ comidas.dirty }}
 </form>
