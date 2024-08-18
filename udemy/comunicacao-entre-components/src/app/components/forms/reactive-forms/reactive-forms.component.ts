@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {FormControl, ReactiveFormsModule} from "@angular/forms";
+import {Component} from '@angular/core';
+import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-reactive-forms',
@@ -11,5 +11,24 @@ import {FormControl, ReactiveFormsModule} from "@angular/forms";
   styleUrl: './reactive-forms.component.scss'
 })
 export class ReactiveFormsComponent {
- name = new FormControl('Ender react');
+  public profileForm = new FormGroup({
+    name: new FormControl('Ender react'),
+    myStacks: new FormGroup({
+      front: new FormControl('Angular'),
+      back: new FormControl('NodeJs')
+    })
+
+  });
+
+
+  update() {
+    this.profileForm.patchValue({
+      name: "Maria",
+      myStacks: {
+        front: "ionic",
+        back: "Java"
+      }
+    })
+
+  }
 }

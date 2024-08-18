@@ -1,8 +1,22 @@
 <p>reactive-forms!</p>
 
-<form action="">
+<form action="" [formGroup]="profileForm">
   <label for="">
     Nome:
-    <input type="text" [formControl]="name">
+    <input type="text" formControlName="name">
+    {{ profileForm.value.name }}
   </label>
+
+  <div formGroupName="myStacks">
+    Front:<input type="text" formControlName="front">
+    {{ profileForm.value.myStacks?.front }}
+
+    <br>
+
+    Back:<input type="text" formControlName="back">
+    {{ profileForm.value.myStacks?.back }}
+
+  </div>
+  <button type="button" (click)="update()">Update</button>
+
 </form>
