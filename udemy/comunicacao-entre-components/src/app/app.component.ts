@@ -19,7 +19,7 @@ import {TemplateDrivenFormsComponent} from "./components/forms/template-driven-f
 
     <h1>tipos forms(drive and reactive)</h1>
 
-    <app-template-driven-forms/>
+<!--    <app-template-driven-forms/>-->
     <app-reactive-forms/>
   `,
 })

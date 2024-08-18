@@ -1,5 +1,5 @@
 import {Component, signal} from '@angular/core';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, NgForm} from "@angular/forms";
 import {JsonPipe} from "@angular/common";
 
 @Component({
@@ -24,4 +24,10 @@ export class TemplateDrivenFormsComponent {
     }
   ])
 
+  submitForm(form: NgForm) {
+    if (form.valid) {
+      console.log(form.value)
+    }
+
+  }
 }

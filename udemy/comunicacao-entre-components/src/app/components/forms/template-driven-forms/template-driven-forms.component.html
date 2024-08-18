@@ -1,6 +1,6 @@
 <p>template-driven-forms !</p>
 
-<form action="">
+<form action="" #form=ngForm (ngSubmit)="submitForm(form)">
   <label for="">
     Nome:
     <input type="text"
@@ -73,9 +73,14 @@
     }
 
   </select>
-  {{ comidas.value.comida }}
-  {{ comidas.value.preco }}
+  {{ comidas.value?.comida }}
+  {{ comidas.value?.preco }}
   {{ comidas.valid }}
   {{ comidas.touched }}
   {{ comidas.dirty }}
+
+  <button [disabled]="!form.valid" type="submit">Send</button>
 </form>
+
+<p>Form Valid : {{form.valid}}</p>
+<p>Forma Value : {{form.value | json}}</p>
