@@ -19,4 +19,19 @@
   </div>
   <button type="button" (click)="update()">Update</button>
 
+  <hr>
+  <label for="">
+    new Food
+    <input #newFood type="text">
+  </label>
+
+  <div formArrayName="myFavoriteFoods">
+    @for (food of profileForm.value.myFavoriteFoods; track i; let i = $index) {
+      <label for="">
+        {{ food }}:
+        <input type="text" [formControlName]="i">
+      </label>
+    }
+  </div>
+
 </form>
