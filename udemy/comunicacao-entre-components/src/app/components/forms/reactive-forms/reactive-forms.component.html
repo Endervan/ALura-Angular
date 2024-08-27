@@ -1,6 +1,6 @@
 <p>reactive-forms!</p>
 
-<form action="" [formGroup]="profileForm">
+<form action="" [formGroup]="profileForm" (ngSubmit)="submit()">
   <label for="">
     Nome:
     <input type="text" formControlName="name">
