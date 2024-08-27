@@ -4,8 +4,23 @@
   <label for="">
     Nome:
     <input type="text" formControlName="name">
-    {{ profileForm.value.name }}
   </label>
+
+  <hr>
+  <h3>[formGroup]="profileForm" - validatores globais do formulario</h3>
+  <p>Value : {{profileForm.value | json}}</p>
+  <p>valid : {{profileForm.valid}}</p>
+  <p>dirty : {{profileForm.dirty}}</p>
+  <p>touched : {{profileForm.touched}}</p>
+  <hr>
+
+  <hr>
+  <h3>formControlName="name" - validatores individuais</h3>
+  <p>Value : {{profileForm.get('name')?.value}}</p>
+  <p>valid : {{profileForm.get('name')?.valid}}</p>
+  <p>dirty : {{profileForm.get('name')?.dirty}}</p>
+  <p>touched : {{profileForm.get('name')?.touched}}</p>
+  <hr>
 
   <div formGroupName="myStacks">
     Front:<input type="text" formControlName="front">
@@ -20,18 +35,22 @@
   <button type="button" (click)="update()">Update</button>
 
   <hr>
-  <label for="">
-    new Food
-    <input #newFood type="text">
-  </label>
+  <label for="">new Food<input #newFood type="text"></label>
+  <button (click)="addMyFavoriteFoods(newFood.value)">Add</button>
 
   <div formArrayName="myFavoriteFoods">
     @for (food of profileForm.value.myFavoriteFoods; track i; let i = $index) {
       <label for="">
-        {{ food }}:
+        {{ food }}
         <input type="text" [formControlName]="i">
       </label>
     }
   </div>
+  <hr>
+
+  <button [disabled]="!profileForm.valid">submit</button>
+
+
+  <h1>FormBuilder</h1>
 
 </form>
