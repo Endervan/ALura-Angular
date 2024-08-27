@@ -1,6 +1,19 @@
 import {Component, inject} from '@angular/core';
-import {FormArray, FormBuilder, FormControl, ReactiveFormsModule, Validators} from "@angular/forms";
+import {AbstractControl, FormArray, FormBuilder, FormControl, ReactiveFormsModule, ValidatorFn, Validators} from "@angular/forms";
 import {JsonPipe} from "@angular/common";
+
+
+function textValidator(): ValidatorFn {
+  return (control: AbstractControl) => {
+    const hasUppercase = /[A-Z]/.test(control.value); // ter letra maiscula
+    const hasNumber = /[0-9]/.test(control.value); // ter um numero
+    if (hasUppercase && hasNumber) {
+      return null ; // retorna null e pq esta valido
+    }
+    return {textValidator: true} // invalido
+  }
+}
+
 
 @Component({
   selector: 'app-reactive-forms',
@@ -12,6 +25,8 @@ import {JsonPipe} from "@angular/common";
   templateUrl: './reactive-forms.component.html',
   styleUrl: './reactive-forms.component.scss'
 })
+
+
 export class ReactiveFormsComponent {
 
   // FormBuilder no inject #=>metodo private
@@ -24,7 +39,8 @@ export class ReactiveFormsComponent {
   public profileForm = this.#fb.group({
     // name: ['',[Validators.minLength(2),Validators.maxLength(5)]],
     // name: ['',Validators.required],
-    name: ['',Validators.email],
+    // name: ['',Validators.email],
+    name: ['', [Validators.required,textValidator()]],
     myStacks: this.#fb.group({
       front: ['Angular'],
       back: ['NodeJs']

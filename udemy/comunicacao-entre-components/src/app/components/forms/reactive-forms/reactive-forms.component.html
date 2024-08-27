@@ -18,6 +18,7 @@
   <h3>formControlName="name" - validatores individuais</h3>
   <p>Value : {{profileForm.get('name')?.value}}</p>
   <p>valid : {{profileForm.get('name')?.valid}}</p>
+  <p>erros : {{profileForm.get('name')?.errors | json}}</p>
   <p>dirty : {{profileForm.get('name')?.dirty}}</p>
   <p>touched : {{profileForm.get('name')?.touched}}</p>
   <hr>
