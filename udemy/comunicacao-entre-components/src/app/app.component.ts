@@ -4,11 +4,12 @@ import {AngularPipesComponent} from "./components/comuniccao-entre-components/pi
 import {ReactiveFormsComponent} from "./components/forms/reactive-forms/reactive-forms.component";
 import {TemplateDrivenFormsComponent} from "./components/forms/template-driven-forms/template-driven-forms.component";
 import {ContentComponent} from "./components/content/content.component";
+import {HostElementsComponent} from "./components/host-elements/host-elements.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [PaiOuMaeComponent, AngularPipesComponent, ReactiveFormsComponent, TemplateDrivenFormsComponent, ContentComponent],
+  imports: [PaiOuMaeComponent, AngularPipesComponent, ReactiveFormsComponent, TemplateDrivenFormsComponent, ContentComponent, HostElementsComponent],
   template: `
     <!--<router-outlet />-->
 
@@ -23,17 +24,18 @@ import {ContentComponent} from "./components/content/content.component";
     <!--    <app-template-driven-forms/>-->
     <!--    <app-reactive-forms/>-->
 
-    <app-content>
-      <header id="header">
-        <p>header</p>
-      </header>
-      <p text >text</p>
-      <p text >text</p>
-      <p text >text</p>
-      <footer class="footer">
-        <p>footer</p>
-      </footer>
-      <app-content/>
+<!--    <app-content>-->
+<!--      <header id="header">-->
+<!--        <p>header</p>-->
+<!--      </header>-->
+<!--      <p text >text</p>-->
+<!--      <p text >text</p>-->
+<!--      <p text >text</p>-->
+<!--      <footer class="footer">-->
+<!--        <p>footer</p>-->
+<!--      </footer>-->
+<!--      <app-content/>-->
+    <app-host-elements/>
   `,
 })
 export class AppComponent {
