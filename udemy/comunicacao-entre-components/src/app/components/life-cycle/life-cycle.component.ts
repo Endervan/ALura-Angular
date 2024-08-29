@@ -1,7 +1,5 @@
-import {AfterViewInit, Component, DoCheck, ElementRef, Input, OnChanges, OnInit, signal, SimpleChanges, ViewChild} from '@angular/core';
+import {AfterContentInit, AfterViewInit, Component, ContentChild, DoCheck, ElementRef, Input, OnChanges, OnInit, signal, SimpleChanges, ViewChild} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
-
-
 
 
 @Component({
@@ -11,24 +9,30 @@ import {FormBuilder} from "@angular/forms";
   templateUrl: './life-cycle.component.html',
   styleUrl: './life-cycle.component.scss'
 })
-export class LifeCycleComponent implements OnChanges,OnInit,DoCheck,AfterViewInit{
+export class LifeCycleComponent implements OnChanges, OnInit, DoCheck, AfterViewInit, AfterContentInit {
   @Input() public myNumber = 0;
+  // ViewChild -> procura elemento html com algu nome
+  @ViewChild('content') public content!: ElementRef;
+
+  // pega valotes dentro do ng-content que esta logalizado dentro app-life-cycle
+  @ContentChild('text') public text!: ElementRef;
 
 
   // construtor ou inicializador
-  constructor(private  fb:FormBuilder){
+  constructor(private fb: FormBuilder) {
   }
 
   // 1 - changesdetections vem primeiro no ciclo de vida antes ngOnInit e detecta mudanças
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('ngOnChanges',changes);
+    console.log('ngOnChanges', changes);
     // if (changes['myNumber'].previousValue === 2){
     //   alert('deu bom qnd chegou no 2')
     // }
   }
 
   // 2 - ciclo de vida
-  public myText =  signal('jose iniciando ante do click');
+  public myText = signal('jose iniciando ante do click');
+
   ngOnInit(): void {
     console.log('ngOnInit')
   }
@@ -38,15 +42,18 @@ export class LifeCycleComponent implements OnChanges,OnInit,DoCheck,AfterViewIni
     console.log('ngDoCheck')
   }
 
+  ngAfterContentInit(): void {
+    console.log('ngAfterContentInit');
+    console.log(this.text.nativeElement.innerText);
+  }
 
-  // ViewChild -> procura elemento html com algu nome
-  @ViewChild('content') public content!: ElementRef;
-  // chamando apos a visualização do template e suas filhas
+
+  // chamando apos a visualização do template e a suas filhas
   ngAfterViewInit(): void {
     console.log('ngAfterViewInit')
-    console.log( this.content.nativeElement.innerHTML)
-    this.content.nativeElement.innerHTML = 'texto dentro html';
-    console.log( this.content.nativeElement.innerHTML);
+    console.log(this.content.nativeElement.innerText);
+    console.log(this.text.nativeElement.innerText);
   }
+
 
 }

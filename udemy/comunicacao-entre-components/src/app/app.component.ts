@@ -37,7 +37,9 @@ import {LifeCycleComponent} from "./components/life-cycle/life-cycle.component";
 <!--      </footer>-->
 <!--      <app-content/>-->
 <!--    <app-host-elements/>-->
-    <app-life-cycle [myNumber]="myNumber"/>
+    <app-life-cycle [myNumber]="myNumber">
+      <p #text>text</p>
+    </app-life-cycle>
   `,
 })
 export class AppComponent implements OnInit{
