@@ -45,8 +45,8 @@ export class AppComponent implements OnInit{
   myNumber = 1;
 
   ngOnInit(): void {
-    setInterval(()=>{
-      this.myNumber++
-    },10000)
+    // setInterval(()=>{
+    //   this.myNumber++
+    // },10000)
   }
 }

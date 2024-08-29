@@ -1,5 +1,6 @@
-import {Component, DoCheck, Input, OnChanges, OnInit, signal, SimpleChanges} from '@angular/core';
+import {AfterViewInit, Component, DoCheck, ElementRef, Input, OnChanges, OnInit, signal, SimpleChanges, ViewChild} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
+
 
 
 
@@ -10,7 +11,7 @@ import {FormBuilder} from "@angular/forms";
   templateUrl: './life-cycle.component.html',
   styleUrl: './life-cycle.component.scss'
 })
-export class LifeCycleComponent implements OnChanges,OnInit,DoCheck{
+export class LifeCycleComponent implements OnChanges,OnInit,DoCheck,AfterViewInit{
   @Input() public myNumber = 0;
 
 
@@ -35,6 +36,17 @@ export class LifeCycleComponent implements OnChanges,OnInit,DoCheck{
   // executando antes e claro depois que tei alguma alteração manualmente come um click
   ngDoCheck(): void {
     console.log('ngDoCheck')
+  }
+
+
+  // ViewChild -> procura elemento html com algu nome
+  @ViewChild('content') public content!: ElementRef;
+  // chamando apos a visualização do template e suas filhas
+  ngAfterViewInit(): void {
+    console.log('ngAfterViewInit')
+    console.log( this.content.nativeElement.innerHTML)
+    this.content.nativeElement.innerHTML = 'texto dentro html';
+    console.log( this.content.nativeElement.innerHTML);
   }
 
 }
