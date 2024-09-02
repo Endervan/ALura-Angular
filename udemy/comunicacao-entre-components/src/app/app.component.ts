@@ -1,3 +1,4 @@
+import {environment} from "../environments/environment";
 import {ChangeDetectionStrategy, Component, OnInit, signal} from '@angular/core';
 import {ReactiveFormsComponent} from "@components/forms/reactive-forms/reactive-forms.component";
 import {TemplateDrivenFormsComponent} from "@components/forms/template-driven-forms/template-driven-forms.component";
@@ -53,6 +54,10 @@ export class AppComponent implements OnInit {
   title = 'comunicacao-entre-components';
   myNumber = signal(1);
   public boolean = true;
+
+  constructor() {
+    console.log(environment.env)
+  }
 
   ngOnInit(): void {
     setInterval(() => {
