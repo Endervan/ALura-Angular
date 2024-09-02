@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit, signal} from '@angular/core';
 import {PaiOuMaeComponent} from "./components/comuniccao-entre-components/pai-ou-mae/pai-ou-mae.component";
 import {AngularPipesComponent} from "./components/comuniccao-entre-components/pipes/angular-pipes/angular-pipes.component";
 import {ReactiveFormsComponent} from "./components/forms/reactive-forms/reactive-forms.component";
@@ -25,30 +25,41 @@ import {LifeCycleComponent} from "./components/life-cycle/life-cycle.component";
     <!--    <app-template-driven-forms/>-->
     <!--    <app-reactive-forms/>-->
 
-<!--    <app-content>-->
-<!--      <header id="header">-->
-<!--        <p>header</p>-->
-<!--      </header>-->
-<!--      <p text >text</p>-->
-<!--      <p text >text</p>-->
-<!--      <p text >text</p>-->
-<!--      <footer class="footer">-->
-<!--        <p>footer</p>-->
-<!--      </footer>-->
-<!--      <app-content/>-->
-<!--    <app-host-elements/>-->
-    <app-life-cycle [myNumber]="myNumber">
-      <p #text>text</p>
-    </app-life-cycle>
+    <!--    <app-content>-->
+    <!--      <header id="header">-->
+    <!--        <p>header</p>-->
+    <!--      </header>-->
+    <!--      <p text >text</p>-->
+    <!--      <p text >text</p>-->
+    <!--      <p text >text</p>-->
+    <!--      <footer class="footer">-->
+    <!--        <p>footer</p>-->
+    <!--      </footer>-->
+    <!--      <app-content/>-->
+    <!--    <app-host-elements/>-->
+
+    @if (boolean) {
+      <app-life-cycle [inputMyNumber]="myNumber()">
+        <p #text>text</p>
+      </app-life-cycle>
+    }
+
+      <button (click)="this.boolean = !this.boolean">destroy component</button>
+
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'comunicacao-entre-components';
-  myNumber = 1;
+  myNumber = signal(1);
+  public boolean = true;
 
   ngOnInit(): void {
-    // setInterval(()=>{
-    //   this.myNumber++
-    // },10000)
+    setInterval(()=>{
+      this.myNumber.update((oldValue: number) => {
+        return oldValue + 1
+      })
+    },1000)
   }
+
 }
