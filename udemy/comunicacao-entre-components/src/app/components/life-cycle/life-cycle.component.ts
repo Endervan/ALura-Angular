@@ -1,4 +1,4 @@
-import {AfterContentInit, AfterViewInit, Component, ContentChild, DoCheck, ElementRef, Input, OnChanges, OnInit, signal, SimpleChanges, ViewChild} from '@angular/core';
+import {AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, ContentChild, DoCheck, ElementRef, Input, OnChanges, OnInit, signal, SimpleChanges, ViewChild} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
 
 
@@ -9,7 +9,7 @@ import {FormBuilder} from "@angular/forms";
   templateUrl: './life-cycle.component.html',
   styleUrl: './life-cycle.component.scss'
 })
-export class LifeCycleComponent implements OnChanges, OnInit, DoCheck, AfterViewInit, AfterContentInit {
+export class LifeCycleComponent implements OnChanges, OnInit, DoCheck, AfterViewInit, AfterContentInit,AfterContentChecked,AfterViewChecked {
   @Input() public myNumber = 0;
   // ViewChild -> procura elemento html com algu nome
   @ViewChild('content') public content!: ElementRef;
@@ -53,6 +53,14 @@ export class LifeCycleComponent implements OnChanges, OnInit, DoCheck, AfterView
     console.log('ngAfterViewInit')
     console.log(this.content.nativeElement.innerText);
     console.log(this.text.nativeElement.innerText);
+  }
+
+  ngAfterContentChecked(): void { // aguarda content(somente algum conteudo)  para pode ser carregamento
+    console.log('ngAfterContentChecked');
+  }
+
+  ngAfterViewChecked(): void { // aguarda view(tudo) ser carregada para poder ser carreegado
+    console.log('ngAfterViewChecked')
   }
 
 
