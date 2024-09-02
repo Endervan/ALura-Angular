@@ -1,13 +1,14 @@
 import {Component, signal} from '@angular/core';
 import {AsyncPipe, CurrencyPipe, DatePipe, DecimalPipe, JsonPipe, LowerCasePipe, PercentPipe, UpperCasePipe} from "@angular/common";
 import {Observable, of} from "rxjs";
-import {CustomStringPipe} from "../custom-string.pipe";
+import {CustomStringPipe} from "@pipes/custom-string.pipe";
 
 
 @Component({
   selector: 'app-angular-pipes',
   standalone: true,
-  imports: [DatePipe, UpperCasePipe, LowerCasePipe, JsonPipe, AsyncPipe, CurrencyPipe, DecimalPipe, PercentPipe, CustomStringPipe],
+  imports: [DatePipe, UpperCasePipe, LowerCasePipe,
+    JsonPipe, AsyncPipe, CurrencyPipe, DecimalPipe, PercentPipe, CustomStringPipe],
   templateUrl: './angular-pipes.component.html',
   styleUrl: './angular-pipes.component.scss'
 

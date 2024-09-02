@@ -7,7 +7,9 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "changeDetection": "OnPush", // criacao do component ja cria === ChangeDetectionStrategy.OnPush
+          "displayBlock": true // adicona :host nos css automaticamente
         }
       },
       "root": "",
