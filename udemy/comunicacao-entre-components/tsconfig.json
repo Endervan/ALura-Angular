@@ -7,7 +7,9 @@
     "baseUrl": "./src",
     "paths": {
       "@components/*": ["app/components/*"], // atalhos importaçoes
-      "@pipes/*": ["app/pipes/*"]
+      "@pipes/*": ["app/pipes/*"],
+      "@services/*": ["app/services/*"],
+      "@environments/*": ["environments/*"],
     },
     "strict": true,
     "noImplicitOverride": true,

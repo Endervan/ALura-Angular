@@ -1,0 +1,10 @@
+<p>consume-service works!</p>
+<ul>
+@for (item of getTask();track item){
+  <li>{{item.title}}</li>
+} @empty {
+  <li>Loading .....</li>
+}
+</ul>
+
+<app-new-component/>

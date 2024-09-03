@@ -7,11 +7,12 @@ import {HostElementsComponent} from "@components/host-elements/host-elements.com
 import {LifeCycleComponent} from "@components/life-cycle/life-cycle.component";
 import {PaiOuMaeComponent} from "@components/comuniccao-entre-components/pai-ou-mae/pai-ou-mae.component";
 import {AngularPipesComponent} from "@pipes/angular-pipes/angular-pipes.component";
+import {ConsumeServiceComponent} from "@components/consume-service/consume-service.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [PaiOuMaeComponent, AngularPipesComponent, ReactiveFormsComponent, TemplateDrivenFormsComponent, ContentComponent, HostElementsComponent, LifeCycleComponent],
+  imports: [PaiOuMaeComponent, AngularPipesComponent, ReactiveFormsComponent, TemplateDrivenFormsComponent, ContentComponent, HostElementsComponent, LifeCycleComponent, ConsumeServiceComponent],
   template: `
     <!--<router-outlet />-->
 
@@ -39,13 +40,15 @@ import {AngularPipesComponent} from "@pipes/angular-pipes/angular-pipes.componen
     <!--      <app-content/>-->
     <!--    <app-host-elements/>-->
 
-    @if (boolean) {
-      <app-life-cycle [inputMyNumber]="myNumber()">
-        <p #text>text</p>
-      </app-life-cycle>
-    }
+<!--    @if (boolean) {-->
+<!--      <app-life-cycle [inputMyNumber]="myNumber()">-->
+<!--        <p #text>text</p>-->
+<!--      </app-life-cycle>-->
+<!--    }-->
 
-    <button (click)="this.boolean = !this.boolean">destroy component</button>
+<!--    <button (click)="this.boolean = !this.boolean">destroy component</button>-->
+
+    <app-consume-service/>
 
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
