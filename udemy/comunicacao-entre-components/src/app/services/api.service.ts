@@ -1,5 +1,5 @@
 import {inject, Injectable, signal} from '@angular/core';
-import {BehaviorSubject, Observable} from "rxjs";
+import {BehaviorSubject, Observable, shareReplay} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "@environments/environment";
 
@@ -26,7 +26,9 @@ export class ApiService {
 
 
   public httpListTask$(): Observable<ITask[]> {
-    return this.#http.get<ITask[]>(this.#url())
+    return this.#http.get<ITask[]>(this.#url()).pipe(
+      shareReplay() // ajuda a evita multi caches
+    )
   }
 
 // constructor( ) { }
