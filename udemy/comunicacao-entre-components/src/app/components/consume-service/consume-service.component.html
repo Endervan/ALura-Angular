@@ -1,6 +1,6 @@
 <p>consume-service works!</p>
 <ul>
-@for (item of getTask$ | async ;track item){
+@for (item of getListaTask() ;track item){
   <li>{{item.id}}-{{item.title}}</li>
 } @empty {
   <li>Loading .....</li>
@@ -8,5 +8,5 @@
 </ul>
 
 <!--async -> serve para carregar os observable-->
-{{ getTask$ | async | json}}
+<!--{{ getTask$ | async | json}}-->
 
