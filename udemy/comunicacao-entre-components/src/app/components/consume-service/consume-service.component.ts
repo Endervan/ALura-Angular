@@ -51,7 +51,7 @@ export class ConsumeServiceComponent implements OnInit {
     //   complete: () => console.log('complete'),
     // })
 
-    this.#apiService.httpListTask$().subscribe()
+    this.#apiService.httTaskList$().subscribe()
     this.#apiService.httpListTaskId$('ZgNorQ6FMJkz0PNXftxl').subscribe()
 
   }
@@ -59,16 +59,24 @@ export class ConsumeServiceComponent implements OnInit {
   // 1 forma -> this.#apiService.httpListTask$().subscribe()
   public httpTaskCreate(title: string) {
     return this.#apiService.httpTaskCreate$(title).subscribe({
-      next: (next) => this.#apiService.httpListTask$().subscribe(), // forma menos usada chamando observable no next do create
+      next: (next) => this.#apiService.httTaskList$().subscribe(), // forma menos usada chamando observable no next do create
       error: (error) => console.log(error)
     })
   }
 
-  // 2 forma --> usando pipe e concatMap -> aconteceu a requisicao e vai garantir q posso chama outra requisição
+  // 2 forma  create--> usando pipe e concatMap -> aconteceu a requisicao e vai garantir q posso chama outra requisição
   public httpTaskCreateConcatMap(title: string) {
-    return this.#apiService.httpTaskCreate$(title).pipe(
-      concatMap(() => this.#apiService.httpListTask$())
-    ).subscribe()
+    return this.#apiService
+      .httpTaskCreate$(title)
+      .pipe(concatMap(() => this.#apiService.httTaskList$()))
+      .subscribe()
+  }
+
+  public httpTaskUpdate(id:string,title: string) {
+    return this.#apiService
+      .httpTaskUpdate$(id,title)
+      .pipe(concatMap(() => this.#apiService.httTaskList$()))
+      .subscribe()
   }
 
 }

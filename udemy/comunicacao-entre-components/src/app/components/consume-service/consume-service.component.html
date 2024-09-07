@@ -1,5 +1,5 @@
 <p>consume-service !</p>
- <h3>Get List</h3>
+<h3>Get List</h3>
 @if (getListaTask(); as data) {
   <ul>
     @for (item of data; track item) {
@@ -18,12 +18,17 @@
 <!--{{ getTask$ | async | json}}-->
 
 <h3>Get List item</h3>
-@if (getListTaskId(); as dataItem){
-  <p>{{dataItem.id}} - <small>{{dataItem.title}}</small></p>
+@if (getListTaskId(); as dataItem) {
+  <p>{{ dataItem.id }} - <small>{{ dataItem.title }}</small></p>
 }
 
 <h3>Post Create</h3>
 <input type="text" #createTitle placeholder="Add Title">
 <button type="submit" (click)="httpTaskCreateConcatMap(createTitle.value)">Create</button>
+
+<h3>Path update</h3>
+<input type="text" #updateId placeholder="add Id">
+<input type="text" #updateTitle placeholder="update Title">
+<button type="submit" (click)="httpTaskUpdate( updateId.value,updateTitle.value)">Update</button>
 
 
