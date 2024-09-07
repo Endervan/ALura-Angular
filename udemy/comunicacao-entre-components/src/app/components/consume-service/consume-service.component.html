@@ -20,6 +20,10 @@
 <h3>Get List item</h3>
 @if (getListTaskId(); as dataItem){
   <p>{{dataItem.id}} - <small>{{dataItem.title}}</small></p>
-
 }
+
+<h3>Post Create</h3>
+<input type="text" #createTitle placeholder="Add Title">
+<button type="submit" (click)="httpTaskCreateConcatMap(createTitle.value)">Create</button>
+
 

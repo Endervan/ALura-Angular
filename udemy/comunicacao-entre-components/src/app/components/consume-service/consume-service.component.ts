@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, inject, OnInit, signal} from '@angul
 import {NewComponentComponent} from "@components/new-component/new-component.component";
 import {ApiService} from "@services/api.service";
 import {AsyncPipe, JsonPipe} from "@angular/common";
-import {toSignal} from "@angular/core/rxjs-interop";
+import {concatMap} from "rxjs";
 
 @Component({
   selector: 'app-consume-service',
@@ -54,6 +54,21 @@ export class ConsumeServiceComponent implements OnInit {
     this.#apiService.httpListTask$().subscribe()
     this.#apiService.httpListTaskId$('ZgNorQ6FMJkz0PNXftxl').subscribe()
 
+  }
+
+  // 1 forma -> this.#apiService.httpListTask$().subscribe()
+  public httpTaskCreate(title: string) {
+    return this.#apiService.httpTaskCreate$(title).subscribe({
+      next: (next) => this.#apiService.httpListTask$().subscribe(), // forma menos usada chamando observable no next do create
+      error: (error) => console.log(error)
+    })
+  }
+
+  // 2 forma --> usando pipe e concatMap -> aconteceu a requisicao e vai garantir q posso chama outra requisição
+  public httpTaskCreateConcatMap(title: string) {
+    return this.#apiService.httpTaskCreate$(title).pipe(
+      concatMap(() => this.#apiService.httpListTask$())
+    ).subscribe()
   }
 
 }

@@ -25,9 +25,9 @@ export class ApiService {
   #url = signal(environment.apiTask);
 
 
+  // get
   #setListTask = signal<ITask[] | null>(null);
   public getListTask = this.#setListTask.asReadonly() // get asReadonly somente leitura
-
   public httpListTask$(): Observable<ITask[]> {
     return this.#http.get<ITask[]>(this.#url()).pipe(
       shareReplay(), // ajuda a evita multi caches
@@ -37,6 +37,8 @@ export class ApiService {
 
   // map() -> pode altera dados RXJS
 
+
+  // get ID
   #setListTaskId = signal<ITask | null>(null);
   get  getListTaskId (){
     return this.#setListTaskId.asReadonly()
@@ -49,4 +51,16 @@ export class ApiService {
   }
 
 // constructor( ) { }
+
+  #setTaskCreate = signal<ITask | null>(null);
+  get  getTaskCreate (){
+    return this.#setTaskCreate.asReadonly()
+  }
+  public httpTaskCreate$(title:string): Observable<ITask> {
+    return this.#http.post<ITask>(this.#url(),{title}).pipe(
+      shareReplay(), // ajuda a evita multi caches
+      tap((res)=> this.#setTaskCreate.set(res)) // serve para conectar as informações para RXJS
+    )
+  }
+
 }
