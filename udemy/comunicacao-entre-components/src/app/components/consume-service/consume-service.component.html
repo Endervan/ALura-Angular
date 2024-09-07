@@ -7,30 +7,41 @@
         <button (click)="httpTaskDelete(item.id)">Delete</button>
       </li>
     } @empty {
-      <li>Sem dados carregados!</li>
+      <li>{{ getListTaskError() }}</li>
     }
   </ul>
 } @else {
-  <ul>
-    <li>Loading .....</li>
-  </ul>
+  <ul><li>Loading .....</li></ul>
+}
+
+@if(getTaskDeleteError()){
+  {{getTaskDeleteError()}}
 }
 
 <!--async -> serve para carregar os observable-->
 <!--{{ getTask$ | async | json}}-->
 
-<h3>Get List item</h3>
+<h3>Get List item Id</h3>
 @if (getListTaskId(); as dataItem) {
   <p>{{ dataItem.id }} - <small>{{ dataItem.title }}</small></p>
+} @else {
+  {{getListTaskIdError()}}
 }
 
 <h3>Post Create</h3>
 <input type="text" #createTitle placeholder="Add Title">
 <button type="submit" (click)="httpTaskCreateConcatMap(createTitle.value)">Create</button>
 
+@if(getTaskCreateError()){
+  {{getTaskCreateError()}}
+}
+
 <h3>Path update</h3>
 <input type="text" #updateId placeholder="add Id">
 <input type="text" #updateTitle placeholder="update Title">
 <button type="submit" (click)="httpTaskUpdate( updateId.value,updateTitle.value)">Update</button>
+@if(getTaskUpdateError()){
+  {{getTaskUpdateError()}}
+}
 
 
