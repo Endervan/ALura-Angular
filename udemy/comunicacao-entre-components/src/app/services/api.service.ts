@@ -37,5 +37,16 @@ export class ApiService {
 
   // map() -> pode altera dados RXJS
 
+  #setListTaskId = signal<ITask | null>(null);
+  get  getListTaskId (){
+    return this.#setListTaskId.asReadonly()
+  }
+  public httpListTaskId$(id:string): Observable<ITask> {
+    return this.#http.get<ITask>(`${this.#url()}/${id}`).pipe(
+      shareReplay(), // ajuda a evita multi caches
+      tap((res)=> this.#setListTaskId.set(res)) // serve para conectar as informações para RXJS
+    )
+  }
+
 // constructor( ) { }
 }

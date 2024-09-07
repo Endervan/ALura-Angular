@@ -1,12 +1,25 @@
-<p>consume-service works!</p>
-<ul>
-@for (item of getListaTask() ;track item){
-  <li>{{item.id}}-{{item.title}}</li>
-} @empty {
-  <li>Loading .....</li>
+<p>consume-service !</p>
+ <h3>Get List</h3>
+@if (getListaTask(); as data) {
+  <ul>
+    @for (item of data; track item) {
+      <li>{{ item.id }}-{{ item.title }}</li>
+    } @empty {
+      <li>Sem dados carregados!</li>
+    }
+  </ul>
+} @else {
+  <ul>
+    <li>Loading .....</li>
+  </ul>
 }
-</ul>
 
 <!--async -> serve para carregar os observable-->
 <!--{{ getTask$ | async | json}}-->
+
+<h3>Get List item</h3>
+@if (getListTaskId(); as dataItem){
+  <p>{{dataItem.id}} - <small>{{dataItem.title}}</small></p>
+
+}
 

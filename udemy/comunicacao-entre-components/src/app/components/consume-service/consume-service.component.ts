@@ -31,6 +31,7 @@ export class ConsumeServiceComponent implements OnInit {
   // public getTask$ = toSignal(this.#apiService.httpListTask$());
 
   public getListaTask = this.#apiService.getListTask;
+  public getListTaskId = this.#apiService.getListTaskId;
 
   ngOnInit(): void {
     // console.log(this.#apiService.name());
@@ -51,6 +52,7 @@ export class ConsumeServiceComponent implements OnInit {
     // })
 
     this.#apiService.httpListTask$().subscribe()
+    this.#apiService.httpListTaskId$('ZgNorQ6FMJkz0PNXftxl').subscribe()
 
   }
 
