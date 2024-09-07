@@ -29,6 +29,7 @@ export class ApiService {
   #setListTask = signal<ITask[] | null>(null);
   public getListTask = this.#setListTask.asReadonly() // get asReadonly somente leitura
   public httTaskList$(): Observable<ITask[]> {
+    this.#setListTask.set(null); // zera  a lista pra chamar o reload
     return this.#http.get<ITask[]>(this.#url()).pipe(
       shareReplay(), // ajuda a evita multi caches
       tap((res) => this.#setListTask.set(res)) // serve para conectar as informações para RXJS
@@ -46,6 +47,7 @@ export class ApiService {
   }
 
   public httpListTaskId$(id: string): Observable<ITask> {
+    this.#setListTask.set(null); // zera  a lista pra chamar o reload
     return this.#http.get<ITask>(`${this.#url()}/${id}`).pipe(
       shareReplay(), // ajuda a evita multi caches
       tap((res) => this.#setListTaskId.set(res)) // serve para conectar as informações para RXJS
