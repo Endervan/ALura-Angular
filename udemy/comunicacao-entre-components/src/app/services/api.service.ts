@@ -31,7 +31,7 @@ export class ApiService {
   public httTaskList$(): Observable<ITask[]> {
     return this.#http.get<ITask[]>(this.#url()).pipe(
       shareReplay(), // ajuda a evita multi caches
-      tap((res)=> this.#setListTask.set(res)) // serve para conectar as informações para RXJS
+      tap((res) => this.#setListTask.set(res)) // serve para conectar as informações para RXJS
     )
   }
 
@@ -40,13 +40,15 @@ export class ApiService {
 
   // get ID
   #setListTaskId = signal<ITask | null>(null);
-  get  getListTaskId (){
+
+  get getListTaskId() {
     return this.#setListTaskId.asReadonly()
   }
-  public httpListTaskId$(id:string): Observable<ITask> {
+
+  public httpListTaskId$(id: string): Observable<ITask> {
     return this.#http.get<ITask>(`${this.#url()}/${id}`).pipe(
       shareReplay(), // ajuda a evita multi caches
-      tap((res)=> this.#setListTaskId.set(res)) // serve para conectar as informações para RXJS
+      tap((res) => this.#setListTaskId.set(res)) // serve para conectar as informações para RXJS
     )
   }
 
@@ -54,27 +56,25 @@ export class ApiService {
 
 
   // create
-  #setTaskCreate = signal<ITask | null>(null);
-  get  getTaskCreate (){
-    return this.#setTaskCreate.asReadonly()
-  }
-  public httpTaskCreate$(title:string): Observable<ITask> {
-    return this.#http.post<ITask>(this.#url(),{title}).pipe(
-      shareReplay(), // ajuda a evita multi caches
-      tap((res)=> this.#setTaskCreate.set(res)) // serve para conectar as informações para RXJS
-    )
+  public httpTaskCreate$(title: string): Observable<ITask> {
+    return this.#http.post<ITask>(this.#url(), {title})
+      .pipe(shareReplay() // ajuda a evita multi caches
+      )
   }
 
 // update
-  #setTaskUpdate = signal<ITask | null>(null);
-  get  getTaskUpdate (){
-    return this.#setTaskUpdate.asReadonly()
+  public httpTaskUpdate$(id: string, title: string): Observable<ITask> {
+    return this.#http.patch<ITask>(`${this.#url()}/${id}`, {title})
+      .pipe(shareReplay(), // ajuda a evita multi caches
+      )
   }
-  public httpTaskUpdate$(id:string,title:string): Observable<ITask> {
-    return this.#http.patch<ITask>(`${this.#url()}/${id}`,{title}).pipe(
-      shareReplay(), // ajuda a evita multi caches
-      tap((res)=> this.#setTaskUpdate.set(res)) // serve para conectar as informações para RXJS
-    )
+
+
+// delete
+  public httpTaskDelete$(id: string): Observable<void> {
+    return this.#http.delete<void>(`${this.#url()}/${id}`, {})
+      .pipe(shareReplay(), // ajuda a evita multi caches
+      )
   }
 
 }
