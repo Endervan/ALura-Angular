@@ -17,6 +17,9 @@
 @if(getTaskDeleteError()){
   {{getTaskDeleteError()}}
 }
+@if(getListTaskError()){
+  {{getListTaskError()}}
+}
 
 <!--async -> serve para carregar os observable-->
 <!--{{ getTask$ | async | json}}-->

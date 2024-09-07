@@ -16,6 +16,5 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(),
     {provide: LOCALE_ID, useValue: 'pt-BR'} //corrigindo numbes , percent e moeda para formato BR Global
-
   ]
 };

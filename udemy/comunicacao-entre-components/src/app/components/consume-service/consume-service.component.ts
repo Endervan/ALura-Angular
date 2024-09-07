@@ -31,11 +31,10 @@ export class ConsumeServiceComponent implements OnInit {
   // public getTask$ = toSignal(this.#apiService.httpListTask$());
 
   public getListaTask = this.#apiService.getListTask;
-  public getListTaskError = this.#apiService.getListTaskError;
-
   public getListTaskId = this.#apiService.getTaskId;
-  public getListTaskIdError = this.#apiService.getTaskIdError;
 
+  public getListTaskError = this.#apiService.getListTaskError;
+  public getListTaskIdError = this.#apiService.getTaskIdError;
   public getTaskCreateError = this.#apiService.getTaskCreateError;
   public getTaskUpdateError = this.#apiService.getTaskUpdateError;
   public getTaskDeleteError = this.#apiService.getTaskDeleteError;
