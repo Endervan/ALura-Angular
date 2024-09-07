@@ -1,6 +1,6 @@
 import {inject, Injectable, signal} from '@angular/core';
-import {BehaviorSubject, catchError, Observable, shareReplay, tap, throwError} from "rxjs";
-import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from "@angular/common/http";
+import {BehaviorSubject, catchError, Observable, tap, throwError} from "rxjs";
+import {HttpClient, HttpErrorResponse, HttpParams} from "@angular/common/http";
 import {environment} from "@environments/environment";
 
 interface ITask {
@@ -32,14 +32,11 @@ export class ApiService {
   public getListTaskError = this.#setListTaskError.asReadonly();
 
   public httTaskList$(): Observable<ITask[]> {
-    // const headers = new HttpHeaders().set('Ender params', 'feliz');
-    var params = new HttpParams().set('page','1')
 
     this.#setListTask.set(null); // zera  a lista pra chamar o reload
     this.#setListTaskError.set(null);
 
-    return this.#http.get<ITask[]>(this.#url(), {params}).pipe(
-      shareReplay(), // ajuda a evita multi caches
+    return this.#http.get<ITask[]>(this.#url(), {}).pipe(
       tap((res) => this.#setListTask.set(res)), // serve para conectar as informações para RXJS
       catchError((error: HttpErrorResponse) => {
         this.#setListTaskError.set(error.error.message);
@@ -70,7 +67,6 @@ export class ApiService {
 
     this.#setListTask.set(null); // zera  a lista pra chamar o reload
     return this.#http.get<ITask>(`${this.#url()}/${id}`).pipe(
-      shareReplay(), // ajuda a evita multi caches
       tap((res) => this.#setListTaskId.set(res)), // serve para conectar as informações para RXJS
       catchError((error: HttpErrorResponse) => {
         this.#setListTaskIdError.set(error.error.message);
@@ -92,8 +88,7 @@ export class ApiService {
   public httpTaskCreate$(title: string): Observable<ITask> {
     this.#setTaskCreateError.set(null);
     return this.#http.post<ITask>(this.#url(), {title})
-      .pipe(shareReplay(), // ajuda a evita multi caches
-        catchError((error: HttpErrorResponse) => {
+      .pipe(catchError((error: HttpErrorResponse) => {
           this.#setTaskCreateError.set(error.error.message);
           return throwError(() => error);
         })
@@ -110,8 +105,7 @@ export class ApiService {
   public httpTaskUpdate$(id: string, title: string): Observable<ITask> {
     this.#setListTaskUpdateError.set(null);
     return this.#http.patch<ITask>(`${this.#url()}/${id}`, {title})
-      .pipe(shareReplay(), // ajuda a evita multi caches
-        catchError((error: HttpErrorResponse) => {
+      .pipe(catchError((error: HttpErrorResponse) => {
           this.#setListTaskUpdateError.set(error.error.message);
           return throwError(() => error);
         })
@@ -128,8 +122,7 @@ export class ApiService {
 
   public httpTaskDelete$(id: string): Observable<void> {
     return this.#http.delete<void>(`${this.#url()}/${id}`, {})
-      .pipe(shareReplay(), // ajuda a evita multi caches
-        catchError((error: HttpErrorResponse) => {
+      .pipe(catchError((error: HttpErrorResponse) => {
           this.#setListTaskDeleteError.set(error.error.message);
           return throwError(() => error);
         })
