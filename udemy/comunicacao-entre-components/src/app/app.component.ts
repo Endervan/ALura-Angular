@@ -8,13 +8,14 @@ import {LifeCycleComponent} from "@components/life-cycle/life-cycle.component";
 import {PaiOuMaeComponent} from "@components/comuniccao-entre-components/pai-ou-mae/pai-ou-mae.component";
 import {AngularPipesComponent} from "@pipes/angular-pipes/angular-pipes.component";
 import {ConsumeServiceComponent} from "@components/consume-service/consume-service.component";
+import {RouterOutlet} from "@angular/router";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [PaiOuMaeComponent, AngularPipesComponent, ReactiveFormsComponent, TemplateDrivenFormsComponent, ContentComponent, HostElementsComponent, LifeCycleComponent, ConsumeServiceComponent],
+  imports: [PaiOuMaeComponent, AngularPipesComponent, ReactiveFormsComponent, TemplateDrivenFormsComponent, ContentComponent, HostElementsComponent, LifeCycleComponent, ConsumeServiceComponent, RouterOutlet],
   template: `
-    <!--<router-outlet />-->
+    <router-outlet />
 
     <!--    <h1>comunicação entre components</h1>-->
 
@@ -48,7 +49,7 @@ import {ConsumeServiceComponent} from "@components/consume-service/consume-servi
 
 <!--    <button (click)="this.boolean = !this.boolean">destroy component</button>-->
 
-    <app-consume-service/>
+<!--    <app-consume-service/>-->
 
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

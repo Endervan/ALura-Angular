@@ -3,7 +3,7 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 
-//corrigindo numbes , percent e moeda para formato BR global
+//corrigindo numbes, percent e moeda para formato BR global
 import localePt from '@angular/common/locales/pt';
 import {registerLocaleData} from "@angular/common";
 import {provideHttpClient, withInterceptors} from "@angular/common/http";
