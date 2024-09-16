@@ -1,1 +1,14 @@
 <p>home works!</p>
+<a [routerLink]="['']"
+   ariaCurrentWhenActive="page"
+   routerLinkActive="active">Home</a>
+<br>
+<a [routerLink]="['sobre']"
+   ariaCurrentWhenActive="page">
+  Sobre
+</a>
+<br>
+<a [routerLink]="['servicos','1']"
+   ariaCurrentWhenActive="sobre">
+  Serviços
+</a>
