@@ -13,7 +13,7 @@ export const routes: Routes = [
     title:'Sobre da pagina',
     component:SobreComponent
   },{
-    path:'servicos',
+    path:'servicos11',
     title:'Serviços Prestados',
     component:ServicosPrestadosComponent
   },
