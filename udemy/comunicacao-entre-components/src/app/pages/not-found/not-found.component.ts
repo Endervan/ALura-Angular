@@ -8,6 +8,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrl: './not-found.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NotFoundComponent {
+export default class NotFoundComponent {
 
 }

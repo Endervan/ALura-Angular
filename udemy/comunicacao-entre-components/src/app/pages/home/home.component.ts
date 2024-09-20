@@ -12,6 +12,6 @@ import {RouterLink, RouterLinkActive} from "@angular/router";
   styleUrl: './home.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomeComponent {
+export default class HomeComponent {
 
 }

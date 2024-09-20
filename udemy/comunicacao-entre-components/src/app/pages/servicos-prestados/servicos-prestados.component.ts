@@ -9,14 +9,15 @@ import {ActivatedRoute} from "@angular/router";
   styleUrl: './servicos-prestados.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ServicosPrestadosComponent  implements OnInit{
+export default class ServicosPrestadosComponent implements OnInit {
 
   #route = inject(ActivatedRoute);
 
   // forma mais nova
-  public  getId = signal<null | string>(null)
-  @Input() set id(id:string){
-    console.log("forma nova pega id ",id)
+  public getId = signal<null | string>(null)
+
+  @Input() set id(id: string) {
+    console.log("forma nova pega id ", id)
     this.getId.set(id);
   }
 
