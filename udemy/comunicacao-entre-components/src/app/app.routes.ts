@@ -4,7 +4,7 @@ import {Routes} from '@angular/router';
 export const routes: Routes = [
 
   {
-    path: '',
+    path: 'cursos',
     loadChildren: () => import('./pages/cursos.routes').then((r) => r.cursosRoutes)
   },
   {
