@@ -1,10 +1,13 @@
 import {ChangeDetectionStrategy, Component, inject, Input, OnInit, signal} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-servicos-prestados',
   standalone: true,
-  imports: [],
+  imports: [
+    ReactiveFormsModule
+  ],
   templateUrl: './servicos-prestados.component.html',
   styleUrl: './servicos-prestados.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -20,6 +23,10 @@ export default class ServicosPrestadosComponent implements OnInit {
     console.log("forma nova pega id ", id)
     this.getId.set(id);
   }
+
+  public form = new FormGroup({
+    name:new FormControl(null, [Validators.required]),
+  })
 
 
   ngOnInit(): void {
@@ -39,10 +46,10 @@ export default class ServicosPrestadosComponent implements OnInit {
       },
     })
 
-    setTimeout(()=>{
-      // serve para fazer redirecionamento
-      this.#router.navigate(['/cursos'])
-    },3000)
+    // setTimeout(()=>{
+    //   // serve para fazer redirecionamento
+    //   this.#router.navigate(['/cursos'])
+    // },3000)
 
 
 

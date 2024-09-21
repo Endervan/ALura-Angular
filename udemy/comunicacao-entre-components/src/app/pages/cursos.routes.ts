@@ -1,6 +1,7 @@
 import {Routes} from '@angular/router';
 import {canActivateGuard} from "../guard/can-activate.guard";
 import {canMatchGuard} from "../guard/can-match.guard";
+import {canDeactivateGuard} from "../guard/can-deactivate.guard";
 
 export const cursosRoutes: Routes = [
 
@@ -18,6 +19,7 @@ export const cursosRoutes: Routes = [
     path: 'servicos/:id',
     title: 'Serviços Prestados',
     loadComponent: () => import("./servicos-prestados/servicos-prestados.component"), // carregar pagina sobre demanda(lazy load)
+    canDeactivate: [canDeactivateGuard]
   }
 
 ];
