@@ -10,13 +10,15 @@ import {AngularPipesComponent} from "@pipes/angular-pipes/angular-pipes.componen
 import {ConsumeServiceComponent} from "@components/consume-service/consume-service.component";
 import {RouterOutlet} from "@angular/router";
 import {TranslateComponent} from "@components/translate/translate.component";
+import {OutputComponent} from "@components/comuniccao-entre-components/output/output.component";
+import {OptImageComponent} from "../assets/i18n/components/opt-image/opt-image.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [PaiOuMaeComponent, AngularPipesComponent, ReactiveFormsComponent, TemplateDrivenFormsComponent, ContentComponent, HostElementsComponent, LifeCycleComponent, ConsumeServiceComponent, RouterOutlet, TranslateComponent],
+  imports: [PaiOuMaeComponent, AngularPipesComponent, ReactiveFormsComponent, TemplateDrivenFormsComponent, ContentComponent, HostElementsComponent, LifeCycleComponent, ConsumeServiceComponent, RouterOutlet, TranslateComponent, OutputComponent, OptImageComponent],
   template: `
-    <router-outlet/>
+<!--    <router-outlet/>-->
 
     <!--    <h1>comunicação entre components</h1>-->
 
@@ -52,7 +54,9 @@ import {TranslateComponent} from "@components/translate/translate.component";
 
     <!--    <app-consume-service/>-->
 
-    <app-translate/>
+<!--    <app-translate/>-->
+
+<app-opt-image/>
 
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
