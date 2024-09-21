@@ -9,13 +9,14 @@ import {PaiOuMaeComponent} from "@components/comuniccao-entre-components/pai-ou-
 import {AngularPipesComponent} from "@pipes/angular-pipes/angular-pipes.component";
 import {ConsumeServiceComponent} from "@components/consume-service/consume-service.component";
 import {RouterOutlet} from "@angular/router";
+import {TranslateComponent} from "@components/translate/translate.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [PaiOuMaeComponent, AngularPipesComponent, ReactiveFormsComponent, TemplateDrivenFormsComponent, ContentComponent, HostElementsComponent, LifeCycleComponent, ConsumeServiceComponent, RouterOutlet],
+  imports: [PaiOuMaeComponent, AngularPipesComponent, ReactiveFormsComponent, TemplateDrivenFormsComponent, ContentComponent, HostElementsComponent, LifeCycleComponent, ConsumeServiceComponent, RouterOutlet, TranslateComponent],
   template: `
-    <router-outlet />
+    <router-outlet/>
 
     <!--    <h1>comunicação entre components</h1>-->
 
@@ -41,15 +42,17 @@ import {RouterOutlet} from "@angular/router";
     <!--      <app-content/>-->
     <!--    <app-host-elements/>-->
 
-<!--    @if (boolean) {-->
-<!--      <app-life-cycle [inputMyNumber]="myNumber()">-->
-<!--        <p #text>text</p>-->
-<!--      </app-life-cycle>-->
-<!--    }-->
+    <!--    @if (boolean) {-->
+    <!--      <app-life-cycle [inputMyNumber]="myNumber()">-->
+    <!--        <p #text>text</p>-->
+    <!--      </app-life-cycle>-->
+    <!--    }-->
 
-<!--    <button (click)="this.boolean = !this.boolean">destroy component</button>-->
+    <!--    <button (click)="this.boolean = !this.boolean">destroy component</button>-->
 
-<!--    <app-consume-service/>-->
+    <!--    <app-consume-service/>-->
+
+    <app-translate/>
 
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

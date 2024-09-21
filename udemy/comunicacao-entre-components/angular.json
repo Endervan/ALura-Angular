@@ -8,8 +8,8 @@
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss",
-          "changeDetection": "OnPush", // criacao do component ja cria === ChangeDetectionStrategy.OnPush
-          "displayBlock": true // adicona :host nos css automaticamente
+          "changeDetection": "OnPush", //criacao do component ja cria === ChangeDetectionStrategy.OnPush
+          "displayBlock": true //adicona :host nos css automaticamente
         }
       },
       "root": "",
@@ -28,6 +28,8 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              "src/assets",
+              "src/favicon.ico",
               {
                 "glob": "**/*",
                 "input": "public"
@@ -117,7 +119,9 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/assets",
+              "src/favicon.ico"
             ],
             "styles": [
               "src/styles.scss"
