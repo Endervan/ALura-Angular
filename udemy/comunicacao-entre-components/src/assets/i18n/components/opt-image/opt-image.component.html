@@ -1,8 +1,8 @@
 <h2 >Optijmizacao de imagem</h2>
 <p>loading="lazy" -> carrega a imagem qnd tela estive nela ex: scroll qnd descemos ela carrega assim que chega no fim</p>
 <!--<img ngSrc="assets/capa.jpg" alt="uma imagem" width="200" height="200" loading="lazy">-->
-<img ngSrc="assets/capa.jpg" alt="uma imagem" width="200" height="200" priority>
+<img alt="uma imagem" height="200" ngSrc="capa.jpg" ngSrcset="100w,200w,300w" priority width="200">
 
 <div style="position: relative;width: 250px;height: 400px; background: aquamarine">
-  <img ngSrc="assets/capa.jpg" alt="uma imagem" fill priority style="object-fit: cover">
+  <img alt="uma imagem" fill ngSrc="capa.jpg" ngSrcset="100w,200w,300w" priority style="object-fit: cover">
 </div>
