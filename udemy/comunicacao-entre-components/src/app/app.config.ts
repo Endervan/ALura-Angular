@@ -5,7 +5,7 @@ import {routes} from './app.routes';
 
 //corrigindo numbes, percent e moeda para formato BR global
 import localePt from '@angular/common/locales/pt';
-import {IMAGE_LOADER, ImageLoaderConfig, registerLocaleData} from "@angular/common";
+import {provideImgixLoader, registerLocaleData} from "@angular/common";
 import {provideHttpClient, withInterceptors} from "@angular/common/http";
 import {httpInterceptor} from "./interceptor/http.interceptor";
 import {provideTranslate} from "./app.translate";
@@ -23,16 +23,18 @@ export const appConfig: ApplicationConfig = {
     )),
     provideHttpClient(withInterceptors([httpInterceptor])),
     provideTranslate(),
-    // provideImgixLoader(environment.img), // melhorando caminho relativo das images
-    {
-      provide: IMAGE_LOADER, useValue: (config: ImageLoaderConfig) => {
-        const img = config.src.split('.');
-        const name = img.shift(); // pega inicio do nosso array
-        const type = img.pop();
-        const width = config.width;
-        return `${environment.img}${name}-${width}w.${type}`
-      }
-    },
+    provideImgixLoader(environment.img), // melhorando caminho relativo das images
+    // {
+    //   provide: IMAGE_LOADER, useValue: (config: ImageLoaderConfig) => {
+    //     const img = config.src.split('.');
+    //     const name = img.shift(); // pega inicio do nosso array
+    //     const type = img.pop();
+    //     const width = config.width;
+    //     return `${environment.img}${name}${
+    //       width ? '-' + width + 'w' : ''
+    //     }.${type}`
+    //   }
+    // },
     {provide: LOCALE_ID, useValue: 'pt-BR'} //corrigindo numbes, percent e moeda para formato BR Global
   ]
 };
