@@ -10,6 +10,7 @@ import {provideHttpClient, withInterceptors} from "@angular/common/http";
 import {httpInterceptor} from "./interceptor/http.interceptor";
 import {provideTranslate} from "./app.translate";
 import {environment} from "@environments/environment";
+import {provideAnimationsAsync} from "@angular/platform-browser/animations/async";
 
 registerLocaleData(localePt);
 //corrigindo numbes, percent e moeda para formato BR global
@@ -35,6 +36,7 @@ export const appConfig: ApplicationConfig = {
     //     }.${type}`
     //   }
     // },
+    provideAnimationsAsync(), // animaçoes
     {provide: LOCALE_ID, useValue: 'pt-BR'} //corrigindo numbes, percent e moeda para formato BR Global
   ]
 };

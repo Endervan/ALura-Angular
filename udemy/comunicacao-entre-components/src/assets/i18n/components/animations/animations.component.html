@@ -1,0 +1,7 @@
+<p>animations!</p>
+<div [@move-ball] class="ball"></div>
+
+<button (click)="moveIn.set('move-left')">Moke Left</button>
+<button (click)="moveIn.set('move-right')">Moke right</button>
+
+{{ moveIn() }}

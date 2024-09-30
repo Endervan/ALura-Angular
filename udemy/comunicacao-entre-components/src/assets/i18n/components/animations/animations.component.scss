@@ -1,0 +1,18 @@
+:host {
+  .ball {
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    background: aqua;
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      border-left: 2px solid white;
+      height: 50%;
+      width: 100%;
+      transform: translate(50%, 0);
+    }
+  }
+}

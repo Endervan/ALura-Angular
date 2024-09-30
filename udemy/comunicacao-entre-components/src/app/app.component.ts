@@ -12,11 +12,12 @@ import {RouterOutlet} from "@angular/router";
 import {TranslateComponent} from "@components/translate/translate.component";
 import {OutputComponent} from "@components/comuniccao-entre-components/output/output.component";
 import {OptImageComponent} from "../assets/i18n/components/opt-image/opt-image.component";
+import {AnimationsComponent} from "../assets/i18n/components/animations/animations.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [PaiOuMaeComponent, AngularPipesComponent, ReactiveFormsComponent, TemplateDrivenFormsComponent, ContentComponent, HostElementsComponent, LifeCycleComponent, ConsumeServiceComponent, RouterOutlet, TranslateComponent, OutputComponent, OptImageComponent],
+  imports: [PaiOuMaeComponent, AngularPipesComponent, ReactiveFormsComponent, TemplateDrivenFormsComponent, ContentComponent, HostElementsComponent, LifeCycleComponent, ConsumeServiceComponent, RouterOutlet, TranslateComponent, OutputComponent, OptImageComponent, AnimationsComponent],
   template: `
 <!--    <router-outlet/>-->
 
@@ -56,7 +57,8 @@ import {OptImageComponent} from "../assets/i18n/components/opt-image/opt-image.c
 
 <!--    <app-translate/>-->
 
-<app-opt-image/>
+<!--<app-opt-image/>-->
+<app-animations/>
 
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
