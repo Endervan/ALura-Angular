@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
-import {animate, keyframes, query, stagger, state, style, transition, trigger} from "@angular/animations";
+import {animate, keyframes, query, sequence, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-animations',
@@ -55,9 +55,31 @@ import {animate, keyframes, query, stagger, state, style, transition, trigger} f
             background: 'yellow',
             transform: 'translateY(100px)'
           }),
-          stagger('1s', [ // stagger => animation individual por estagio
-            animate('1s')
-          ])
+          //stagger('1s', [animate('1s')]), // stagger => animation individual por estagio
+          // group([ // chegar a atropelar de acordo com a logica
+          //   animate('1s', style({
+          //     background: 'red',
+          //   })),
+          //   animate('2s', style({
+          //     background: 'blue',
+          //   })),
+          //   animate('7s', style({
+          //     background: 'brown',
+          //     transform: 'translateY(0)'
+          //   })),
+          // ]),
+          sequence([ // segue rigoroso em cascata de cima pra baixo
+            animate('1s', style({
+              background: 'red',
+            })),
+            animate('2s', style({
+              background: 'blue',
+            })),
+            animate('7s', style({
+              background: 'brown',
+              transform: 'translateY(0)'
+            })),
+          ]),
         ])
       ])
     ])
