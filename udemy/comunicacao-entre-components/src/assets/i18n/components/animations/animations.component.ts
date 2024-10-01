@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
-import {animate, keyframes, state, style, transition, trigger} from "@angular/animations";
+import {animate, keyframes, query, stagger, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-animations',
@@ -31,10 +31,36 @@ import {animate, keyframes, state, style, transition, trigger} from "@angular/an
           transform: 'scale(0.7) translateX(300px) rotate(360deg)'
         }),
       ]))]), // :enter entrada inicialização
-      transition(':leave', animate('2s')), // * => void ou :leave saida destruição
+      transition(':leave', [animate('2s', keyframes([ // usa css dentro transition
+        style({
+          opacity: 1,
+          transform: 'scale(0.7) translateX(300px) rotate(360deg)'
+        }),
+        style({
+          opacity: 0.5,
+          transform: 'scale(0.9) translateX(150px) rotate(180deg)'
+        }),
+        style({
+          opacity: 0,
+          transform: 'scale(1) translateX(0) rotate(0deg)'
+        }),
+      ]))]), // * => void ou :leave saida destruição
       transition('* => move-right', animate('5s 1s ease-in-out')), // * => move-right sem valor inicial  no signal
       transition('* => move-left', animate('1s')), //  * => move-left usa sem valor inicial  no signal
-    ]) // pai de todos
+    ]), // pai de todos
+    trigger('list-itens', [
+      transition(':enter', [
+        query('li', [
+          style({
+            background: 'yellow',
+            transform: 'translateY(100px)'
+          }),
+          stagger('1s', [ // stagger => animation individual por estagio
+            animate('1s')
+          ])
+        ])
+      ])
+    ])
   ]
 })
 

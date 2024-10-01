@@ -7,4 +7,14 @@
 <button (click)="moveIn.set('move-left')">Moke Left</button>
 <button (click)="moveIn.set('move-right')">Moke right</button>
 
-{{ moveIn() }}
+<hr>
+move in :{{ moveIn() }}
+<hr>
+
+<ul [@list-itens]>
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+  <li>Item 4</li>
+  <li>Item 5</li>
+</ul>
