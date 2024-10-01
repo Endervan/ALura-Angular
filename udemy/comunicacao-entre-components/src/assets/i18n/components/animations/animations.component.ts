@@ -10,16 +10,24 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('move-ball', [
-      state('move-left', style({transform: 'scale(1) translateX(0) rotate(0deg)'})),
-      state('move-right', style({transform: 'scale(0.7) translateX(300px) rotate(360deg)'})),
+      state('move-left', style({
+        opacity: 0,
+        transform: 'scale(1) translateX(0) rotate(0deg)'
+      })),
+      state('move-right', style({
+        opacity: 1,
+        transform: 'scale(0.7) translateX(300px) rotate(360deg)'
+      })),
       transition('move-left <=> move-right', animate('1s ease-out')), // <=> bidimensional (teria seta signal),  DE => Para ou vise-versa
-      transition('* => move-right', animate('1s 2s')), // * => move-right sem valor inicial  no signal
+      transition(':enter', animate('1s')), // :enter entrada inicialização
+      transition(':leave', animate('2s')), // * => void ou :leave saida destruição
+      transition('* => move-right', animate('5s 1s ease-in-out')), // * => move-right sem valor inicial  no signal
       transition('* => move-left', animate('1s')), //  * => move-left usa sem valor inicial  no signal
     ]) // pai de todos
   ]
 })
 
 export class AnimationsComponent {
-  public moveIn = signal('move-left')
+  public moveIn = signal('')
 
 }

@@ -5,6 +5,7 @@
     border-radius: 100px;
     background: aqua;
     position: relative;
+    opacity: 0;
 
     &::after {
       content: '';

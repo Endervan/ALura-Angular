@@ -1,5 +1,8 @@
 <p>animations!</p>
-<div [@move-ball]="moveIn()" class="ball"></div>
+
+@if (moveIn() === 'move-right') {
+  <div [@move-ball]="moveIn()" class="ball"></div>
+}
 
 <button (click)="moveIn.set('move-left')">Moke Left</button>
 <button (click)="moveIn.set('move-right')">Moke right</button>
