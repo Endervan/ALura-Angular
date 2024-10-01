@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
-import {animate, state, style, transition, trigger} from "@angular/animations";
+import {animate, keyframes, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-animations',
@@ -11,15 +11,26 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
   animations: [
     trigger('move-ball', [
       state('move-left', style({
-        opacity: 0,
         transform: 'scale(1) translateX(0) rotate(0deg)'
       })),
       state('move-right', style({
-        opacity: 1,
         transform: 'scale(0.7) translateX(300px) rotate(360deg)'
       })),
       transition('move-left <=> move-right', animate('1s ease-out')), // <=> bidimensional (teria seta signal),  DE => Para ou vise-versa
-      transition(':enter', animate('1s')), // :enter entrada inicialização
+      transition(':enter', [animate('2s', keyframes([ // usa css dentro transition
+        style({
+          opacity: 0,
+          transform: 'scale(1) translateX(0) rotate(0deg)'
+        }),
+        style({
+          opacity: 0.5,
+          transform: 'scale(0.9) translateX(150px) rotate(180deg)'
+        }),
+        style({
+          opacity: 1,
+          transform: 'scale(0.7) translateX(300px) rotate(360deg)'
+        }),
+      ]))]), // :enter entrada inicialização
       transition(':leave', animate('2s')), // * => void ou :leave saida destruição
       transition('* => move-right', animate('5s 1s ease-in-out')), // * => move-right sem valor inicial  no signal
       transition('* => move-left', animate('1s')), //  * => move-left usa sem valor inicial  no signal
