@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
 import {animate, keyframes, query, sequence, state, style, transition, trigger} from "@angular/animations";
+import {listItensAnimations} from "../../../../app/animations/list-item.animations";
 
 @Component({
   selector: 'app-animations',
@@ -68,7 +69,7 @@ import {animate, keyframes, query, sequence, state, style, transition, trigger} 
           //     transform: 'translateY(0)'
           //   })),
           // ]),
-          sequence([ // segue rigoroso em cascata de cima pra baixo
+          sequence([ // segue rigoroso em cascata de cima para baixo
             animate('1s', style({
               background: 'red',
             })),
@@ -81,12 +82,25 @@ import {animate, keyframes, query, sequence, state, style, transition, trigger} 
             })),
           ]),
         ])
-      ])
+      ]),
+      listItensAnimations
     ])
   ]
 })
 
 export class AnimationsComponent {
-  public moveIn = signal('')
+  public moveIn = signal('');
+
+  public listItens = signal([
+    {name: 'Item 1'},
+    {name: 'Item 2'},
+    {name: 'Item 3'},
+    {name: 'Item 4'},
+    {name: 'Item 5'},
+  ]);
+
+  public deleteItem(index: number) {
+    this.listItens().splice(index, 1);
+  }
 
 }
