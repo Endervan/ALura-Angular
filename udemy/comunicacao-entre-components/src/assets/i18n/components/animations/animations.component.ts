@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
-import {animate, keyframes, query, sequence, state, style, transition, trigger} from "@angular/animations";
-import {listItensAnimations} from "../../../../app/animations/list-item.animations";
+import {animate, keyframes, state, style, transition, trigger} from "@angular/animations";
+import {listItensAnimation} from "../../../../app/animations/list-item.animations";
 
 @Component({
   selector: 'app-animations',
@@ -49,42 +49,7 @@ import {listItensAnimations} from "../../../../app/animations/list-item.animatio
       transition('* => move-right', animate('5s 1s ease-in-out')), // * => move-right sem valor inicial  no signal
       transition('* => move-left', animate('1s')), //  * => move-left usa sem valor inicial  no signal
     ]), // pai de todos
-    trigger('list-itens', [
-      transition(':enter', [
-        query('li', [
-          style({
-            background: 'yellow',
-            transform: 'translateY(100px)'
-          }),
-          //stagger('1s', [animate('1s')]), // stagger => animation individual por estagio
-          // group([ // chegar a atropelar de acordo com a logica
-          //   animate('1s', style({
-          //     background: 'red',
-          //   })),
-          //   animate('2s', style({
-          //     background: 'blue',
-          //   })),
-          //   animate('7s', style({
-          //     background: 'brown',
-          //     transform: 'translateY(0)'
-          //   })),
-          // ]),
-          sequence([ // segue rigoroso em cascata de cima para baixo
-            animate('1s', style({
-              background: 'red',
-            })),
-            animate('2s', style({
-              background: 'blue',
-            })),
-            animate('7s', style({
-              background: 'brown',
-              transform: 'translateY(0)'
-            })),
-          ]),
-        ])
-      ]),
-      listItensAnimations
-    ])
+    listItensAnimation()
   ]
 })
 
