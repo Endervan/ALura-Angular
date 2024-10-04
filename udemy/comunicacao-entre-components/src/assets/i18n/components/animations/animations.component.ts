@@ -1,11 +1,15 @@
 import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
 import {animate, keyframes, state, style, transition, trigger} from "@angular/animations";
 import {listItensAnimation} from "../../../../app/animations/list-item.animations";
+import {RouterLink, RouterLinkActive} from "@angular/router";
 
 @Component({
   selector: 'app-animations',
   standalone: true,
-  imports: [],
+  imports: [
+    RouterLinkActive,
+    RouterLink
+  ],
   templateUrl: './animations.component.html',
   styleUrl: './animations.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -68,4 +72,9 @@ export class AnimationsComponent {
     this.listItens().splice(index, 1);
   }
 
+  public addNewItem() {
+    return this.listItens.update((oldValue) => [
+      ...oldValue, {name: 'Novo Nome'},
+    ])
+  }
 }

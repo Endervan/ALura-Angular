@@ -1,4 +1,4 @@
-import {animate, query, sequence, style, transition, trigger} from "@angular/animations";
+import {animate, query, sequence, stagger, style, transition, trigger} from "@angular/animations";
 
 export const mediaMax600 = trigger('list-itens', [
   transition(':enter', [
@@ -33,7 +33,26 @@ export const mediaMax600 = trigger('list-itens', [
         })),
       ]),
     ])
-  ])
+  ]),
+  transition(':decrement', [ // increment ou decrement ajusta (listas da animacoes no caso de rotas )
+    query('li:leave', [
+      style({
+        background: 'blue',
+      }),
+      animate('1s', style({
+        opacity: 0,
+      }))
+    ], {optional: true})
+  ]), transition(':increment', [ // increment ou decrement ajusta (listas da animacoes no caso de rotas )
+    query('li:enter', [
+      style({
+        background: 'yellow',
+        transform: 'translateY(100px)'
+      }),
+      stagger('700ms', [animate('1s')])
+    ], {optional: true})
+  ]),
+
 ]);
 export const mediaMax700 = trigger('list-itens', [
   transition(':enter', [
@@ -68,6 +87,16 @@ export const mediaMax700 = trigger('list-itens', [
         })),
       ]),
     ])
+  ]),
+  transition('* => *', [
+    query(':leave', [
+      style({
+        background: 'red',
+      }),
+      animate('1s', style({
+        opacity: 0,
+      }))
+    ], {optional: true})
   ])
 ]);
 

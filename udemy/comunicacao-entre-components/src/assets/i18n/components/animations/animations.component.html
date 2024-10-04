@@ -1,5 +1,6 @@
 <p>animations!</p>
 
+
 @if (moveIn() === 'move-right') {
   <div [@move-ball]="moveIn()" class="ball"></div>
 }
@@ -10,6 +11,8 @@
 <hr>
 move in :{{ moveIn() }}
 <hr>
+
+<button (click)="addNewItem()">Add</button>
 
 <ul [@list-itens]="listItens().length">
   @for (item of listItens(); track item; let i = $index) {
