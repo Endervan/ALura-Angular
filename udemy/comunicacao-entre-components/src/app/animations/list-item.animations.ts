@@ -43,7 +43,8 @@ export const mediaMax600 = trigger('list-itens', [
         opacity: 0,
       }))
     ], {optional: true})
-  ]), transition(':increment', [ // increment ou decrement ajusta (listas da animacoes no caso de rotas )
+  ]),
+  transition(':increment', [ // increment ou decrement ajusta (listas da animacoes no caso de rotas )
     query('li:enter', [
       style({
         background: 'yellow',
@@ -88,16 +89,26 @@ export const mediaMax700 = trigger('list-itens', [
       ]),
     ])
   ]),
-  transition('* => *', [
-    query(':leave', [
+  transition(':decrement', [ // increment ou decrement ajusta (listas da animacoes no caso de rotas )
+    query('li:leave', [
       style({
-        background: 'red',
+        background: 'blue',
       }),
       animate('1s', style({
         opacity: 0,
       }))
     ], {optional: true})
-  ])
+  ]),
+  transition(':increment', [ // increment ou decrement ajusta (listas da animacoes no caso de rotas )
+    query('li:enter', [
+      style({
+        background: 'yellow',
+        transform: 'translateY(100px)'
+      }),
+      stagger('700ms', [animate('1s')])
+    ], {optional: true})
+  ]),
+
 ]);
 
 export const listItensAnimation = () => {
