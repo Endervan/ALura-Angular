@@ -1,0 +1,8 @@
+
+
+<ng-template ngFor [ngForOf]="list" let-item >
+  <p>{{item.nome}}</p>
+</ng-template>
+
+<input type="text" [(ngModel)]="nome">
+<button type="submit" (click)="salvar()">Salvar</button>
