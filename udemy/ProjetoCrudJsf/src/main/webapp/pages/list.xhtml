@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns="http://www.w3.org/1999/xhtml">
+<h:head>
+    <title>Lista de Produtos</title>
+</h:head>
+<h:body>
+    <h:dataTable value="#{produtoBean.produtos}" var="produto">
+        <h:column>
+            <f:facet name="header">Nome</f:facet>
+            #{produto.nome}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Preço</f:facet>
+            #{produto.preco}
+        </h:column>
+        <h:column>
+            <h:commandButton value="Remover" action="#{produtoBean.remover(produto)}"/>
+        </h:column>
+    </h:dataTable>
+    <h:form>
+        <h:inputText value="#{produtoBean.produto.nome}" placeholder="Nome"/>
+        <h:inputText value="#{produtoBean.produto.preco}" placeholder="Preço"/>
+        <h:commandButton value="Salvar" action="#{produtoBean.salvar}"/>
+    </h:form>
+</h:body>
+</html>

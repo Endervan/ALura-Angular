@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns="http://www.w3.org/1999/xhtml">
+<h:head>
+    <title>Formulário de Produto</title>
+</h:head>
+<h:body>
+    <h:form>
+        <h:panelGrid columns="2">
+            <h:outputLabel for="nome" value="Nome:"/>
+            <h:inputText id="nome" value="#{produtoBean.produto.nome}" required="true"
+                         requiredMessage="O nome é obrigatório."/>
+
+            <h:outputLabel for="preco" value="Preço:"/>
+            <h:inputText id="preco" value="#{produtoBean.produto.preco}" required="true"
+                         requiredMessage="O preço é obrigatório."/>
+
+            <h:outputLabel for="categoria" value="Categoria:"/>
+            <h:selectOneMenu id="categoria" value="#{produtoBean.produto.categoria}">
+                <f:selectItems value="#{categoriaBean.categorias}" var="categoria" itemValue="#{categoria}"
+                               itemLabel="#{categoria.nome}"/>
+            </h:selectOneMenu>
+        </h:panelGrid>
+
+        <h:commandButton value="Salvar" action="#{produtoBean.salvar}"/>
+        <h:messages/>
+    </h:form>
+</h:body>
+</html>
