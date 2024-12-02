@@ -1,16 +1,16 @@
-package com.examplo.bean;
+package com.exemplo.bean;
 
 import com.exemplo.model.Produto;
 
-import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
+import jakarta.annotation.PostConstruct;
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import java.util.List;
 
-@ManagedBean
+@Named
 @ViewScoped
 public class ProdutoBean {
     private Produto produto = new Produto();
