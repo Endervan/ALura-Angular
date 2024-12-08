@@ -1,15 +1,14 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
 // module routas
 import {RoutingModule} from "./routing.module";
 
 // pages
-import { HomeComponent } from './home/home.component';
-import { DetailsComponent } from './details/details.component';
+import {HomeComponent} from './home/home.component';
+import {DetailsComponent} from './details/details.component';
 import {SharedModule} from "../shared/shared.module";
 import {HttpClientModule} from "@angular/common/http";
-
 
 
 @NgModule({
@@ -27,4 +26,5 @@ import {HttpClientModule} from "@angular/common/http";
     HttpClientModule
   ]
 })
-export class PagesModule { }
+export class PagesModule {
+}
